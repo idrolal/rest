@@ -9,6 +9,7 @@ import AdminAllReservations from '../AdminComponents//AdminAllReservations/Admin
 import AdminAllHouses from '../AdminComponents//AdminAllHouses/AdminAllHouses.jsx';
 import Nav from '../Nav/Nav';
 import './App.css'
+import { HomesList } from '../HomesList/HomesList';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />
             <Route path={reactRouter.admin.allReservations} element={<AdminAllReservations />} />
             <Route path={reactRouter.admin.allHouses} element={< AdminAllHouses />} />
+            <Route path='/house' element={< HomesList />} />
           </Routes>
         </div>
       </BrowserRouter>

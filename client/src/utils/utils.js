@@ -1,5 +1,5 @@
 export const router = {
-  home: '/api/home',
+  home: '/api/homes',
 }
 
 
