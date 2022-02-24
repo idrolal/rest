@@ -8,19 +8,25 @@ import AdminCreateReservation from '../AdminCreateReservation/AdminCreateReserva
 import AdminAllReservations from '../AdminAllReservations/AdminAllReservations.jsx';
 import AdminAllHouses from '../AdminAllHouses/AdminAllHouses.jsx';
 
+import Nav from '../Nav/Nav';
+import './App.css'
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route />
-          <Route path={reactRouter.admin.main} element={<AdminPanel />} />
-          <Route path={reactRouter.admin.addHouse} element={<AdminAddHouse />} />
-          <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />
-          <Route path={reactRouter.admin.allReservations} element={<AdminAllReservations />} />
-          <Route path={reactRouter.admin.allHouses} element={< AdminAllHouses />} />
-        </Routes>
+        <div className="app-container">
+          <Nav />
+
+          <Routes>
+            <Route />
+            <Route path={reactRouter.admin.main} element={<AdminPanel />} />
+            <Route path={reactRouter.admin.addHouse} element={<AdminAddHouse />} />
+            <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />
+            <Route path={reactRouter.admin.allReservations} element={<AdminAllReservations />} />
+            <Route path={reactRouter.admin.allHouses} element={< AdminAllHouses />} />
+          </Routes>
+        </div>
       </BrowserRouter>
 
     </Provider>
