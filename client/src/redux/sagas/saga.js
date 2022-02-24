@@ -1,7 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import {router} from '../../utils/utils'
+import { router } from '../../utils/utils'
+
 async function fetchData({ url, method, headers, body }) {
-  const response = await fetch(url, { method, headers, body,  credentials: 'include'  });
+  const response = await fetch(url, { method, headers, body, credentials: 'include' });
   return (await response.json());
 }
 
