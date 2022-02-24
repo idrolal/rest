@@ -1,19 +1,21 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '../../redux/store'
-import { HomesList } from '../HomesList/HomesList';
-
+import Nav from '../Nav/Nav';
+import './App.css'
 
 function App() {
   return (
     <Provider store={store}>
-      {/* <BrowserRouter>
-        <Routes>
-          <Route /> 
-        </Routes>
-      </BrowserRouter> */}
+      <BrowserRouter>
+      <div className="app-container">
+      <Nav/>
 
-      <HomesList/>
+        <Routes>
+          <Route/> 
+        </Routes>
+      </div>
+      </BrowserRouter>
 
     </Provider>
   );
