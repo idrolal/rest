@@ -9,6 +9,7 @@ import AdminAllReservations from '../AdminComponents//AdminAllReservations/Admin
 import AdminAllHouses from '../AdminComponents//AdminAllHouses/AdminAllHouses.jsx';
 import Nav from '../Nav/Nav';
 import './App.css'
+import Booking from '../Booking/Booking';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Nav />
 
           <Routes>
-            <Route />
+            <Route path='/booking' element={<Booking/>}/>
             <Route path={reactRouter.admin.main} element={<AdminPanel />} />
             <Route path={reactRouter.admin.addHouse} element={<AdminAddHouse />} />
             <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />
