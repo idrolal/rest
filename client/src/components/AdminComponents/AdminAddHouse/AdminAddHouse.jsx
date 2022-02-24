@@ -3,18 +3,22 @@ import { reactRouter } from '../../../utils/utils.js'
 
 function AdminAddHouse(props) {
 
-  const [img, setImg] = useState()
+  const [img, setImg] = useState([])
+  console.log(img);
+
   let newEventPhoto;
   const setImgHandler = async () => { newEventPhoto = await sendImageToServer() }
 
   const sendImageToServer = useCallback(async () => {
-    const sendImageToServerURL = `${process.env.REACT_APP_URL}${reactRouter.admin.addHouseServerPath}`
+    const sendImageToServerURL = `${process.env.REACT_APP_URL}${reactRouter.admin.addHouseServerPath}/img`
     const data = new FormData()
-    data.append('homes', img)
+    data.append('homesImg', img)
+
     const options = {
       method: 'POST',
       body: data,
     }
+
     fetch(sendImageToServerURL, options)
       .then(res => res.json())
       .then(imgPath => setImg(imgPath))
@@ -70,7 +74,8 @@ function AdminAddHouse(props) {
 
         <div>
           {/* <img src="..." alt="..." /> */}
-          <input type="file" onChange={e => setImg(e.target.files[0])} />
+          <input type="file" multiple onChange={e => setImg(e.target.files)} />
+
         </div>
 
         <button>Добавить дом</button>
