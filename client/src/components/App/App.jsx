@@ -10,6 +10,7 @@ import AdminAllHouses from '../AdminComponents//AdminAllHouses/AdminAllHouses.js
 import Nav from '../Nav/Nav';
 import './App.css'
 import AdminLogin from '../AdminComponents/AdminLogin/AdminLogin';
+import Booking from '../Booking/Booking';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Nav />
 
           <Routes>
-            <Route />
+            <Route path='/booking' element={<Booking/>}/>
             <Route path={reactRouter.admin.main} element={<AdminPanel />} />
             <Route path={reactRouter.admin.addHouse} element={<AdminAddHouse />} />
             <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />
