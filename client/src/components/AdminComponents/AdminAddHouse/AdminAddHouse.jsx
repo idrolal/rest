@@ -4,7 +4,6 @@ import { reactRouter } from '../../../utils/utils.js'
 function AdminAddHouse(props) {
 
   const [img, setImg] = useState()
-
   let newEventPhoto;
   const setImgHandler = async () => { newEventPhoto = await sendImageToServer() }
 
@@ -16,7 +15,6 @@ function AdminAddHouse(props) {
       method: 'POST',
       body: data,
     }
-
     fetch(sendImageToServerURL, options)
       .then(res => res.json())
       .then(imgPath => setImg(imgPath))
@@ -24,10 +22,14 @@ function AdminAddHouse(props) {
 
   const formAddHouse = useRef()
 
-  const createHouse = (e) => {
+  const createHouse = async (e) => {
     e.preventDefault()
+    setImgHandler()
+
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
-    const data = { ...dataInput, img: img }
+    const seedPhoto = newEventPhoto || null
+    const data = { ...dataInput, img: seedPhoto }
+    console.log(data);
     // тут будет вызываться диспатч
   }
 
@@ -71,7 +73,7 @@ function AdminAddHouse(props) {
           <input type="file" onChange={e => setImg(e.target.files[0])} />
         </div>
 
-        <button onClick={setImgHandler}>Добавить дом</button>
+        <button>Добавить дом</button>
       </form>
     </div>
   );
