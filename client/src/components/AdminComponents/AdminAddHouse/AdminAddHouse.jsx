@@ -4,35 +4,15 @@ import { reactRouter } from '../../../utils/utils.js'
 function AdminAddHouse(props) {
 
   const [img, setImg] = useState([])
-  console.log(img);
 
-  let newEventPhoto;
-  const setImgHandler = async () => { newEventPhoto = await sendImageToServer() }
-
-  const sendImageToServer = useCallback(async () => {
-    const sendImageToServerURL = `${process.env.REACT_APP_URL}${reactRouter.admin.addHouseServerPath}/img`
-    const data = new FormData()
-    data.append('homesImg', img)
-
-    const options = {
-      method: 'POST',
-      body: data,
-    }
-
-    fetch(sendImageToServerURL, options)
-      .then(res => res.json())
-      .then(imgPath => setImg(imgPath))
-  }, [img])
 
   const formAddHouse = useRef()
-
   const createHouse = async (e) => {
     e.preventDefault()
-    setImgHandler()
+
 
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
-    const seedPhoto = newEventPhoto || null
-    const data = { ...dataInput, img: seedPhoto }
+    const data = { ...dataInput, img: 'тут будет массив с img.path' }
     console.log(data);
     // тут будет вызываться диспатч
   }
@@ -55,8 +35,8 @@ function AdminAddHouse(props) {
 
         <div>
           {/* нормальный селект опшион */}
-          <select name='chips'>
-            <option disabled selected>Дополнительные услуги при заезде: </option>
+          <select name='chips' style={{ display: 'block' }}>
+            <option value='5hjdjd'>Дополнительные услуги при заезде: </option>
             <option value="С животными">С животными 1000 &#8381; </option>
             <option value="Детская кроватка">Детская кроватка - бесплатно</option>
             <option value="Трансфер">Трансфер - 5000 &#8381;</option>
