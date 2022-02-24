@@ -2,12 +2,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '../../redux/store'
 import { reactRouter } from '../../utils/utils.js'
-import AdminPanel from '../AdminPanel/AdminPanel';
-import AdminAddHouse from '../AdminAddHouse/AdminAddHouse.jsx'
-import AdminCreateReservation from '../AdminCreateReservation/AdminCreateReservation.jsx';
-import AdminAllReservations from '../AdminAllReservations/AdminAllReservations.jsx';
-import AdminAllHouses from '../AdminAllHouses/AdminAllHouses.jsx';
-
+import AdminPanel from '../AdminComponents//AdminPanel/AdminPanel';
+import AdminAddHouse from '../AdminComponents//AdminAddHouse/AdminAddHouse.jsx'
+import AdminCreateReservation from '../AdminComponents//AdminCreateReservation/AdminCreateReservation.jsx';
+import AdminAllReservations from '../AdminComponents//AdminAllReservations/AdminAllReservations.jsx';
+import AdminAllHouses from '../AdminComponents//AdminAllHouses/AdminAllHouses.jsx';
 import Nav from '../Nav/Nav';
 import './App.css'
 

@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { reactRouter } from '../../utils/utils.js';
+import { reactRouter } from '../../../utils/utils.js';
 
-function AdminPanel(props) {
+function AdminMenu(props) {
   return (
     <div>
-      <h1>Административный режим</h1>
-
       <div>
         <h3>Раздел бронирования</h3>
         <Link to={reactRouter.admin.allReservations}>Все бронирования</Link>
@@ -23,4 +21,4 @@ function AdminPanel(props) {
   );
 }
 
-export default AdminPanel;
+export default AdminMenu;
