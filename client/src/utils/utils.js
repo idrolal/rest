@@ -1,9 +1,18 @@
 export const router = {
-  home: '/api/home',
+  home: '/api/homes',
 }
 
 
 export const reactRouter = {
+  user: {
+    homepage: '/',
+    about: '/about',
+    booking: '/booking',
+    house: '/house',
+    services: '/services',
+    contacts: '/contacts',
+  },
+
   admin: {
     main: '/admin/main',
 

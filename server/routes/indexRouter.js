@@ -1,9 +1,8 @@
 const router = require('express').Router();
-const adminMainRouter = require('./adminMainRouter')
-//router.use('/путь', 'Назание другого роута, который подтягивается только сюда');
+const routerHomes = require('./routerHomes');
+const adminMainRouter = require('./adminMainRouter');
 
-// Пример. В userRouter прописана вся логика регистрации, логина, логаута
-// router.use('/user', userRouter)
+router.use('/homes', routerHomes);
 router.use('/admin', adminMainRouter);
 
 module.exports = router;
