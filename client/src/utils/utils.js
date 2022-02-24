@@ -12,5 +12,6 @@ export const reactRouter = {
 
     allHouses: '/admin/houses/all',
     addHouse: '/admin/houses/add',
+    addHouseServerPath: '/api/admin/addHouse'
   },
 }
