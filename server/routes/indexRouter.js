@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const adminMainRouter = require('./adminMainRouter')
 //router.use('/путь', 'Назание другого роута, который подтягивается только сюда');
 
