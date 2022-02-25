@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
-import { initHomesAC } from '../actionCreators/homesAC';
+import { initHomesAC,deleteHomeAC } from '../actionCreators/homesAC';
 import { initReviews } from '../actionCreators/reviewsAC';
 
 async function fetchData({ url, method, headers, body }) {
@@ -49,9 +49,21 @@ function* getInitReviews() {
   yield put(initReviews(reviews))
   }
 
+ function* deleteHome(action){
+  const home = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.home}/${action.payload}`,
+    method: 'DELETE',
+    headers: { 'Content-Type': 'Application/json' },
+    });
+
+    yield put(deleteHomeAC(home))
+ } 
+
 export function* globalWatcher() {
 yield takeEvery("FETCH_GET_HOMES", getInitHomes)
 yield takeEvery("FETCH_GET_REVIEWS", getInitReviews)
- yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin)
+yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin)
+yield takeEvery("FETCH_DELETE_HOME", deleteHome)
+
   // yield takeEvery("FETCH_GET_ANIMALS", getAnimalsAsync);
 }

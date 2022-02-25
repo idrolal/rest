@@ -18,7 +18,7 @@ export const HomesList = () => {
   return (
     <>
       <h1>Homes List</h1>
-    {homes.length ? homes.map(el => <HomesCard key={el.id} homes={el}/>) : <div>There are not homes</div>}
+    {homes.length ? homes.map(el => <HomesCard key={el.id} home={el}/>) : <div>There are not homes</div>}
     </>
   );
 };
