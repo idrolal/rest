@@ -1,5 +1,5 @@
 import React from 'react';
-import './Contacts.css'
+import './Terms.css'
 
 function Contacts(props) {
   return (
