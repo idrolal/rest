@@ -13,9 +13,13 @@ function AdminMenu(props) {
       </div>
       <div>
         <h3>Раздел по работе с домами</h3>
-        <Link to={reactRouter.admin.allHouses}>Все номера</Link>
+        <Link to={reactRouter.admin.allHouses}>Все домики</Link>
         <br />
         <Link to={reactRouter.admin.addHouse}>Добавить дом</Link>
+      </div>
+      <div>
+        <h3>Раздел по работе с отзывами</h3>
+        <Link to={reactRouter.admin.confirmReviews}>Все отзывы</Link>
       </div>
     </div>
   );
