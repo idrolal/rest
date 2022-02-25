@@ -4,6 +4,16 @@
   justify-content: space-between;
   margin-bottom: 150px;
 }
+.about-text {
+    font-family: "Montserrat Regular";
+}
+.about-h1 {
+  font-family: "Montserrat Medium";
+}
+.about-h2 {
+  font-size: 30px;
+  font-family: "Montserrat Bold";
+}
 .about-photo-1 {
   height: 380px;
   width: 410px;

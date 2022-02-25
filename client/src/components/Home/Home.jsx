@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewsList from '../ReviewsList/ReviewsList';
 import About from './About/About';
+import Contacts from './Contacts/Contacts';
 import PhotoCollage from './PhotoCollage/PhotoCollage';
 
 function Home(props) {
@@ -10,6 +11,7 @@ function Home(props) {
       <About/>
       <PhotoCollage/>
       <ReviewsList/>
+      <Contacts/>
     </div>
   );
 }
