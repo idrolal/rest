@@ -17,11 +17,11 @@ module.exports = {
       },
       dataIn: {
         allowNull: false,
-        type: Sequelize.DATEONLY,
+        type: Sequelize.DATE,
       },
       dataOut: {
         allowNull: false,
-        type: Sequelize.DATEONLY,
+        type: Sequelize.DATE,
       },
       summa: {
         allowNull: false,
@@ -43,9 +43,9 @@ module.exports = {
         },
         type: Sequelize.INTEGER,
       },
-      service_id: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER),
-      },
+      // service_id: {
+      //   type: Sequelize.ARRAY(Sequelize.INTEGER),
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

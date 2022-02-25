@@ -1,5 +1,6 @@
 const serviceAdmin = require('../services/admin');
 const { House } = require('../db/models');
+const { Word } = require('../db/models');
 
 async function saveImgController(req, res) {
   const { files } = req;
@@ -39,9 +40,10 @@ async function addHouseController(req, res) {
 }
 
 async function adminLogin(req, res) {
-  console.log(req.body);
   const { email, password, checked } = req.body;
 
+  const checkedWordinDB = await Word.findAll();
+  console.log(checkedWordinDB);
   try {
     if (checked !== 'qwerty') {
       res.status(401).json({ message: 'Нет доступа входа' });
@@ -49,9 +51,8 @@ async function adminLogin(req, res) {
 
     const admin = await serviceAdmin.login({ email, password });
     const token = await serviceAdmin.generateJwtToken(admin);
-    console.log(token);
     res.status(200).json({
-      token,
+      token, admin: { email: admin.email, name: admin.name },
     });
   } catch (error) {
     res.status(401).json({
