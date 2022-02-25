@@ -20,7 +20,18 @@ async function addHouseController(req, res) {
       name, description, price,
     });
 
-    res.status(201).json({ isCreated: true, message: 'Новый дом успешно создался', newHouse });
+    // const saveImg = img.forEach(async (pic) => {
+    //   await imgPath.create({
+    //     name: pic,
+    //     where: {
+    //       id: newHouse.id,
+    //     },
+    //   });
+    // });
+
+    const houseInfo = { ...newHouse };
+
+    res.status(201).json({ isCreated: true, message: 'Новый дом успешно создался', houseInfo });
   } catch (error) {
     console.log(error);
     res.json({ isCreated: false, message: `Произошла непредвиденная ошибка: ${error.message}` });
