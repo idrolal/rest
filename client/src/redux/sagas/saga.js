@@ -3,6 +3,7 @@ import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
 import { initHomesAC } from '../actionCreators/homesAC';
 import { initReviews } from '../actionCreators/reviewsAC';
+//      Authorization: 'Bearer' + localStorage.getItem('token'),
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body, credentials: 'include' });
@@ -23,7 +24,7 @@ function* postLoginAdmin(action) {
   })
   try {
     yield put(loginAdminAC(admin.admin))
-    localStorage.setItem('token', JSON.stringify(admin.token.accessToken));
+    localStorage.setItem('token', admin.token.accessToken);
   } catch {
     yield put(loginAdminAC(admin.message))
   }

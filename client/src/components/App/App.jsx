@@ -35,9 +35,10 @@ function App() {
             <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />
             <Route path={reactRouter.admin.allReservations} element={<AdminAllReservations />} />
             <Route path={reactRouter.admin.allHouses} element={< AdminAllHouses />} />
-            <Route path='/reg' element={< AdminLogin />} />
+            <Route path='/admin/login' element={< AdminLogin />} />
             <Route path='/house' element={< HomesList />} />
-            <Route path='/logout' element={<AdminLogout />} />
+            {localStorage.getItem('token') && <Route path='/admin/logout' element={<AdminLogout />} />}
+            
 
           </Routes>
         </div>

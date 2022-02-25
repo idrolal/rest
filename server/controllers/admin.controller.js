@@ -8,10 +8,11 @@ async function addHouseController(req, res) {
 async function adminLogin(req, res) {
   const { email, password, checked } = req.body;
 
-  const checkedWordinDB = await Word.findAll();
-  console.log(checkedWordinDB);
+  const checkedWordinDB = await Word.findOne({
+    raw: true,
+  });
   try {
-    if (checked !== 'qwerty') {
+    if (checked !== checkedWordinDB.name) {
       res.status(401).json({ message: 'Нет доступа входа' });
     }
 
