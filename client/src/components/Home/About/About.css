@@ -1,0 +1,30 @@
+.about-photo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 150px;
+}
+.about-text {
+    font-family: "Montserrat Regular";
+}
+.about-h1 {
+  font-family: "Montserrat Medium";
+}
+.about-h2 {
+  font-size: 30px;
+  font-family: "Montserrat Bold";
+}
+.about-photo-1 {
+  height: 380px;
+  width: 410px;
+  background-color: bisque;
+  background-image: url("../../../img/foto_1.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
+}
+.about-photo-1:hover {
+  transform: scale(1.07);
+  transition: 1s ease-out;
+}

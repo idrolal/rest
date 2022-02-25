@@ -9,7 +9,13 @@ import AdminAllReservations from '../AdminComponents//AdminAllReservations/Admin
 import AdminAllHouses from '../AdminComponents//AdminAllHouses/AdminAllHouses.jsx';
 import Nav from '../Nav/Nav';
 import './App.css'
+
 import AdminLogin from '../AdminComponents/AdminLogin/AdminLogin';
+import { HomesList } from '../HomesList/HomesList';
+
+import Home from '../Home/Home';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min';
 import Booking from '../Booking/Booking';
 
 function App() {
@@ -20,6 +26,8 @@ function App() {
           <Nav />
 
           <Routes>
+
+            <Route path={reactRouter.user.homepage} element={<Home />}/>
             <Route path='/booking' element={<Booking/>}/>
             <Route path={reactRouter.admin.main} element={<AdminPanel />} />
             <Route path={reactRouter.admin.addHouse} element={<AdminAddHouse />} />
@@ -27,6 +35,7 @@ function App() {
             <Route path={reactRouter.admin.allReservations} element={<AdminAllReservations />} />
             <Route path={reactRouter.admin.allHouses} element={< AdminAllHouses />} />
             <Route path='/reg' element={< AdminLogin />} />
+            <Route path='/house' element={< HomesList />} />
 
           </Routes>
         </div>

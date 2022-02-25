@@ -1,10 +1,20 @@
 export const router = {
-  home: '/api/home',
-  login: '/api/admin/login'
+  login: '/api/admin/login',
+  home: '/api/homes',
+
 }
 
 
 export const reactRouter = {
+  user: {
+    homepage: '/',
+    about: '/about',
+    booking: '/booking',
+    house: '/house',
+    services: '/services',
+    contacts: '/contacts',
+  },
+
   admin: {
     main: '/admin/main',
 
@@ -17,5 +27,5 @@ export const reactRouter = {
 
   },
 
-  
+
 }

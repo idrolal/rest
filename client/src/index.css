@@ -1,6 +1,7 @@
 html {
-  background-color: #dcffc7;
+  /* background-color: #dcffc7; */
   background-size: 100%;
+  scroll-behavior: smooth;
 }
 
 

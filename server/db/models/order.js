@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ User, House }) {
       Order.belongsTo(User, { foreignKey: 'user_id' });
-      Order.hasOne(House, { foreignKey: 'house_id' });
+      Order.belongsTo(House, { foreignKey: 'house_id' });
     }
   }
   Order.init({
