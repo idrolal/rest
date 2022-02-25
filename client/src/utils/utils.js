@@ -2,6 +2,11 @@ export const router = {
   login: '/api/admin/login',
   home: '/api/homes',
   reviews: '/api/reviews',
+  admin: {
+    addHouseServerPath: '/api/admin/addHouse',
+    addHouseServerIMGPath: '/api/admin/addHouse/img',
+    imgHousePath: '/images/homes/'
+  }
 }
 
 
@@ -25,6 +30,7 @@ export const reactRouter = {
     addHouse: '/admin/houses/add',
     addHouseServerPath: '/admin/addHouse',
     confirmReviews: '/admin/confirmReviews'
+
   },
 
 

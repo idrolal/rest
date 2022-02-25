@@ -25,7 +25,6 @@ async function login(info) {
 }
 
 async function generateJwtToken(admin) {
-  console.log(admin)
   const { email, id } = admin;
   try {
     const accessToken = jwt.sign({ email, id }, process.env.SECRET_KEY, {

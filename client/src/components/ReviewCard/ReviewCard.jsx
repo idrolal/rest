@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { confirmReviewsAC } from '../../redux/actionCreators/reviewsAC'
+
 
 function ReviewCard({review}) {
   
@@ -18,6 +20,7 @@ function ReviewCard({review}) {
 
   return (
     <>
+
     <div>
       {review.nameUser}
       <br/>
@@ -39,21 +42,6 @@ function ReviewCard({review}) {
     <button>Click</button>
     </form> 
 
-    {/* <form>
-    <div>
-      {review.nameUser}
-      <br/>
-      <input defaultValue={review.description} ref={descriptionRef}/>
-      <br/>
-      {review.rating}
-      <br/>
-    </div>
-    <button onSubmit={(event) =>{
-      event.preventDefault();
-       dispatch({type: "FETCH_PUT_REVIEW", payload: {id: `${review.id}`, info: descriptionRef.current.value}})
-      }
-    }>Click</button>
-    </form>  */}
         </>
   );
 }
