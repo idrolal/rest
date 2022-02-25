@@ -1,1 +1,1 @@
-export const CONFIRM_REVIEWS = 'CONFIRM_REVIEWS'
+export const LOGIN_ADMIN = 'LOGIN_ADMIN';

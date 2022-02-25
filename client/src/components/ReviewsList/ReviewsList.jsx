@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 function ReviewsList(props) {
   const dispatch = useDispatch();
   const { reviews } = useSelector((state) => state.reviewsReducer);
-  console.log(reviews);
+  // console.log(reviews);
   useEffect(() => { 
     fetch('/api/reviews')
     .then(response => response.json())

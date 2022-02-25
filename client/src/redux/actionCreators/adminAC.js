@@ -1,8 +1,9 @@
-import { CONFIRM_REVIEWS } from "../actionType/adminAT";
 
-export const confirmReviewsAC = (payload) => {
+import { LOGIN_ADMIN } from "../actionType/adminAT";
+
+export const loginAdminAC = (payload) => {
   return {
-    type: CONFIRM_REVIEWS,
-    payload
+    type: LOGIN_ADMIN,
+    payload,
   }
 }
