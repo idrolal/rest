@@ -2,17 +2,17 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-function ReviewCard(props) {
+
+function AdminLogout(props) {
   const dispatch = useDispatch()
   useEffect(()=>{
-    dispatch({type: })
-  }, [dispatch])
+    dispatch({type: "LOGOUT"})
+  },[dispatch])
   return (
-
     <div>
       
     </div>
   );
 }
 
-export default ReviewCard;
+export default AdminLogout;

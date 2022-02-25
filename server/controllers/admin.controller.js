@@ -17,7 +17,7 @@ async function adminLogin(req, res) {
     const token = await serviceAdmin.generateJwtToken(admin);
     console.log(token);
     res.status(200).json({
-      token,
+      token, admin: { email: admin.email, name: admin.name }
     });
   } catch (error) {
     res.status(401).json({
