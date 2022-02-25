@@ -2,16 +2,17 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-function ReviewCard(props) {
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    dispatch({type: })
-  }, [dispatch])
+function ReviewCard({review}) {
   return (
+    <>
 
     <div>
-      
+      {review.nameUser}
+      {review.description}
+      {review.rating}
     </div>
+    
+    </>
   );
 }
 

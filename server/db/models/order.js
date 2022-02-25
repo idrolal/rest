@@ -25,11 +25,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     dataIn: {
       allowNull: false,
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
     },
     dataOut: {
       allowNull: false,
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
     },
     summa: {
       allowNull: false,
@@ -50,9 +50,6 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
       type: DataTypes.INTEGER,
-    },
-    service_id: {
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
     },
   }, {
     sequelize,

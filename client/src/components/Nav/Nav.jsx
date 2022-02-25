@@ -17,6 +17,7 @@ function Nav(props) {
         <Link to={reactRouter.user.house} className="nav-text">Домики</Link>
         <Link to={reactRouter.user.services} className="nav-text">Услуги</Link>
         <Link to={reactRouter.user.contacts} className="nav-text">Контакты</Link>
+        <Link to='/logout' className='nav-text'>Выйти</Link>
       </div>
     </div>
   );

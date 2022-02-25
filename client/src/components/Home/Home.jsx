@@ -1,8 +1,9 @@
 import React from 'react';
 import ReviewsList from '../ReviewsList/ReviewsList';
 import About from './About/About';
-import Contacts from './Contacts/Contacts';
+import Terms from './Terms/Terms';
 import PhotoCollage from './PhotoCollage/PhotoCollage';
+import Questions from './Questions/Questions';
 
 function Home(props) {
   return (
@@ -11,7 +12,8 @@ function Home(props) {
       <About/>
       <PhotoCollage/>
       <ReviewsList/>
-      <Contacts/>
+      <Terms/>
+      <Questions/>
     </div>
   );
 }

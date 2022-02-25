@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 function AdminLogout(props) {
   const dispatch = useDispatch()
   useEffect(()=>{
-    dispatch({type: "LOGOUT"})
+    dispatch({type: "LOGOUT_ADMIN"})
   },[dispatch])
   return (
     <div>
