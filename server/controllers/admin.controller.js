@@ -1,9 +1,8 @@
-
 const serviceAdmin = require('../services/admin');
 
 async function saveImgController(req, res) {
-  const eventImagePath = `http://localhost:${process.env.PORT}/${req.file.path}`;
-  res.json(eventImagePath);
+  const files = req.file.path;
+  console.log(files);
 }
 
 async function addHouseController(req, res) {
