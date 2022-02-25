@@ -6,20 +6,21 @@ function AdminAllHouses() {
 
   const dispatch = useDispatch();
 
-  function deleteHome (id) {
+  function deleteHome(id) {
     dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` })
-    console.log(1111111111)
+
   }
+
 
   return (
     <>
       {homes?.length ? homes.map(el => {
-      return <>
-    <div>{el?.description}</div>
-    <div>{el?.price}</div>
-    <div>{el?.chips[0].map(el=> <h3>{el}</h3>)}</div>
-    <button onClick={deleteHome(el.id)}></button>
-    </>
+        return <>
+          <div>{el?.description}</div>
+          <div>{el?.price}</div>
+          <div>{el?.chips[0].map(el => <h3>{el}</h3>)}</div>
+          <button onClick={deleteHome(el.id)}></button>
+        </>
       }) : <div>None!</div>}
 
     </>

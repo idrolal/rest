@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 
-async function isAuth(req, res, next) {
+async function isAdmin(req, res, next) {
   try {
     const authHeader = req.get('Authorization');
     const token = authHeader.split(' ')[1];
-    const { userId, email } = jwt.verify(token, process.env.ACCESS_TOKEN);
-    req.userId = userId;
+    const { id, email } = jwt.verify(token, process.env.SECRET_KEY);
+    req.id = id;
     req.email = email;
 
     next();
@@ -14,4 +14,4 @@ async function isAuth(req, res, next) {
   }
 }
 
-module.exports = { isAuth };
+module.exports = { isAdmin };

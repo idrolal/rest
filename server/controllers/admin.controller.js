@@ -22,17 +22,18 @@ async function addHouseController(req, res) {
       name, description, price,
     });
     console.log(newHouse.id);
-    const imgHouse = {};
 
+    const imgHouse = [];
     const saveImgs = img.forEach(async (pic) => {
       const eachPic = await ImageHouse.create({
         name: pic,
         house_id: newHouse.id,
       });
+      console.log(eachPic.name);
       imgHouse.push(eachPic.name);
     });
 
-    const houseInfo = { ...newHouse, ...imgHouse };
+    const houseInfo = { ...newHouse, img: imgHouse };
 
     res.status(201).json({ isCreated: true, message: 'Новый дом успешно создался', houseInfo });
   } catch (error) {
@@ -44,10 +45,11 @@ async function addHouseController(req, res) {
 async function adminLogin(req, res) {
   const { email, password, checked } = req.body;
 
-  const checkedWordinDB = await Word.findAll();
-  console.log(checkedWordinDB);
+  const checkedWordinDB = await Word.findOne({
+    raw: true,
+  });
   try {
-    if (checked !== 'qwerty') {
+    if (checked !== checkedWordinDB.name) {
       res.status(401).json({ message: 'Нет доступа входа' });
     }
 
