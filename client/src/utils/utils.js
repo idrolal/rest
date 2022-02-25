@@ -28,6 +28,8 @@ export const reactRouter = {
 
     allHouses: '/admin/houses/all',
     addHouse: '/admin/houses/add',
+    addHouseServerPath: '/admin/addHouse',
+    confirmReviews: '/admin/confirmReviews'
 
   },
 

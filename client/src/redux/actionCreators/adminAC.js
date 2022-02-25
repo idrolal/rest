@@ -1,4 +1,6 @@
+import { LOGIN_ADMIN } from "../actionType/adminAT";
 import { LOGIN_ADMIN, LOGOUT } from '../actionType/adminAT'
+
 
 export const loginAdminAC = (payload) => {
   return {

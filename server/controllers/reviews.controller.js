@@ -3,7 +3,7 @@ const { Rewiew } = require("../db/models");
 async function initReviews(req, res) {
   try {
     const allReviews = await Rewiew.findAll();
-    console.log(allReviews, "--------------------");
+    // console.log(allReviews, "--------------------");
     res.json(allReviews);
   } catch (error) {
     console.log(error.message);
@@ -11,4 +11,29 @@ async function initReviews(req, res) {
   }
 }
 
-module.exports = { initReviews };
+async function putReviews(req, res) {
+  // console.log(req.body)
+  const { info } = req.body;
+  // console.log(info)
+
+  let newReviews;
+  try {
+    newReviews = await Rewiew.update({
+      description: info,
+      status: true
+    }, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (newReviews) {
+      res.json( newReviews );
+    }
+  } catch (error) {
+    return ({
+      message: error.message,
+    });
+  }
+}
+
+module.exports = { initReviews, putReviews };
