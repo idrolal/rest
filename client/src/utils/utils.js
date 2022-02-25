@@ -1,5 +1,6 @@
 export const router = {
   home: '/api/homes',
+  reviews: '/api/reviews',
 }
 
 

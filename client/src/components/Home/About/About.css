@@ -1,8 +1,13 @@
-.about-photo {
+.flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 15px;
+}
+.about-photo {
   margin-bottom: 150px;
+  overflow: hidden;
+  border-radius: 20px;
 }
 .about-text {
     font-family: "Montserrat Regular";
