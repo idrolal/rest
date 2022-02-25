@@ -1,7 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
-import { initHomesAC } from '../actionCreators/homesAC'
+import { initHomesAC } from '../actionCreators/homesAC';
+import { initReviews, confirmReviewsAC } from '../actionCreators/reviewsAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body, credentials: 'include' });
@@ -25,6 +26,7 @@ function* postLoginAdmin(action) {
   localStorage.setItem('token', JSON.stringify(admin.token));
 }
 
+
 //
 function* getInitHomes() {
 const homes = yield call(fetchData, {
@@ -36,8 +38,35 @@ headers: { 'Content-Type': 'Application/json' },
 yield put(initHomesAC(homes))
 }
 
+// Достает список отзывов
+function* getInitReviews() {
+  const reviews = yield call(fetchData, {
+  url: `${process.env.REACT_APP_URL}${router.reviews}`,
+  method: 'GET',
+  headers: { 'Content-Type': 'Application/json' },
+  });
+  //  method put works like dispatch(change my state)
+  yield put(initReviews(reviews))
+  }
+
+ function* putReviwesStatus(action){
+   console.log(action.payload.info)
+  const reviews = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.reviews}/${action.payload.id}`,
+    method: 'PUT',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload)
+    });
+    //  method put works like dispatch(change my state)
+    yield put(confirmReviewsAC(reviews))
+ }
+
+
 export function* globalWatcher() {
 yield takeEvery("FETCH_GET_HOMES", getInitHomes)
+yield takeEvery("FETCH_GET_REVIEWS", getInitReviews)
 yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin)
+yield takeEvery("FETCH_PUT_REVIEW", putReviwesStatus)
+
   // yield takeEvery("FETCH_GET_ANIMALS", getAnimalsAsync);
 }

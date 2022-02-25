@@ -1,7 +1,7 @@
 export const router = {
   login: '/api/admin/login',
   home: '/api/homes',
-
+  reviews: '/api/reviews',
 }
 
 

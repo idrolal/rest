@@ -15,11 +15,23 @@ function About(props) {
       </p>
       <button className='btn-about'><a href="#contacts">Как добраться</a></button>
     </div>
+    <div className="flex">
     <div className='about-photo'>
     <div className='about-photo-1'></div>
-    <div className='about-photo-1'></div>
+    </div>
+    <div className='about-photo'>
     <div className='about-photo-1'></div>
     </div>
+    <div className='about-photo'>
+    <div className='about-photo-1'></div>
+    </div>
+    </div>
+    
+
+
+
+
+
     <h2 className='about-h2'>ГЕО-КУПОЛА В МАЙТРИ КЭМП:</h2>
     <span className='about-text'>ГЕО-КУПОЛА НА ПЕРВОЙ ЛИНИИ
 Шатёр-купол с панорамным окном и видом на Финский залив. Располагается на границе леса и пляжа, до воды около 50 метров. 

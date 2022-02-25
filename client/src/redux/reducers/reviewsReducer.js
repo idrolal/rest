@@ -9,7 +9,17 @@ export function reviewsReducer(state = initialState, action) {
       };
     case CONFIRM_REVIEWS:
       return {
-        ...state, reviews: action.payload
+        ...state, reviews: state.reviews.map(el=>{
+          if (el.id === action.payload.id) {
+            return {
+              ...el,
+              description: action.payload.description,
+              status: action.payload.status
+            }
+          } else {
+            return el
+          }
+        })
       }
     default:
       return state;
