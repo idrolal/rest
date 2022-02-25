@@ -1,11 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
+
 import { initHomesAC, deleteHomeAC, addHouseAdminAC } from '../actionCreators/homesAC';
 
 // Authorization: 'Bearer' + localStorage.getItem('token'),
-import { initReviews, confirmReviewsAC } from '../actionCreators/reviewsAC';
+import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
+
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body, credentials: 'include' });
@@ -105,9 +107,22 @@ function* deleteHome(action) {
   yield put(deleteHomeAC(home))
 }
 
+// Dobavlyaet novii otziv 
+  function* postAddReviews(action) {
+    const newReview = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.reviews}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+    });
+    //  method put works like dispatch(change my state)
+    yield put(addReviews(newReview))
+    }
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
+  yield takeEvery("FETCH_POST_REVIEW", postAddReviews)
   yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin);
   yield takeEvery("FETCH_PUT_REVIEW", putReviwesStatus);
   yield takeEvery("LOGOUT_ADMIN", logoutAdmin);
