@@ -1,3 +1,5 @@
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '../../redux/store'
@@ -14,9 +16,8 @@ import AdminLogin from '../AdminComponents/AdminLogin/AdminLogin';
 import { HomesList } from '../HomesList/HomesList';
 
 import Home from '../Home/Home';
-import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize.min';
 import Booking from '../Booking/Booking';
+import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 
 function App() {
   return (
@@ -27,8 +28,8 @@ function App() {
 
           <Routes>
 
-            <Route path={reactRouter.user.homepage} element={<Home />}/>
-            <Route path='/booking' element={<Booking/>}/>
+            <Route path={reactRouter.user.homepage} element={<Home />} />
+            <Route path='/booking' element={<Booking />} />
             <Route path={reactRouter.admin.main} element={<AdminPanel />} />
             <Route path={reactRouter.admin.addHouse} element={<AdminAddHouse />} />
             <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />
@@ -36,6 +37,7 @@ function App() {
             <Route path={reactRouter.admin.allHouses} element={< AdminAllHouses />} />
             <Route path='/reg' element={< AdminLogin />} />
             <Route path='/house' element={< HomesList />} />
+            <Route path='/logout' element={<AdminLogout />} />
 
           </Routes>
         </div>
