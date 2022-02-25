@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { initHomes } from '../../redux/actionCreators/homesAC';
 import { HomesCard } from '../HomesCard/HomesCard'
+import AdminAllHouses from '../AdminComponents/AdminAllHouses/AdminAllHouses';
 
 export const HomesList = () => {
 

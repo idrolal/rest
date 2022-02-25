@@ -1,10 +1,9 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
+import { initHomesAC, deleteHomeAC, addHouseAdminAC } from '../actionCreators/homesAC';
 
 // Authorization: 'Bearer' + localStorage.getItem('token'),
-
-import { initHomesAC, addHouseAdminAC } from '../actionCreators/homesAC';
 import { initReviews, confirmReviewsAC } from '../actionCreators/reviewsAC';
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
 
@@ -67,10 +66,10 @@ function* addHouseAsync(action) {
   const house = yield call(fetchData, {
     url: process.env.REACT_APP_URL + router.admin.addHouseServerPath,
     method: 'POST',
-    headers: { 
+    headers: {
       'Content-Type': 'Application/json',
       Authorization: 'Bearer' + localStorage.getItem('token'),
-     },
+    },
     body: JSON.stringify(action.payload),
 
   });
@@ -83,9 +82,9 @@ function* putReviwesStatus(action) {
     url: `${process.env.REACT_APP_URL}${router.reviews}/${action.payload.id}`,
     method: 'PUT',
     headers: {
-       'Content-Type': 'Application/json',
-       Authorization: 'Bearer' + localStorage.getItem('token'),
-       },
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
     body: JSON.stringify(action.payload)
   });
   //  method put works like dispatch(change my state)
@@ -93,11 +92,25 @@ function* putReviwesStatus(action) {
 }
 
 
+function* deleteHome(action) {
+  const home = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.home}/${action.payload}`,
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
+  });
+
+  yield put(deleteHomeAC(home))
+}
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
   yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin);
   yield takeEvery("FETCH_PUT_REVIEW", putReviwesStatus);
   yield takeEvery("LOGOUT_ADMIN", logoutAdmin);
+  yield takeEvery("FETCH_DELETE_HOME", deleteHome)
   yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
 }
