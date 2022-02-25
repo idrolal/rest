@@ -1,0 +1,1 @@
+export const CONFIRM_REVIEWS = 'CONFIRM_REVIEWS'
