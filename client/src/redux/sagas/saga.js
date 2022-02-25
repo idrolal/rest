@@ -3,6 +3,7 @@ import { loginAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
 import { initHomesAC } from '../actionCreators/homesAC';
 import { initReviews } from '../actionCreators/reviewsAC';
+import { addReviews } from '../actionCreators/reviewsAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body, credentials: 'include' });
@@ -26,9 +27,6 @@ function* postLoginAdmin(action) {
   localStorage.setItem('token', JSON.stringify(admin.token));
 }
 
-export function* globalWatcher() {
-  yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin)
-
 //
 function* getInitHomes() {
 const homes = yield call(fetchData, {
@@ -51,9 +49,22 @@ function* getInitReviews() {
   yield put(initReviews(reviews))
   }
 
+// Dobavlyaet novii otziv 
+  function* postAddReviews(action) {
+    const newReview = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.reviews}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+    });
+    //  method put works like dispatch(change my state)
+    yield put(addReviews(newReview))
+    }
+
 export function* globalWatcher() {
 yield takeEvery("FETCH_GET_HOMES", getInitHomes)
 yield takeEvery("FETCH_GET_REVIEWS", getInitReviews)
- yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin)
+yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin)
+yield takeEvery("FETCH_POST_REVIEW", postAddReviews)
   // yield takeEvery("FETCH_GET_ANIMALS", getAnimalsAsync);
 }
