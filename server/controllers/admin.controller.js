@@ -1,6 +1,7 @@
 const serviceAdmin = require('../services/admin');
 const { House } = require('../db/models');
 const { Word } = require('../db/models');
+const { ImageHouse } = require('../db/models');
 
 async function saveImgController(req, res) {
   const { files } = req;
@@ -20,17 +21,18 @@ async function addHouseController(req, res) {
     const newHouse = await House.create({
       name, description, price,
     });
+    console.log(newHouse.id);
+    const imgHouse = [];
 
-    // const saveImg = img.forEach(async (pic) => {
-    //   await imgPath.create({
-    //     name: pic,
-    //     where: {
-    //       id: newHouse.id,
-    //     },
-    //   });
-    // });
+    const saveImgs = img.forEach(async (pic) => {
+      const eachPic = await ImageHouse.create({
+        name: pic,
+        house_id: newHouse.id,
+      });
+      imgHouse.push(eachPic.name);
+    });
 
-    const houseInfo = { ...newHouse };
+    const houseInfo = { ...newHouse, ...imgHouse };
 
     res.status(201).json({ isCreated: true, message: 'Новый дом успешно создался', houseInfo });
   } catch (error) {
