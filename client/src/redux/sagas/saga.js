@@ -1,8 +1,9 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
-import { initHomesAC } from '../actionCreators/homesAC';
+import { initHomesAC, addHouseAdminAC } from '../actionCreators/homesAC';
 import { initReviews } from '../actionCreators/reviewsAC';
+import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body, credentials: 'include' });
@@ -57,10 +58,20 @@ function* getInitReviews() {
   yield put(initReviews(reviews))
 }
 
+function* addHouseAsync() {
+  const house = yield call(fetchData, {
+
+  });
+  //  method put works like dispatch(change my state)
+  yield put(addHouseAdminAC(house))
+}
+
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews)
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin);
   yield takeEvery("LOGOUT_ADMIN", logoutAdmin);
 
+  yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
 }

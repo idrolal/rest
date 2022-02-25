@@ -6,7 +6,7 @@ export const adminReducer = (state = initialState, action) => {
       return {
         ...state, admin: action.payload
       }
-      case LOGOUT:
+    case LOGOUT:
       return {
         ...state, admin: action.payload
       }
