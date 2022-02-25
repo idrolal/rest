@@ -1,12 +1,30 @@
 const serviceAdmin = require('../services/admin');
+const { House } = require('../db/models');
 
 async function saveImgController(req, res) {
-  const files = req.file.path;
+  const { files } = req;
   console.log(files);
+  const imgPathes = files.map((file) => file.originalname);
+  res.json({ message: 'картинки успешно загружены', pathArr: imgPathes });
+  // console.log(imgPathes);
 }
 
 async function addHouseController(req, res) {
-  res.send('hello');
+  try {
+    const {
+      name, description, price, img,
+    } = req.body;
+    console.log(req.body);
+
+    const newHouse = await House.create({
+      name, description, price,
+    });
+
+    res.status(201).json({ isCreated: true, message: 'Новый дом успешно создался', newHouse });
+  } catch (error) {
+    console.log(error);
+    res.json({ isCreated: false, message: `Произошла непредвиденная ошибка: ${error.message}` });
+  }
 }
 
 async function adminLogin(req, res) {

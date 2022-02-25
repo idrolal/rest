@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from 'react';
-import { reactRouter } from '../../../utils/utils.js'
+import { router } from '../../../utils/utils.js'
 
 function AdminAddHouse(props) {
 
@@ -9,11 +9,8 @@ function AdminAddHouse(props) {
   const sendFiles = useCallback(async (e) => {
     const picturesData = [...e.target.files]
     console.log(picturesData);
-    // setImgs(picturesData)
-    // console.log(imgs);
-
     try {
-      const url = `${process.env.REACT_APP_URL}${reactRouter.admin.addHouseServerIMGPath}`
+      const url = `${process.env.REACT_APP_URL}${router.admin.addHouseServerIMGPath}`
 
       const data = new FormData();
       picturesData.forEach(img => {
@@ -36,18 +33,23 @@ function AdminAddHouse(props) {
     }
   }, [])
 
-
-
   const formAddHouse = useRef()
   const createHouse = async (e) => {
     e.preventDefault()
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
-    const data = { ...dataInput, img: 'тут будет массив с img.path' }
-    // [...imgPath1, ...imgPath2, ...imgPath3]
-    console.log(data);
+    const data = { ...dataInput, img: imgPaths.pathArr || [] }
+
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'Application/json' },
+    }
+
+    fetch(process.env.REACT_APP_URL + router.admin.addHouseServerPath, options)
+      .then(res => res.json())
+      .then(data => console.log(data))
     // тут будет вызываться диспатч
   }
-
 
   return (
     <div>
@@ -86,14 +88,15 @@ function AdminAddHouse(props) {
         <div className='images_box'>
 
           <div className='images_box__eachImg'>
-            {/* <div style={{ height: '100px', backgroundColor: 'grey', width: '200px' }}>
-              {
-                imgPaths ?
-                  <img src={imgPaths[0]} alt="..." />
-                  :
-                  <div></div>
-              }
-            </div> */}
+            {
+              imgPaths?.length ?
+                <div style={{ height: '100px', backgroundColor: 'grey', width: '200px' }}>
+
+                  <img src={`${process.env.REACT_APP_URL}/${imgPaths.pathArr[0]}`} alt="..." />
+                </div>
+                :
+                <div></div>
+            }
             <input type="file" multiple onChange={sendFiles} />
           </div>
 

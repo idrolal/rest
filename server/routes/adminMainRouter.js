@@ -5,7 +5,7 @@ const storageMulter = require('../middlewares/storage.milter.middleware');
 
 router.put('/addHouse/img', storageMulter.array('homesImg', 5), adminController.saveImgController);
 
-router.post('/addHouse', storageMulter.array('homesImg', 5), adminController.addHouseController);
+router.post('/addHouse', adminController.addHouseController);
 
 router.post('/login', adminController.adminLogin);
 router.get('/addHouse', adminController.addHouseController);
