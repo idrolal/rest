@@ -26,8 +26,6 @@ function* postLoginAdmin(action) {
   localStorage.setItem('token', JSON.stringify(admin.token));
 }
 
-export function* globalWatcher() {
-  yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin)
 
 //
 function* getInitHomes() {
