@@ -1,7 +1,6 @@
 async function saveImgController(req, res) {
-  // const eventImagePath = `http://localhost:${process.env.PORT}/${req.file.path}`;
-  // res.json(eventImagePath);
-  res.json();
+  const eventImagePath = `http://localhost:${process.env.PORT}/${req.file.path}`;
+  res.json(eventImagePath);
 }
 
 async function addHouseController(req, res) {
