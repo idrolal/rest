@@ -40,25 +40,25 @@ function* getInitHomes() {
   //  method put works like dispatch(change my state)
   yield put(initHomesAC(homes))
 }
-function* logoutAdmin(){
+function* logoutAdmin() {
   yield localStorage.removeItem('token');
   yield put(logoutAdminAC({}))
-  
+
 }
 
 // Достает список отзывов
 function* getInitReviews() {
   const reviews = yield call(fetchData, {
-  url: `${process.env.REACT_APP_URL}${router.reviews}`,
-  method: 'GET',
-  headers: { 'Content-Type': 'Application/json' },
+    url: `${process.env.REACT_APP_URL}${router.reviews}`,
+    method: 'GET',
+    headers: { 'Content-Type': 'Application/json' },
   });
   //  method put works like dispatch(change my state)
   yield put(initReviews(reviews))
-  }
+}
 
 export function* globalWatcher() {
-
+  yield takeEvery("FETCH_GET_REVIEWS", getInitReviews)
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin);
   yield takeEvery("LOGOUT_ADMIN", logoutAdmin);
