@@ -29,7 +29,9 @@ export const reactRouter = {
     allHouses: '/admin/houses/all',
     addHouse: '/admin/houses/add',
     login: '/admin/login',
-    logout: '/admin/logout'
+    logout: '/admin/logout',
+    addHouseServerPath: '/admin/addHouse',
+    confirmReviews: '/admin/confirmReviews'
 
   },
 

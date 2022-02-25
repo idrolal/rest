@@ -1,5 +1,6 @@
 import { LOGIN_ADMIN, LOGOUT } from '../actionType/adminAT'
 
+
 export const loginAdminAC = (payload) => {
   return {
     type: LOGIN_ADMIN,
@@ -13,3 +14,4 @@ export const logoutAdminAC = (payload) => {
     payload,
   }
 }
+
