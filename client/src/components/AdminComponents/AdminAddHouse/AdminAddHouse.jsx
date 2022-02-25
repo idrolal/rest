@@ -44,18 +44,7 @@ function AdminAddHouse(props) {
     e.preventDefault()
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
-
-
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'Application/json' },
-    }
-
-    fetch(process.env.REACT_APP_URL + router.admin.addHouseServerPath, options)
-      .then(res => res.json())
-      .then(data => dispatch(addHouseAdminAC(data.houseInfo)))
+    dispatch(addHouseAdminAC(data))
 
   }
 
