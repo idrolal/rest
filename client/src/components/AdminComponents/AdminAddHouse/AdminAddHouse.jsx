@@ -1,38 +1,52 @@
 import React, { useRef, useState, useCallback } from 'react';
-import { reactRouter } from '../../../utils/utils.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { router } from '../../../utils/utils.js'
+import { addHouseAdminAC } from '../../../redux/actionCreators/homesAC.js'
 
 function AdminAddHouse(props) {
 
-  const [img, setImg] = useState()
-  let newEventPhoto;
-  const setImgHandler = async () => { newEventPhoto = await sendImageToServer() }
+  // const [imgs, setImgs] = useState([])
+  const [imgPaths, setImgPaths] = useState([])
+  const dispatch = useDispatch()
+  const state = useSelector(state => state)
+  console.log(state);
 
-  const sendImageToServer = useCallback(async () => {
-    const sendImageToServerURL = `${process.env.REACT_APP_URL}${reactRouter.admin.addHouseServerPath}`
-    const data = new FormData()
-    data.append('homes', img)
-    const options = {
-      method: 'POST',
-      body: data,
+  const sendFiles = useCallback(async (e) => {
+    const picturesData = [...e.target.files]
+    console.log(picturesData);
+    try {
+      const url = `${process.env.REACT_APP_URL}${router.admin.addHouseServerIMGPath}`
+
+      const data = new FormData();
+      picturesData.forEach(img => {
+        data.append('homesImg', img);
+      });
+      const headers = {
+        'Content-Type': 'multipart/form-data',
+      };
+      const options = {
+        method: 'PUT',
+        body: data,
+        // headers,
+      };
+      fetch(url, options)
+        .then(res => res.json())
+        .then(imgPath => setImgPaths(imgPath))
+    } catch (error) {
+      console.log(error);
     }
-    fetch(sendImageToServerURL, options)
-      .then(res => res.json())
-      .then(imgPath => setImg(imgPath))
-  }, [img])
+  }, [])
+
+  console.log(imgPaths.pathArr);
 
   const formAddHouse = useRef()
-
   const createHouse = async (e) => {
     e.preventDefault()
-    setImgHandler()
-
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
-    const seedPhoto = newEventPhoto || null
-    const data = { ...dataInput, img: seedPhoto }
-    console.log(data);
-    // тут будет вызываться диспатч
-  }
+    const data = { ...dataInput, img: imgPaths.pathArr }
+    dispatch(addHouseAdminAC(data))
 
+  }
 
   return (
     <div>
@@ -51,9 +65,9 @@ function AdminAddHouse(props) {
 
         <div>
           {/* нормальный селект опшион */}
-          <select name='chips'>
-            <option disabled selected>Дополнительные услуги при заезде: </option>
-            <option value="С животными">С животными 1000 &#8381; </option>
+          <select name='chips' style={{ display: 'block' }}>
+            <option value='5hjdjd'>Дополнительные услуги при заезде: </option>
+            <option value="С животными">С животными - бесплатно </option>
             <option value="Детская кроватка">Детская кроватка - бесплатно</option>
             <option value="Трансфер">Трансфер - 5000 &#8381;</option>
           </select>
@@ -68,9 +82,21 @@ function AdminAddHouse(props) {
           }} />&#8381;
         </div>
 
-        <div>
-          {/* <img src="..." alt="..." /> */}
-          <input type="file" onChange={e => setImg(e.target.files[0])} />
+        <div className='images_box'>
+          <div className='images_box__eachImg'>
+            {
+              imgPaths.pathArr?.length ?
+                imgPaths.pathArr.map(img => {
+                  return <div style={{ height: '100px', backgroundColor: 'grey', width: '200px' }} key={img}>
+                    <img src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img}`} alt="..." />
+                  </div>
+                })
+                :
+                <div></div>
+            }
+            <input type="file" multiple onChange={sendFiles} />
+          </div>
+
         </div>
 
         <button>Добавить дом</button>

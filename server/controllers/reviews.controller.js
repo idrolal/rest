@@ -11,6 +11,7 @@ async function initReviews(req, res) {
   }
 }
 
+
 // dobavlenie novogo otziva;
 async function addReview(req, res) {
   try {
@@ -23,4 +24,31 @@ async function addReview(req, res) {
   }
 }
 
-module.exports = { initReviews, addReview };
+
+async function putReviews(req, res) {
+  // console.log(req.body)
+  const { info } = req.body;
+  // console.log(info)
+
+  let newReviews;
+  try {
+    newReviews = await Rewiew.update({
+      description: info,
+      status: true
+    }, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (newReviews) {
+      res.json( newReviews );
+    }
+  } catch (error) {
+    return ({
+      message: error.message,
+    });
+  }
+}
+
+module.exports = { initReviews, addReview, putReviews };
+

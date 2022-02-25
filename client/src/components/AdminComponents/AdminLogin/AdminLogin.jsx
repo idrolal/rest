@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { reactRouter } from '../../../utils/utils';
 function AdminLogin(props) {
 
   const emailRef = useRef();
   const passRef = useRef();
   const checkedRef = useRef()
+  const navigate = useNavigate()
 
   const dispatch = useDispatch()
 
@@ -17,6 +20,7 @@ function AdminLogin(props) {
     }
     console.log(user)
     dispatch({ type: "FETCH_POST_LOGIN", payload: user })
+    navigate(reactRouter.admin.main)
   }
 
   return (
@@ -25,7 +29,7 @@ function AdminLogin(props) {
       <form onSubmit={login}>
         <div>
           <label htmlFor="email"></label>
-          <input ref={emailRef} type="text" id='email' name='email' placeholder='Email' autoComplete='false' />
+          <input ref={emailRef} type="text" id='email' name='email' placeholder='Email' autoComplete='off' />
         </div>
 
         <div>
