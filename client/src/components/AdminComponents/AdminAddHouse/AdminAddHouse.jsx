@@ -1,10 +1,15 @@
 import React, { useRef, useState, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import { router } from '../../../utils/utils.js'
+import { addHouseAdminAC } from '../../../redux/actionCreators/homesAC.js'
 
 function AdminAddHouse(props) {
 
   // const [imgs, setImgs] = useState([])
   const [imgPaths, setImgPaths] = useState([])
+  const dispatch = useDispatch()
+  const state = useSelector(state => state)
+  console.log(state);
 
   const sendFiles = useCallback(async (e) => {
     const picturesData = [...e.target.files]
@@ -39,17 +44,8 @@ function AdminAddHouse(props) {
     e.preventDefault()
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
+    dispatch(addHouseAdminAC(data))
 
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'Application/json' },
-    }
-
-    fetch(process.env.REACT_APP_URL + router.admin.addHouseServerPath, options)
-      .then(res => res.json())
-      .then(data => console.log(data))
-    // тут будет вызываться диспатч
   }
 
   return (
