@@ -7,4 +7,7 @@ router.put('/addHouse/img', storageMulter.single('homesImg'), adminController.sa
 
 router.post('/addHouse', storageMulter.single('homesImg'), adminController.addHouseController);
 
+router.post('/login', adminController.adminLogin);
+router.get('/addHouse', adminController.addHouseController);
+
 module.exports = router;

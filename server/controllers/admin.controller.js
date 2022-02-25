@@ -1,3 +1,6 @@
+
+const serviceAdmin = require('../services/admin');
+
 async function saveImgController(req, res) {
   const eventImagePath = `http://localhost:${process.env.PORT}/${req.file.path}`;
   res.json(eventImagePath);
@@ -7,4 +10,26 @@ async function addHouseController(req, res) {
   res.send('hello');
 }
 
-module.exports = { saveImgController, addHouseController };
+async function adminLogin(req, res) {
+  console.log(req.body);
+  const { email, password, checked } = req.body;
+
+  try {
+    if (checked !== 'qwerty') {
+      res.status(401).json({ message: 'Нет доступа входа' });
+    }
+
+    const admin = await serviceAdmin.login({ email, password });
+    const token = await serviceAdmin.generateJwtToken(admin);
+    console.log(token);
+    res.status(200).json({
+      token,
+    });
+  } catch (error) {
+    res.status(401).json({
+      message: error.message,
+    });
+  }
+}
+
+module.exports = { saveImgController, addHouseController, adminLogin };
