@@ -5,8 +5,7 @@ import ReviewCard from '../ReviewCard/ReviewCard';
 function ReviewsList(props) {
   const dispatch = useDispatch();
   const { reviews } = useSelector((state) => state.reviewsReducer);
-  // console.log(reviews[0].id);
-  // console.log(reviews.length)
+
   useEffect(() => { 
     dispatch({type: "FETCH_GET_REVIEWS"})
     // fetch('/api/reviews')
