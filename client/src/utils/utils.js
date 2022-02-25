@@ -1,5 +1,6 @@
 export const router = {
   home: '/api/home',
+  login: '/api/admin/login'
 }
 
 
@@ -12,6 +13,8 @@ export const reactRouter = {
 
     allHouses: '/admin/houses/all',
     addHouse: '/admin/houses/add',
+    addHouseServerPath: '/api/admin/addHouse',
+
   },
 
   
