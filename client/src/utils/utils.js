@@ -5,7 +5,6 @@ export const router = {
   admin: {
     addHouseServerPath: '/api/admin/addHouse',
     addHouseServerIMGPath: '/api/admin/addHouse/img',
-
     imgHousePath: '/images/homes/'
   }
 }

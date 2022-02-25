@@ -27,17 +27,18 @@ function AdminAddHouse(props) {
       fetch(url, options)
         .then(res => res.json())
         .then(imgPath => setImgPaths(imgPath))
-
     } catch (error) {
       console.log(error);
     }
   }, [])
 
+  console.log(imgPaths.pathArr);
+
   const formAddHouse = useRef()
   const createHouse = async (e) => {
     e.preventDefault()
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
-    const data = { ...dataInput, img: imgPaths.pathArr || [] }
+    const data = { ...dataInput, img: imgPaths.pathArr }
 
     const options = {
       method: 'POST',
@@ -86,21 +87,19 @@ function AdminAddHouse(props) {
         </div>
 
         <div className='images_box'>
-
           <div className='images_box__eachImg'>
             {
-              imgPaths?.length ?
-                <div style={{ height: '100px', backgroundColor: 'grey', width: '200px' }}>
-
-                  <img src={`${process.env.REACT_APP_URL}/${imgPaths.pathArr[0]}`} alt="..." />
-                </div>
+              imgPaths.pathArr?.length ?
+                imgPaths.pathArr.map(img => {
+                  return <div style={{ height: '100px', backgroundColor: 'grey', width: '200px' }} key={img}>
+                    <img src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img}`} alt="..." />
+                  </div>
+                })
                 :
                 <div></div>
             }
             <input type="file" multiple onChange={sendFiles} />
           </div>
-
-
 
         </div>
 

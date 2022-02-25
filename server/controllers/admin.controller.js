@@ -6,7 +6,7 @@ const { ImageHouse } = require('../db/models');
 async function saveImgController(req, res) {
   const { files } = req;
   console.log(files);
-  const imgPathes = files.map((file) => file.originalname);
+  const imgPathes = files.map((file) => file.filename);
   res.json({ message: 'картинки успешно загружены', pathArr: imgPathes });
   // console.log(imgPathes);
 }
@@ -22,7 +22,7 @@ async function addHouseController(req, res) {
       name, description, price,
     });
     console.log(newHouse.id);
-    const imgHouse = [];
+    const imgHouse = {};
 
     const saveImgs = img.forEach(async (pic) => {
       const eachPic = await ImageHouse.create({
