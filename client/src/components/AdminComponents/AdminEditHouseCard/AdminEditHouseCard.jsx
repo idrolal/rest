@@ -18,6 +18,7 @@ export const AdminEditHouseCard = ({homes}) => {
       description: descriptionRef.current.value,
       price: priceRef.current.value, 
     }
+    // console.log(updateHouse)
 
     dispatch({type: "FETCH_PUT_HOMES", payload: updateHouse})
     // console.log(descriptionRef.current.value)

@@ -84,9 +84,9 @@ function* putReviwesStatus(action) {
 }
 
 function* putHouseDates(action) {
-  console.log(action.payload)
+  // console.log(action.payload.price)
   const homes = yield call(fetchData, {
-    url: `${process.env.REACT_APP_URL}${router.editHouse}/${action.payload.id}`,
+    url: `${process.env.REACT_APP_URL}${router.admin.editHouse}/${action.payload.id}`,
     method: 'PUT',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload)

@@ -13,13 +13,25 @@ export const homesReducer = (state = initialState, action) => {
         ...state, homes: [...state.homes, action.payload]
       }
     
-    // case EDIT_HOUSE:
-    //   return {
-    //     ...state
-    //   }
+    case EDIT_HOUSE:
+      return {
+        ...state, homes: state.homes.map(el => {
+          if (el.id === action.payload.id) {
+            return {
+              ...el,
+              name: action.payload.name,
+              description: action.payload.description,
+              price: action.payload.price,
+            }
+          } else {
+            return el
+          }
+        }) 
+      }
 
     default:
       return state;
   }
 }
+
 

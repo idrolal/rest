@@ -9,5 +9,6 @@ router.post('/addHouse', adminController.addHouseController);
 
 router.post('/login', adminController.adminLogin);
 router.get('/addHouse', adminController.addHouseController);
+router.put('/editHouse/:id', adminController.editHouseController);
 
 module.exports = router;

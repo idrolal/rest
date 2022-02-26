@@ -27,7 +27,7 @@ async function putReviews(req, res) {
     });
     if (newReviews) {
       res.json(newReviews);
-      console.log(newReviews)
+      // console.log(newReviews)
     }
   } catch (error) {
     return ({
