@@ -67,10 +67,10 @@ function* addHouseAsync(action) {
   const house = yield call(fetchData, {
     url: process.env.REACT_APP_URL + router.admin.addHouseServerPath,
     method: 'POST',
-    headers: { 
+    headers: {
       'Content-Type': 'Application/json',
       Authorization: 'Bearer' + localStorage.getItem('token'),
-     },
+    },
     body: JSON.stringify(action.payload),
 
   });
@@ -83,9 +83,9 @@ function* putReviwesStatus(action) {
     url: `${process.env.REACT_APP_URL}${router.reviews}/${action.payload.id}`,
     method: 'PUT',
     headers: {
-       'Content-Type': 'Application/json',
-       Authorization: 'Bearer' + localStorage.getItem('token'),
-       },
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
     body: JSON.stringify(action.payload)
   });
   //  method put works like dispatch(change my state)

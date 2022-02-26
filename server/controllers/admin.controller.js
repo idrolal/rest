@@ -37,7 +37,6 @@ async function addHouseController(req, res) {
 
     res.status(201).json({ isCreated: true, message: 'Новый дом успешно создался', houseInfo });
   } catch (error) {
-    console.log(error);
     res.json({ isCreated: false, message: `Произошла непредвиденная ошибка: ${error.message}` });
   }
 }

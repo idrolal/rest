@@ -22,12 +22,12 @@ function AdminAddHouse(props) {
         data.append('homesImg', img);
       });
       const headers = {
-        'Content-Type': 'multipart/form-data',
+        Authorization: 'Bearer' + localStorage.getItem('token'),
       };
       const options = {
         method: 'PUT',
         body: data,
-        // headers,
+        headers,
       };
       fetch(url, options)
         .then(res => res.json())
