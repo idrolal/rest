@@ -1,14 +1,30 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+
+function AdminAllHouses() {
+  const { homes } = useSelector(state => state.homesReducer)
+
+  const dispatch = useDispatch();
+
+  function deleteHome(id) {
+    dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` })
+
+  }
 
 
-function AdminAllHouses(props) {
-  const state = useSelector(state => state)
   return (
-    <div>
-      <h1>Admin All Houses</h1>
-    </div>
-  );
+    <>
+      {homes?.length ? homes.map(el => {
+        return <>
+          <div>{el?.description}</div>
+          <div>{el?.price}</div>
+          <div>{el?.chips[0].map(el => <h3>{el}</h3>)}</div>
+          <button onClick={deleteHome(el.id)}></button>
+        </>
+      }) : <div>None!</div>}
+
+    </>
+  )
 }
 
 export default AdminAllHouses;

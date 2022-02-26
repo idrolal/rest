@@ -1,9 +1,11 @@
 import React from 'react';
 
+
+
+// TODO VITYA ВЫВОДИТЬ ТОЛЬКО ОТЗЫВЫ ПОДТВЕРЖДЕННЫЕ АДМИНОМ
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { confirmReviewsAC } from '../../redux/actionCreators/reviewsAC'
-
 
 function ReviewCard({review}) {
   
@@ -20,7 +22,6 @@ function ReviewCard({review}) {
 
   return (
     <>
-
     <div>
       {review.nameUser}
       <br/>

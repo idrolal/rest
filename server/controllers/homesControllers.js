@@ -3,12 +3,19 @@ const { House } = require('../db/models');
 async function getAllHouses(req, res) {
   try {
     const allHomes = await House.findAll();
-    console.log(allHomes, '--------------------')
-    res.json( allHomes );
+
+    res.json(allHomes);
   } catch (error) {
     console.log(error.message);
-    res.status(401).json({message: error.message});
+    res.status(401).json({ message: error.message });
   }
 }
 
-module.exports = { getAllHouses };
+function deleteHomes(req, res) {
+  const { id } = req.params;
+  House.destroy({ where: { id } })
+    .then((data) => (data ? res.json(id) : res.status(404).json(data)))
+    .catch((error) => res.status(500).json(error));
+}
+
+module.exports = { getAllHouses, deleteHomes };
