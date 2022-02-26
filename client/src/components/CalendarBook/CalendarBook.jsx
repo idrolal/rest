@@ -5,6 +5,7 @@ import "react-calendar/dist/Calendar.css"
 
 function CalendarBook(minDate) {
   const [calenadarValue, onChangeCalendar] = useState(new Date())
+  console.log(calenadarValue);
 
   console.log(minDate);
 

@@ -9,8 +9,9 @@ const PORT = process.env.PORT || 6000;
 const indexRoute = require('./routes/indexRouter');
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json({ extended: true }));
-app.use(express.static(path.join(__dirname, 'images')));
+app.use(express.json());
+// app.use(express.static(path.join(__dirname, '/images')));
+app.use(express.static(`${__dirname}/images`));
 
 app.use(cors({
   origin: ['http://localhost:3000'],
