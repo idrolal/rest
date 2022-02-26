@@ -1,4 +1,4 @@
-import { INIT_HOMES, ADD_HOUSE } from "../actionType/homesAT";
+import { INIT_HOMES, ADD_HOUSE, EDIT_HOUSE } from "../actionType/homesAT";
 
 export const initHomesAC = (payload) => {
   return {
@@ -13,3 +13,12 @@ export const addHouseAdminAC = (payload) => {
     payload,
   }
 }
+
+export const editHouseAdminAC = (payload) => {
+  return {
+    type: EDIT_HOUSE,
+    payload,
+  }
+}
+
+

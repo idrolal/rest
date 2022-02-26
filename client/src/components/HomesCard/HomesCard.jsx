@@ -8,7 +8,7 @@ export const HomesCard = ({homes}) => {
     <>
     <div>{homes?.description}</div>
     <div>{homes?.price}</div>
-    <div>{homes?.chips[0].map(el=> <h3>{el}</h3>)}</div>
+    {/* <div>{homes?.chips[0].map(el=> <h3>{el}</h3>)}</div> */}
     </>
   );
 };
