@@ -19,6 +19,7 @@ import { AdminConfirmReviews } from '../AdminComponents/AdminConfirmReviews/Admi
 import Home from '../Home/Home';
 import Booking from '../Booking/Booking';
 import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path={reactRouter.admin.confirmReviews} element={< AdminConfirmReviews />} />
             <Route path={reactRouter.admin.login} element={< AdminLogin />} />
             <Route path={reactRouter.user.house} element={< HomesList />} />
+            <Route path={reactRouter.user.notfound} element={<NotFound />} />
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
  
 

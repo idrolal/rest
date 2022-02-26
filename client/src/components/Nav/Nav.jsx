@@ -11,7 +11,7 @@ function Nav(props) {
   return (
     <div className="header-container animate__animated animate__headShake">
       <NavLink to={reactRouter.user.homepage} className="header-logo">
-        <img src={logo} alt="" />
+        <img src={logo} alt="" /><div className="header-logo-text2"><span className='header-logo-text'>eco</span>PARK</div>
       </NavLink>
       {/* <span className="header-logo-text">ECOHOME</span> */}
       <div className="header-parent">

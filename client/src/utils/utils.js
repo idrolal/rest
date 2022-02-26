@@ -18,6 +18,7 @@ export const reactRouter = {
     house: '/house',
     services: '/services',
     contacts: '/contacts',
+    notfound: '*',
   },
 
   admin: {

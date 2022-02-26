@@ -1,16 +1,26 @@
 .header-logo img {
-    max-width: 100%;
-    height: 120px;
+  max-width: 100%;
+  height: 120px;
 }
 .header-contacts-logo {
   display: flex;
   align-items: center;
 }
+.header-logo-text {
+  font-size: 35px;
+  color: rgba(86, 181, 184);
+  font-family: "Montserrat Black";
+}
+.header-logo-text2{
+  color: black;
+  font-size: 25px;
+  font-family: "Montserrat Black";
+}
 .header-contacts-link {
   color: black;
   font-family: "Montserrat Medium";
 }
-.header-contacts-logo img{
+.header-contacts-logo img {
   width: 50px;
 }
 .header-container {
@@ -20,7 +30,7 @@
   height: 149px;
 }
 .header-parent {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: space-around;
   height: 100%;
@@ -29,16 +39,21 @@
 .nav-text {
   font-size: 16px;
   font-family: "Montserrat Medium";
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 .nav-text-booking {
   font-family: "Montserrat Black";
   color: black;
   text-decoration: none;
 }
+.nav-text-booking:hover {
+  font-size: 17px;
+  transform: scale(1.07);
+  transition: 0.4s ease-out;
+}
 .nav-text-booking_none {
-    font-family: "Montserrat Black";
-    color: rgb(180, 155, 11);
-    text-decoration: none;
+  font-family: "Montserrat Black";
+  color: rgb(180, 155, 11);
+  text-decoration: none;
 }
