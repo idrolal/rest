@@ -4,9 +4,11 @@ const adminController = require('../controllers/admin.controller');
 const storageMulter = require('../middlewares/storage.milter.middleware');
 const { fileFilter } = require('../middlewares/fileFilter.milter.middleware');
 
-router.put('/addHouse/img', isAdmin, fileFilter, storageMulter.array('homesImg', 5), adminController.saveImgController);
+const middlewares = [fileFilter, storageMulter.array('homesImg', 5)];
 
-router.post('/addHouse', isAdmin, adminController.addHouseController);
+router.put('/addHouse/img', middlewares, adminController.saveImgController);
+
+router.post('/addHouse', middlewares[1], adminController.addHouseController);
 
 router.post('/login', isAdmin, adminController.adminLogin);
 router.get('/addHouse', isAdmin, adminController.addHouseController);

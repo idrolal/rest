@@ -87,8 +87,8 @@ function AdminAddHouse(props) {
             {
               imgPaths.pathArr?.length ?
                 imgPaths.pathArr.map(img => {
-                  return <div style={{ height: '100px', backgroundColor: 'grey', width: '200px' }} key={img}>
-                    <img src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img}`} alt="..." />
+                  return <div style={{ height: '100px', width: '200px', backgroundColor: 'grey' }} key={img}>
+                    <img src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img}`} alt="..." style={{ height: '100px', width: '200px', }} />
                   </div>
                 })
                 :
