@@ -29,19 +29,19 @@ async function putReviews(req, res) {
   // console.log(req.body)
   const { info } = req.body;
   // console.log(info)
-
   let newReviews;
   try {
     newReviews = await Rewiew.update({
       description: info,
-      status: true
+      status: true,
     }, {
       where: {
         id: req.params.id,
       },
     });
     if (newReviews) {
-      res.json( newReviews );
+      res.json(newReviews);
+      // console.log(newReviews)
     }
   } catch (error) {
     return ({
