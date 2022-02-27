@@ -15,6 +15,7 @@ import './App.css'
 import AdminLogin from '../AdminComponents/AdminLogin/AdminLogin';
 import { HomesList } from '../HomesList/HomesList';
 import { AdminConfirmReviews } from '../AdminComponents/AdminConfirmReviews/AdminConfirmReviews';
+import { AdminEditHouse } from '../AdminComponents/AdminEditHouse/AdminEditHouse';
 
 import Home from '../Home/Home';
 import Booking from '../Booking/Booking';
@@ -38,11 +39,11 @@ function App() {
             <Route path={reactRouter.admin.allReservations} element={<AdminAllReservations />} />
             <Route path={reactRouter.admin.allHouses} element={< AdminAllHouses />} />
             <Route path={reactRouter.admin.confirmReviews} element={< AdminConfirmReviews />} />
+            <Route path={reactRouter.admin.editHouse} element={< AdminEditHouse /> } />
             <Route path={reactRouter.admin.login} element={< AdminLogin />} />
             <Route path={reactRouter.user.house} element={< HomesList />} />
-            <Route path={reactRouter.user.notfound} element={<NotFound />} />
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
- 
+            <Route path={reactRouter.user.notfound} element={<NotFound />} />
 
           </Routes>
         </div>

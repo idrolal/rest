@@ -64,4 +64,28 @@ async function adminLogin(req, res) {
   }
 }
 
-module.exports = { saveImgController, addHouseController, adminLogin };
+async function editHouseController(req, res) {
+  const {name, description, price } = req.body;
+  // console.log(name, description)
+  let newHouses;
+  try {
+    newHouses = await House.update({
+      name: name,
+      description: description,
+      price: price,
+    }, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (newHouses) {
+      res.json(newHouses);
+    }
+  } catch (error) {
+    return ({
+      message: error.message,
+    });
+  }
+}
+
+module.exports = { saveImgController, addHouseController, adminLogin, editHouseController };
