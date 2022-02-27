@@ -9,7 +9,7 @@ router.put('/addHouse/img', isAdmin, fileFilter, storageMulter.array('homesImg',
 router.post('/addHouse', isAdmin, adminController.addHouseController);
 
 
-router.post('/login', isAdmin, adminController.adminLogin);
+router.post('/login', adminController.adminLogin);
 router.get('/addHouse', isAdmin, adminController.addHouseController);
 router.put('/editHouse/:id', adminController.editHouseController);
 

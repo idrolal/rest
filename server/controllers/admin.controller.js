@@ -66,14 +66,14 @@ async function adminLogin(req, res) {
 }
 
 async function editHouseController(req, res) {
-  const {name, description, price } = req.body;
+  const { name, description, price } = req.body;
   // console.log(name, description)
   let newHouses;
   try {
     newHouses = await House.update({
-      name: name,
-      description: description,
-      price: price,
+      name,
+      description,
+      price,
     }, {
       where: {
         id: req.params.id,
@@ -89,4 +89,6 @@ async function editHouseController(req, res) {
   }
 }
 
-module.exports = { saveImgController, addHouseController, adminLogin, editHouseController };
+module.exports = {
+  saveImgController, addHouseController, adminLogin, editHouseController,
+};
