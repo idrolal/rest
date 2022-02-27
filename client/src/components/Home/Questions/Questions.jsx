@@ -1,5 +1,6 @@
 import React from 'react';
 import './Questions.css';
+import right from '../../../img/right.svg'
 
 function Questions(props) {
   return (
@@ -7,7 +8,7 @@ function Questions(props) {
     <h3>частые вопросы</h3>
     <ul class="collapsible">
     <li>
-      <div class="collapsible-header"><img className='collapse-logo' src={require("../../../img/add.png")} alt="" /><span className='collapsible-head'>Бронирование:</span></div>
+      <div class="collapsible-header"><img className='collapse-logo' src={right} alt="" /><span className='collapsible-head'>Бронирование:</span></div>
       <div class="collapsible-body">
         <span className='collapse-text'>
 Бронирование шатров осуществляется только через модуль бронирования на нашем сайте по предоплате.
@@ -23,12 +24,12 @@ function Questions(props) {
 </div>
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      <div className="collapsible-header"><img className='collapse-logo' src={right} alt="" /><span className='collapsible-head'>Бронирование:</span></div>
+      <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      <div className="collapsible-header"><img className='collapse-logo' src={right} alt="" /><span className='collapsible-head'>Бронирование:</span></div>
+      <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
     </li>
   </ul>
   </>

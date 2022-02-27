@@ -1,12 +1,28 @@
-import { INIT_REVIEWS, CONFIRM_REVIEWS } from "../actionType/reviewsAT";
+
+import { INIT_REVIEWS, CONFIRM_REVIEWS, ADD_REVIEW } from "../actionType/reviewsAT";
 const initialState = { reviews: [] };
 
 export function reviewsReducer(state = initialState, action) {
   switch (action.type) {
-    case INIT_REVIEWS:
-      return {
-        ...state, reviews: action.payload
-      };
+
+    case INIT_REVIEWS: 
+    return { 
+      ...state, reviews: action.payload 
+    };
+    case ADD_REVIEW:
+
+    const newReview = { 
+      house_id: action.payload.house_id,
+      nameUser: action.payload.nameUser,
+      description: action.payload.description,
+      rating: action.payload.rating,
+      status: action.payload.status,
+    }
+
+    return {
+      ...state, reviews: state.reviews ? [...state.reviews, newReview] : [newReview]
+    }
+
     case CONFIRM_REVIEWS:
       return {
         ...state, reviews: state.reviews.map(el=>{
@@ -21,6 +37,7 @@ export function reviewsReducer(state = initialState, action) {
           }
         })
       }
+
     default:
       return state;
   }
