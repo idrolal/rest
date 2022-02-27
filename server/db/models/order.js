@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     dataOut: {
       allowNull: false,
-      tysummape: DataTypes.DATE,
+      type: DataTypes.DATE,
     },
     summa: {
       allowNull: false,
