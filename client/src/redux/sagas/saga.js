@@ -1,12 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
-
+import { INIT_RESERVATIONS } from '../actionType/reservationAT.js'
 import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
-
 // Authorization: 'Bearer' + localStorage.getItem('token'),
+import { initReservationsAC } from '../actionCreators/reservationsAC.js'
 import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
-
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
 
 
@@ -47,10 +46,10 @@ function* getInitHomes() {
   //  method put works like dispatch(change my state)
   yield put(initHomesAC(homes))
 }
+
 function* logoutAdmin() {
   yield localStorage.removeItem('token');
   yield put(logoutAdminAC({}))
-
 }
 
 // Достает список отзывов
@@ -130,6 +129,19 @@ function* postAddReviews(action) {
   yield put(addReviews(newReview))
 }
 
+function* getInitReservations() {
+  const reservations = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.admin.allReservations}`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
+  });
+  //  method put works like dispatch(change my state)
+  yield put(initReservationsAC(reservations))
+}
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
@@ -140,4 +152,5 @@ export function* globalWatcher() {
   yield takeEvery("FETCH_DELETE_HOME", deleteHome)
   yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
   yield takeEvery("FETCH_PUT_HOMES", putHouseDates);
+  yield takeEvery(INIT_RESERVATIONS, getInitReservations);
 }

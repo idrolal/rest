@@ -23,7 +23,7 @@ import Booking2 from '../Booking/Booking2';
 import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 import NotFound from '../NotFound/NotFound';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
-import { useEffect } from 'react';
+
 
 function App() {
 

@@ -1,9 +1,11 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { router } from '../../../utils/utils.js'
 import { addHouseAdminAC } from '../../../redux/actionCreators/homesAC.js'
+import { useNavigate } from 'react-router-dom';
 
 function AdminAddHouse(props) {
+  const navigate = useNavigate()
 
   // const [imgs, setImgs] = useState([])
   const [imgPaths, setImgPaths] = useState([])
@@ -21,18 +23,21 @@ function AdminAddHouse(props) {
       picturesData.forEach(img => {
         data.append('homesImg', img);
       });
-      const headers = {
 
+      const headers = {
         Authorization: 'Bearer' + localStorage.getItem('token'),
       };
+
       const options = {
         method: 'PUT',
         body: data,
         headers,
       };
+
       fetch(url, options)
         .then(res => res.json())
         .then(imgPath => setImgPaths(imgPath))
+
     } catch (error) {
       console.log(error);
     }
@@ -41,12 +46,19 @@ function AdminAddHouse(props) {
   console.log(imgPaths.pathArr);
 
   const formAddHouse = useRef()
-  const createHouse = async (e) => {
+
+  // useEffect (() => {
+  const createHouse = (e) => {
     e.preventDefault()
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
     dispatch(addHouseAdminAC(data))
+    navigate('/admin/houses/all')
   }
+  // бесконечный фетч решить
+  // })
+
+
 
   return (
     <div>
@@ -94,7 +106,7 @@ function AdminAddHouse(props) {
                 :
                 <div></div>
             }
-            <input type="file" multiple onChange={() => sendFiles} />
+            <input type="file" multiple onChange={sendFiles} />
           </div>
 
         </div>
