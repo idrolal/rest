@@ -22,6 +22,7 @@ function AdminAddHouse(props) {
         data.append('homesImg', img);
       });
       const headers = {
+
         Authorization: 'Bearer' + localStorage.getItem('token'),
       };
       const options = {
@@ -45,7 +46,6 @@ function AdminAddHouse(props) {
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
     dispatch(addHouseAdminAC(data))
-
   }
 
   return (
@@ -66,7 +66,7 @@ function AdminAddHouse(props) {
         <div>
           {/* нормальный селект опшион */}
           <select name='chips' style={{ display: 'block' }}>
-            <option value='5hjdjd'>Дополнительные услуги при заезде: </option>
+            <option value='extenstions'>Дополнительные услуги при заезде: </option>
             <option value="С животными">С животными - бесплатно </option>
             <option value="Детская кроватка">Детская кроватка - бесплатно</option>
             <option value="Трансфер">Трансфер - 5000 &#8381;</option>

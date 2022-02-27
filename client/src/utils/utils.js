@@ -33,8 +33,6 @@ export const reactRouter = {
     logout: '/admin/logout',
     addHouseServerPath: '/admin/addHouse',
     confirmReviews: '/admin/confirmReviews'
-
   },
-
 
 }
