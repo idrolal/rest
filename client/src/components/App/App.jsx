@@ -18,7 +18,8 @@ import { AdminConfirmReviews } from '../AdminComponents/AdminConfirmReviews/Admi
 // import { AdminEditHouse } from '../AdminComponents/AdminEditHouse/AdminEditHouse';
 
 import Home from '../Home/Home';
-import Booking from '../Booking/Booking';
+// import Booking from '../Booking/Booking';
+import Booking2 from '../Booking/Booking2';
 import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 import NotFound from '../NotFound/NotFound';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
@@ -37,7 +38,8 @@ function App() {
           <Routes>
 
             <Route path={reactRouter.user.homepage} element={<Home />} />
-            <Route path={reactRouter.user.booking} element={<Booking />} />
+            {/* <Route path={reactRouter.user.booking} element={<Booking />} /> */}
+            <Route path={reactRouter.user.booking} element={<Booking2 />} />
             <Route path={reactRouter.admin.main} element={<AdminPanel />} />
             <Route path={reactRouter.admin.addHouse} element={<AdminAddHouse />} />
             <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />

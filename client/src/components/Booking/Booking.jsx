@@ -45,6 +45,8 @@ function Booking(props) {
         {/* <p>Выберите дату от: <input type="date" name="calendar"/></p>
    <p>Выберите дату от: <input type="date" name="calendar"/></p> */}
 
+        {/* <CalendarBook/> */}
+
         <CalendarBook />
 
       </div>}
@@ -55,6 +57,7 @@ function Booking(props) {
         <p><input ref={inputEmail} placeholder="Your email" /></p>
         <p><input ref={inputPhone} placeholder="Your phone" /></p>
       </div>}
+
 
       {step === 3 && <div>
         <h1>Оплата</h1>
