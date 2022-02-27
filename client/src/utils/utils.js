@@ -27,6 +27,7 @@ export const reactRouter = {
 
     allReservations: '/admin/reservations/all',
     addReservation: '/admin/reservations/add',
+    editReservations: '/admin/reservations/edit/:id',
 
     allHouses: '/admin/houses/all',
     addHouse: '/admin/houses/add',
@@ -34,6 +35,8 @@ export const reactRouter = {
     logout: '/admin/logout',
     addHouseServerPath: '/admin/addHouse',
     confirmReviews: '/admin/confirmReviews',
-    editHouse: '/admin/editHouse'
+    chooseEditHouse: '/admin/houses/edit/:id',
+    editHouse: '/admin/houses/edit/'
+
   },
 }

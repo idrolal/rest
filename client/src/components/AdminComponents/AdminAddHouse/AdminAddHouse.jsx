@@ -94,7 +94,7 @@ function AdminAddHouse(props) {
                 :
                 <div></div>
             }
-            <input type="file" multiple onChange={sendFiles} />
+            <input type="file" multiple onChange={() => sendFiles} />
           </div>
 
         </div>

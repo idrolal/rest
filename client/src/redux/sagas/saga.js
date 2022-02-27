@@ -115,7 +115,6 @@ function* deleteHome(action) {
       Authorization: 'Bearer' + localStorage.getItem('token'),
     },
   });
-
   yield put(deleteHomeAC(home))
 }
 
