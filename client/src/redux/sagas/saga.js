@@ -1,9 +1,14 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
-import { initHomesAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
-import { initReviews, confirmReviewsAC } from '../actionCreators/reviewsAC';
+
+import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
+
+// Authorization: 'Bearer' + localStorage.getItem('token'),
+import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
+
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
+
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body, credentials: 'include' });
@@ -24,7 +29,7 @@ function* postLoginAdmin(action) {
   })
   try {
     yield put(loginAdminAC(admin.admin))
-    localStorage.setItem('token', JSON.stringify(admin.token.accessToken));
+    localStorage.setItem('token', admin.token.accessToken);
   } catch {
     yield put(loginAdminAC(admin.message))
   }
@@ -64,7 +69,10 @@ function* addHouseAsync(action) {
   const house = yield call(fetchData, {
     url: process.env.REACT_APP_URL + router.admin.addHouseServerPath,
     method: 'POST',
-    headers: { 'Content-Type': 'Application/json' },
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
     body: JSON.stringify(action.payload),
 
   });
@@ -76,7 +84,10 @@ function* putReviwesStatus(action) {
   const reviews = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.reviews}/${action.payload.id}`,
     method: 'PUT',
-    headers: { 'Content-Type': 'Application/json' },
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
     body: JSON.stringify(action.payload)
   });
   //  method put works like dispatch(change my state)
@@ -96,12 +107,39 @@ function* putHouseDates(action) {
 }
 
 
+function* deleteHome(action) {
+  const home = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.home}/${action.payload}`,
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
+  });
+
+  yield put(deleteHomeAC(home))
+}
+
+// Dobavlyaet novii otziv 
+  function* postAddReviews(action) {
+    const newReview = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.reviews}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+    });
+    //  method put works like dispatch(change my state)
+    yield put(addReviews(newReview))
+    }
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
+  yield takeEvery("FETCH_POST_REVIEW", postAddReviews)
   yield takeEvery("FETCH_POST_LOGIN", postLoginAdmin);
   yield takeEvery("FETCH_PUT_REVIEW", putReviwesStatus);
   yield takeEvery("LOGOUT_ADMIN", logoutAdmin);
+  yield takeEvery("FETCH_DELETE_HOME", deleteHome)
   yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
   yield takeEvery("FETCH_PUT_HOMES", putHouseDates);
 }

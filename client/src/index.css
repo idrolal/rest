@@ -58,3 +58,21 @@ body {
   font-weight: normal;
   src: url("./fonts/Montserrat-Regular.ttf");
 }
+@font-face {
+  font-family: "Montserrat ExtraBold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/Montserrat-ExtraBold.ttf");
+}
+@font-face {
+  font-family: "Montserrat Thin";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/Montserrat-Thin.ttf");
+}
+@font-face {
+  font-family: "Montserrat Light";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/Montserrat-Light.ttf");
+}

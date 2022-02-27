@@ -19,6 +19,7 @@ export const reactRouter = {
     house: '/house',
     services: '/services',
     contacts: '/contacts',
+    notfound: '*',
   },
 
   admin: {
@@ -29,6 +30,8 @@ export const reactRouter = {
 
     allHouses: '/admin/houses/all',
     addHouse: '/admin/houses/add',
+    login: '/admin/login',
+    logout: '/admin/logout',
     addHouseServerPath: '/admin/addHouse',
     confirmReviews: '/admin/confirmReviews',
     editHouse: '/admin/editHouse'

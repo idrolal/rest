@@ -1,0 +1,167 @@
+.header-button {
+  margin-top: 20px;
+  text-align: center;
+  width: 240px;
+  height: 70px;
+  background-color: rgba(70, 208, 218, 0.781);
+  border-color: #30cce7;
+  border-style: solid;
+  border-radius: 59px;
+  border-width: 2px;
+  font-weight: 600;
+  /* line-height: 4.65; */
+  font-size: 18px;
+}
+.header-button:hover {
+  background-color: rgba(245, 133, 68, 0.63);
+}
+.button-text {
+  /* text-decoration: none; */
+  font-family: "Montserrat Regular";
+  color: rgb(255, 255, 255);
+}
+.name-input {
+  font-family: "Montserrat Regular";
+  /* width: 80px !important; */
+  border-bottom: 0 !important;
+  font-size: 16px;
+}
+.label-text {
+  font-family: "Montserrat Medium";
+  font-size: 14px;
+  color: black;
+}
+/* .central-div {
+  background-color: blue;
+} */
+
+.styles_typicalWrapper__1_Uvh {
+  font-family: "Montserrat Regular";
+  font-size: 30px;
+}
+
+.central-form {
+  max-width: 700px;
+  padding: 10px;
+  display: flex;
+  box-shadow: 0 0px 20px -2px #1f2235;
+  border-radius: 12px;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  /* background-color: #1f2235; */
+    background-image: url("../../img/forest_fon.png");
+  background-position: center;
+}
+
+.back-form {
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.back-form .img-back {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* .img-back h4 {
+  letter-spacing: 0.3rem;
+  font-weight: 400;
+  color: white;
+  font-size: 18px;
+  opacity: 0.5;
+} */
+
+.back-form .img-back img {
+  width: 100%;
+  opacity: 0.5;
+}
+
+.central-form form {
+  width: auto;
+  box-shadow: 0 0 2px 1px white;
+  display: flex;
+  color: #111;
+  padding: 15px;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -52px;
+  opacity: 0.9;
+  background-color: white;
+  box-shadow: 0 0px 20px -2px #1f2235;
+  border-radius: 12px;
+}
+
+/* form p {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ff5823;
+  letter-spacing: 0.1rem;
+  font-family: "Poppins Bold";
+} */
+
+/* form label {
+  margin-bottom: 5px;
+  color: #111;
+  letter-spacing: 0.2rem;
+} */
+
+form input,
+textarea {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  background-color: rgba(230, 230, 230, 0.6);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+textarea:focus {
+  border: 2px solid rgba(30, 85, 250, 0.47);
+  background-color: #fff;
+}
+.name-input:focus {
+  border: 2px solid rgba(30, 85, 250, 0.47);
+  background-color: #fff;
+}
+
+form button {
+  margin-top: 15px;
+  padding: 5px;
+  outline: none;
+  width: 900px;
+  color: rgb(230, 227, 227);
+  border: 2px solid #ff5823;
+  font-size: 12px;
+  border-radius: 19px;
+  background-color: #1f2235;
+  font-size: 18px;
+  width: 160px;
+  align-items: center;
+  justify-content: center;
+}
+
+form button:hover {
+  background-color: #1f2235;
+  transition: all ease 1s;
+  border: 2px solid #1f2235;
+}
+
+button .load {
+  width: 100%;
+}
+
+button .load img {
+  width: 60px;
+  color: green;
+}
+.col i {
+  padding: 7px;
+  color: rgb(255, 255, 255);
+}
+.col i:hover {
+  transform: scale(1.5);
+}

@@ -1,4 +1,4 @@
-import { INIT_HOMES, ADD_HOUSE, EDIT_HOUSE } from "../actionType/homesAT";
+import { DELETE_HOME, INIT_HOMES, ADD_HOUSE, EDIT_HOUSE } from "../actionType/homesAT";
 
 const initialState = { homes: [] };
 
@@ -7,6 +7,9 @@ export const homesReducer = (state = initialState, action) => {
 
     case INIT_HOMES:
       return { ...state, homes: action.payload }
+
+    case DELETE_HOME:
+      return { ...state, homes: state.homes.filter(el => el.id !== action.payload.id) }
 
     case ADD_HOUSE:
       return {

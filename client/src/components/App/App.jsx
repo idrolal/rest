@@ -20,6 +20,7 @@ import { AdminEditHouse } from '../AdminComponents/AdminEditHouse/AdminEditHouse
 import Home from '../Home/Home';
 import Booking from '../Booking/Booking';
 import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
           <Routes>
 
             <Route path={reactRouter.user.homepage} element={<Home />} />
-            <Route path='/booking' element={<Booking />} />
+            <Route path={reactRouter.user.booking} element={<Booking />} />
             <Route path={reactRouter.admin.main} element={<AdminPanel />} />
             <Route path={reactRouter.admin.addHouse} element={<AdminAddHouse />} />
             <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />
@@ -39,9 +40,10 @@ function App() {
             <Route path={reactRouter.admin.allHouses} element={< AdminAllHouses />} />
             <Route path={reactRouter.admin.confirmReviews} element={< AdminConfirmReviews />} />
             <Route path={reactRouter.admin.editHouse} element={< AdminEditHouse /> } />
-            <Route path='/reg' element={< AdminLogin />} />
-            <Route path='/house' element={< HomesList />} />
-            <Route path='/logout' element={<AdminLogout />} />
+            <Route path={reactRouter.admin.login} element={< AdminLogin />} />
+            <Route path={reactRouter.user.house} element={< HomesList />} />
+            {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
+            <Route path={reactRouter.user.notfound} element={<NotFound />} />
 
           </Routes>
         </div>
