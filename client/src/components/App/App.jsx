@@ -10,7 +10,7 @@ import AdminCreateReservation from '../AdminComponents//AdminCreateReservation/A
 import AdminAllReservations from '../AdminComponents//AdminAllReservations/AdminAllReservations.jsx';
 import AdminAllHouses from '../AdminComponents//AdminAllHouses/AdminAllHouses.jsx';
 import Nav from '../Nav/Nav';
-import './App.css'
+// import './App.css'
 
 import AdminLogin from '../AdminComponents/AdminLogin/AdminLogin';
 import { HomesList } from '../HomesList/HomesList';
@@ -32,8 +32,8 @@ function App() {
 
     <Provider store={store}>
       <BrowserRouter>
-        <div className="app-container">
           <Nav />
+        {/* <div className="app-container"> */}
           <Routes>
 
             <Route path={reactRouter.user.homepage} element={<Home />} />
@@ -55,7 +55,7 @@ function App() {
             <Route path={reactRouter.user.notfound} element={<NotFound />} />
 
           </Routes>
-        </div>
+        {/* </div> */}
       </BrowserRouter>
 
     </Provider>
