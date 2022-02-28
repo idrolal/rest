@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AdminReservationsList from '../AdminReservationsList/AdminReservationsList.jsx'
-import { INIT_RESERVATIONS } from '../../../redux/actionType/reservationAT.js'
+import { FIND_RESERVATIONS_FETCH } from '../../../redux/actionType/reservationAT.js'
 
 function AdminAllReservations(props) {
 
@@ -11,7 +11,7 @@ function AdminAllReservations(props) {
   console.log(reservations);
 
   useEffect(() => {
-    dispatch({ type: INIT_RESERVATIONS })
+    dispatch({ type: FIND_RESERVATIONS_FETCH })
   }, [dispatch])
 
   return (
