@@ -1,9 +1,9 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { router } from '../../../utils/utils.js'
-import { addHouseAdminAC } from '../../../redux/actionCreators/homesAC.js'
+import { addHouseAdminFetchAC } from '../../../redux/actionCreators/homesAC.js'
 import { useNavigate } from 'react-router-dom';
-import { ADD_HOUSE_FETCH } from '../../../redux/actionType/homesAT.js';
+// import { ADD_HOUSE_FETCH } from '../../../redux/actionType/homesAT.js';
 
 function AdminAddHouse(props) {
   const navigate = useNavigate()
@@ -48,20 +48,14 @@ function AdminAddHouse(props) {
 
   const formAddHouse = useRef()
 
-  // let data = {}
-
   const createHouse = (e) => {
     e.preventDefault()
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
-    // return data
-    // dispatch(addHouseAdminAC(data))
+    dispatch(addHouseAdminFetchAC(data))
+
     // navigate('/admin/houses/all')
   }
-
-  // useEffect(() => {
-  //   dispatch({ type: ADD_HOUSE_FETCH, payload: data })
-  // }, [dispatch])
 
 
 

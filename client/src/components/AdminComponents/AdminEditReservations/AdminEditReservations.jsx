@@ -3,14 +3,11 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 function AdminEditReservations() {
-  const id = useParams()
-  console.log(id);
+  const { id } = useParams()
   const { reservations } = useSelector(state => state.reservationsReducer.reservations)
   console.log(reservations);
-
-  const reserv = reservations.map(el => el.id === +id)
-
-  // console.log(reserv);
+  const reserv = reservations.find(el => el.id === +id)
+  console.log(reserv);
 
   return (
     <div>
@@ -18,15 +15,15 @@ function AdminEditReservations() {
       <input type="text" defaultValue={reserv.dataOut} />
       <input type="number" defaultValue={reserv.summa} />
       {
-        reserv ?
+        reserv?.payded ?
           <p>Оплачено</p>
           :
           <p>Оплата при заселении</p>
       }
-      <textarea value={reserv.comment} />
+      <textarea defaultValue={reserv.comment} />
       <p>Выбранный дом: </p><p>{reserv.house_id}</p>
       <select name="" id="">
-        <option value=""></option>
+        <option defaultValue=""></option>
       </select>
 
     </div>
