@@ -10,7 +10,6 @@ import AdminCreateReservation from '../AdminComponents//AdminCreateReservation/A
 import AdminAllReservations from '../AdminComponents//AdminAllReservations/AdminAllReservations.jsx';
 import AdminAllHouses from '../AdminComponents//AdminAllHouses/AdminAllHouses.jsx';
 import Nav from '../Nav/Nav';
-import './App.css'
 
 import AdminLogin from '../AdminComponents/AdminLogin/AdminLogin';
 import { HomesList } from '../HomesList/HomesList';
@@ -31,8 +30,8 @@ function App() {
 
     <Provider store={store}>
       <BrowserRouter>
-        <div className="app-container">
           <Nav />
+  
           <Routes>
 
             <Route path={reactRouter.user.homepage} element={<Home />} />
@@ -47,12 +46,11 @@ function App() {
             <Route path={reactRouter.admin.chooseEditHouse} element={<AdminEditHouseCard />} />
             <Route path={reactRouter.admin.login} element={<AdminLogin />} />
             <Route path={reactRouter.user.house} element={<HomesList />} />
-
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
             <Route path={reactRouter.user.notfound} element={<NotFound />} />
 
           </Routes>
-        </div>
+ 
       </BrowserRouter>
 
     </Provider>
