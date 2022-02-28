@@ -4,6 +4,7 @@ import About from './About/About';
 import Terms from './Terms/Terms';
 import PhotoCollage from './PhotoCollage/PhotoCollage';
 import Questions from './Questions/Questions';
+import { MapsApi } from '../MapsApi/MapsApi';
 
 function Home(props) {
   return (
@@ -14,6 +15,7 @@ function Home(props) {
       <ReviewsList/>
       <Terms/>
       <Questions/>
+      <MapsApi />
     </div>
   );
 }
