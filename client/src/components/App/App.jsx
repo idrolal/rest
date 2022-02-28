@@ -24,6 +24,7 @@ import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 import NotFound from '../NotFound/NotFound';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
 import { useEffect } from 'react';
+import ServicesList from '../ServicesList/ServicesList';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
             <Route path={reactRouter.admin.chooseEditHouse} element={<AdminEditHouseCard />} />
             <Route path={reactRouter.admin.login} element={<AdminLogin />} />
             <Route path={reactRouter.user.house} element={<HomesList />} />
+            <Route path={reactRouter.user.services} element={<ServicesList />} />
 
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
             <Route path={reactRouter.user.notfound} element={<NotFound />} />

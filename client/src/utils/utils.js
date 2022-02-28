@@ -2,6 +2,7 @@ export const router = {
   login: '/api/admin/login',
   home: '/api/homes',
   reviews: '/api/reviews',
+  services: '/api/services',
   admin: {
     addHouseServerPath: '/api/admin/addHouse',
     addHouseServerIMGPath: '/api/admin/addHouse/img',

@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState, useEffect}from "react";
 import "./PhotoCollage.css";
+
 
 function PhotoCollage(props) {
   return (
-    <>
-      <div className="carousel carousel-slider">
+    <> <div className="carousel carousel-slider">
         <div className="carousel-item" href="#one!">
           <img
             className="img-item"
