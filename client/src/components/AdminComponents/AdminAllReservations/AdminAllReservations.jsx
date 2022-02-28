@@ -7,7 +7,7 @@ import { FIND_RESERVATIONS_FETCH } from '../../../redux/actionType/reservationAT
 function AdminAllReservations(props) {
 
   const dispatch = useDispatch()
-  const { reservations } = useSelector(state => state.reservationsReducer)
+  const { reservations } = useSelector(state => state.reservationsReducer.reservations)
   console.log(reservations);
 
   useEffect(() => {
