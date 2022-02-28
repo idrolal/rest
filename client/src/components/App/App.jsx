@@ -22,8 +22,8 @@ import Home from '../Home/Home';
 import Booking2 from '../Booking/Booking2';
 import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 import NotFound from '../NotFound/NotFound';
+import { MapsApi } from '../MapsApi/MapsApi';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
-import { useEffect } from 'react';
 
 function App() {
 
@@ -34,8 +34,7 @@ function App() {
       <BrowserRouter>
         <div className="app-container">
           <Nav />
-
-          <Routes>
+           <Routes>
 
             <Route path={reactRouter.user.homepage} element={<Home />} />
             {/* <Route path={reactRouter.user.booking} element={<Booking />} /> */}
@@ -54,6 +53,7 @@ function App() {
             <Route path={reactRouter.user.notfound} element={<NotFound />} />
 
           </Routes>
+          <MapsApi/>
         </div>
       </BrowserRouter>
 
