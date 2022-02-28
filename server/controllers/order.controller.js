@@ -1,4 +1,4 @@
-const { Order, House } = require('../db/models');
+const { Order, House, User } = require('../db/models');
 
 function foo(max, min) {
   const maxDay = Date.parse(max);
@@ -36,9 +36,6 @@ async function getFreeHouse(req, res) {
           freeHouse.push(House.findAll({
             where: { id: el.house_id },
           }));
-        } else {
-          const free = house.filter((ho) => ho.id !== el.house_id);
-          freeHouse.push(free);
         }
       }
       if (interval[0] === dataOutUser) {
@@ -49,30 +46,60 @@ async function getFreeHouse(req, res) {
 
       return Promise.all(freeHouse);
     }));
+
     console.log(allFreeHouse);
-    const arrOfFreeHouse = allFreeHouse.map((el) => el[0][0]);
-    const uniqueArrOfFreeHouse = unique(arrOfFreeHouse, 'id');
-    const otherHouse = uniqueArrOfFreeHouse.map((ar) => {
-      const all = [];
-      house.map((home) => {
-        if (home.id !== ar.house_id) {
-          all.push(home, ar);
-          return all;
-        }
-      });
-      return all;
-    });
 
-    const freeHouseAndOrder = otherHouse.map((el) => unique(el, 'id'));
-
-    if (uniqueArrOfFreeHouse.length) {
-      res.json(freeHouseAndOrder);
+    if (allFreeHouse[0].length < 1) {
+      res.json({ message: 'Свободных домиков нет:(' });
     } else {
-      res.json(house);
+      const arrOfFreeHouse = allFreeHouse.map((el) => el[0][0]);
+      const uniqueArrOfFreeHouse = unique(arrOfFreeHouse, 'id');
+      const otherHouse = uniqueArrOfFreeHouse.map((ar) => {
+        const all = [];
+        house.map((home) => {
+          if (home.id !== ar.house_id) {
+            all.push(home, ar);
+            return all;
+          }
+        });
+        return all;
+      });
+
+      const freeHouseAndOrder = otherHouse.map((el) => unique(el, 'id'));
+
+      if (uniqueArrOfFreeHouse.length) {
+        res.json(freeHouseAndOrder);
+      } else {
+        res.json(house);
+      }
     }
   } catch (e) {
     res.status(400).json({ message: e.message });
   }
 }
 
-module.exports = { getFreeHouse };
+async function saveOrder(req, res) {
+  const {
+    currentHouse, info, interval, summa,
+  } = req.body;
+  try {
+    const newUser = await User.create({
+      name: info.name,
+      email: info.email,
+      phone: info.phone,
+    });
+
+    await Order.create({
+      user_id: newUser.id,
+      dataIn: interval.dataInUser,
+      dataOut: interval.dataOutUser,
+      comment: info.comment,
+      summa,
+      house_id: currentHouse.id,
+    });
+  } catch (e) {
+    console.log(e.message)
+  }
+}
+
+module.exports = { getFreeHouse, saveOrder };

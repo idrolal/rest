@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { HomesCard } from '../HomesCard/HomesCard';
+import {saveInterval} from '../../redux/actionCreators/orderAC'
 
 function Booking2(props) {
   const dispatch = useDispatch()
@@ -36,20 +37,24 @@ function Booking2(props) {
       dataOutUser: inputMax.current.value,
     }
     dispatch({ type: 'FETCH_GET_FREE_HOUSE', payload: info })
+    dispatch(saveInterval(info))
   }
-  const {orders} = useSelector(state => state.orderReducer)
-
+  const { orders } = useSelector(state => state.orderReducer)
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GET_HOMES' })
+  }, [dispatch, orders]);
 
 
   return (
     <>
       <div>
-        <p>Выберите дату от: <input type="date" onChange={getDateIn} min={nowDate} name="calendar_in" ref={inputMin} /></p>
-        <p>Выберите дату до: <input type="date" onChange={getDateOut} name="calendar_out" ref={inputMax} /></p>
+        <p>Выберите дату от: <input type="date" onChange={getDateIn} min={nowDate} name="calendar_in" ref={inputMin} required /></p>
+        <p>Выберите дату до: <input type="date" onChange={getDateOut} name="calendar_out" ref={inputMax} required/></p>
         <button onClick={searchFreeHouse}>Click</button>
       </div>
-
-      {orders ? orders.map(el=> <HomesCard homes={el} key={el.id}/>): <div>None!</div>}
+      <div>
+        {orders.length ? orders[0].map(el => <HomesCard homes={el} key={el.id}  /> ) : <div>{orders.message}</div>}
+      </div>
     </>
   );
 }

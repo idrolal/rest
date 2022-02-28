@@ -133,7 +133,7 @@ function* postAddReviews(action) {
 
 function* getAllFreeHouse(action) {
   const freeHouse = yield call(fetchData, {
-    url: `${process.env.REACT_APP_URL}${router.order}`,
+    url: `${process.env.REACT_APP_URL}${router.order.get}`,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload),
@@ -154,6 +154,16 @@ function* getInitReservations() {
   yield put(initReservationsAC(reservations))
 }
 
+function* saveOrder(action) {
+  console.log(action.payload)
+    yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.order.save}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  })
+}
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
@@ -164,6 +174,7 @@ export function* globalWatcher() {
   yield takeEvery("FETCH_DELETE_HOME", deleteHome)
   yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
   yield takeEvery("FETCH_PUT_HOMES", putHouseDates);
-  yield takeEvery("FETCH_GET_FREE_HOUSE", getAllFreeHouse)
+  yield takeEvery("FETCH_GET_FREE_HOUSE", getAllFreeHouse);
   yield takeEvery(INIT_RESERVATIONS, getInitReservations);
+  yield takeEvery("SAVE_MY_ORDER", saveOrder)
 }

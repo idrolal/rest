@@ -1,7 +1,11 @@
 export const router = {
   login: '/api/admin/login',
   home: '/api/homes',
-  order: '/api/order/free',
+  order: {
+    get:'/api/order/free',
+    save: '/api/order/save'
+    },
+
   reviews: '/api/reviews',
   admin: {
     addHouseServerPath: '/api/admin/addHouse',
@@ -18,6 +22,7 @@ export const reactRouter = {
     homepage: '/',
     about: '/about',
     booking: '/booking',
+    addedHouse: '/booking/:id',
     house: '/house',
     services: '/services',
     contacts: '/contacts',
