@@ -8,7 +8,8 @@ function AdminAllReservations(props) {
 
   const dispatch = useDispatch()
   const { reservations } = useSelector(state => state.reservationsReducer.reservations)
-  console.log(reservations);
+  // console.log(reservations);
+  // console.log(reservations[0].dataIn);
 
   useEffect(() => {
     dispatch({ type: FIND_RESERVATIONS_FETCH })

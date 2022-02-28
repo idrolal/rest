@@ -5,7 +5,6 @@ import { reactRouter } from '../../../utils/utils.js'
 import { useDispatch, useSelector } from 'react-redux';
 
 function AdminReservationsList({ reserve }) {
-
   return (
     <div>
       <p>Бронирование {reserve.id}</p>
@@ -21,7 +20,7 @@ function AdminReservationsList({ reserve }) {
       <p>{reserve.comment}</p>
       {/* вытащить по id имя дома  */}
       <p>{reserve.house_id}</p>
-      <Link to={reactRouter.admin.editReservations} element={<AdminEditReservations />}>Изменить бронь</Link>
+      <Link to={reactRouter.admin.editReservationForParamas + reserve.id} key={reserve.id}>Изменить бронь</Link>
       <button>Отменить бронь</button>
     </div>
   );

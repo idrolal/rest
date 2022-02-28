@@ -1,6 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-function AdminEditReservations({ reserv }) {
+function AdminEditReservations() {
+  const id = useParams()
+  console.log(id);
+  const { reservations } = useSelector(state => state.reservationsReducer.reservations)
+  console.log(reservations);
+
+  const reserv = reservations.map(el => el.id === +id)
+
+  // console.log(reserv);
+
   return (
     <div>
       <input type="text" defaultValue={reserv.dataIn} />
