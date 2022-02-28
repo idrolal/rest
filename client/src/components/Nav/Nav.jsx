@@ -20,7 +20,8 @@ function Nav(props) {
         <NavLink to={reactRouter.user.house} className={({isActive}) =>`${isActive ? '' : 'nav-tex'}`}>Домики</NavLink>
         <NavLink to={reactRouter.user.services} className={({isActive}) =>`${isActive ? '' : 'nav-tex'}`}>Услуги</NavLink>
         <NavLink to={reactRouter.user.contacts} className={({isActive}) =>`${isActive ? '' : 'nav-tex'}`}>Контакты</NavLink>
-         <NavLink to='/logout' className='nav-text'>Выйти</NavLink>
+        {localStorage.getItem('token') && <NavLink to={reactRouter.admin.logout} className='nav-text'>Выйти</NavLink>}
+         
 
         <div className="header-contacts-logo">
         <img src={phone} alt="" />

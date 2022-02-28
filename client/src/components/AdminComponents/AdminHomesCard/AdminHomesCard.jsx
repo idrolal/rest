@@ -21,8 +21,9 @@ function AdminHomesCard({ home }) {
     <div className='house_card'>
       <div>{home?.description}</div>
       <div>{home?.price}</div>
+
       {/* <div>{home?.chips[0].map(el => <h3>{home}</h3>)}</div> */}
-      <button onClick={() => deleteHome(home?.id)}>Удалить домик</button>
+      <button onClick={deleteHome}>Удалить домик</button>
       <Link to={`${reactRouter.admin.editHouse}${home.id}`} key={home?.id}>Изменить дом</Link>
     </div>
   );

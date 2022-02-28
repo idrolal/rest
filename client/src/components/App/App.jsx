@@ -1,7 +1,7 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 import { store } from '../../redux/store'
 import { reactRouter } from '../../utils/utils.js'
 import AdminPanel from '../AdminComponents//AdminPanel/AdminPanel';
@@ -23,8 +23,8 @@ import Booking2 from '../Booking/Booking2';
 import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 import NotFound from '../NotFound/NotFound';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
-import { useEffect } from 'react';
 import ServicesList from '../ServicesList/ServicesList';
+import AdminEditReservations from '../AdminComponents/AdminEditReservations/AdminEditReservations.jsx'
 
 function App() {
 
@@ -35,7 +35,6 @@ function App() {
       <BrowserRouter>
         <div className="app-container">
           <Nav />
-
           <Routes>
 
             <Route path={reactRouter.user.homepage} element={<Home />} />
@@ -51,6 +50,8 @@ function App() {
             <Route path={reactRouter.admin.login} element={<AdminLogin />} />
             <Route path={reactRouter.user.house} element={<HomesList />} />
             <Route path={reactRouter.user.services} element={<ServicesList />} />
+
+            <Route path={reactRouter.admin.editReservations} element={<AdminEditReservations />} />
 
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
             <Route path={reactRouter.user.notfound} element={<NotFound />} />
