@@ -1,4 +1,4 @@
-import { INIT_HOMES, DELETE_HOME, ADD_HOUSE_FETCH, EDIT_HOUSE } from "../actionType/homesAT";
+import { INIT_HOMES, DELETE_HOME, EDIT_HOUSE, ADD_HOUSE_FETCH, ADD_HOUSE } from "../actionType/homesAT";
 
 export const initHomesAC = (payload) => {
   return {
@@ -14,11 +14,17 @@ export const deleteHomeAC = (payload) => {
   }
 }
 
-export const addHouseAdminAC = (payload) => {
+export const addHouseAdminFetchAC = (payload) => {
   return {
     type: ADD_HOUSE_FETCH,
     payload,
+  }
+}
 
+export const addHouseAdminAC = (payload) => {
+  return {
+    type: ADD_HOUSE,
+    payload,
   }
 }
 

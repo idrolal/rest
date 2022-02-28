@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 async function isAdmin(req, res, next) {
   try {
     const authHeader = req.get('Authorization');
-    const token = authHeader.split(' ')[1];
+    const token = authHeader;
     const { id, email } = jwt.verify(token, process.env.SECRET_KEY);
     req.id = id;
     req.email = email;

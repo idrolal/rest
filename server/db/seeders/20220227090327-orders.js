@@ -3,8 +3,8 @@ module.exports = {
     await queryInterface.bulkInsert('Orders', [
       {
         user_id: 1,
-        dataIn: '2022-02-27 12:00:33.771+03',
-        dataOut: '2022-03-01 12:00:33.771+03',
+        dataIn: '2022-02-27',
+        dataOut: '2022-03-01',
         summa: 5000,
         payded: false,
         comment: 'qwe',
@@ -15,8 +15,8 @@ module.exports = {
 
       {
         user_id: 2,
-        dataIn: '2022-03-01 12:00:33.771+03',
-        dataOut: '2022-03-04 12:00:33.771+03',
+        dataIn: '2022-03-01',
+        dataOut: '2022-03-04',
         summa: 5000,
         payded: false,
         comment: 'qwe',

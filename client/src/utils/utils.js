@@ -1,12 +1,14 @@
 export const router = {
   login: '/api/admin/login',
   home: '/api/homes',
+  order: '/api/order/free',
   reviews: '/api/reviews',
   admin: {
     addHouseServerPath: '/api/admin/addHouse',
     addHouseServerIMGPath: '/api/admin/addHouse/img',
     imgHousePath: '/images/homes/',
-    editHouse: '/api/admin/editHouse'
+    editHouse: '/api/admin/editHouse',
+    allReservations: '/api/admin/reservations/all',
   }
 }
 
@@ -28,7 +30,7 @@ export const reactRouter = {
     allReservations: '/admin/reservations/all',
     addReservation: '/admin/reservations/add',
     editReservations: '/admin/reservations/edit/:id',
-
+    editReservationForParamas: '/admin/reservations/edit/',
     allHouses: '/admin/houses/all',
     addHouse: '/admin/houses/add',
     login: '/admin/login',

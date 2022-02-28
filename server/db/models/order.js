@@ -25,11 +25,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     dataIn: {
       allowNull: false,
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
     },
     dataOut: {
       allowNull: false,
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
     },
     summa: {
       allowNull: false,

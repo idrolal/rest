@@ -1,12 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
-
+import { FIND_RESERVATIONS_FETCH } from '../actionType/reservationAT.js'
 import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
+import { getFreeHouseAC } from '../actionCreators/orderAC'
 
 // Authorization: 'Bearer' + localStorage.getItem('token'),
+import { initReservationsAC } from '../actionCreators/reservationsAC.js'
 import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
-
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
 
 
@@ -47,10 +48,10 @@ function* getInitHomes() {
   //  method put works like dispatch(change my state)
   yield put(initHomesAC(homes))
 }
+
 function* logoutAdmin() {
   yield localStorage.removeItem('token');
   yield put(logoutAdminAC({}))
-
 }
 
 // Достает список отзывов
@@ -71,7 +72,7 @@ function* addHouseAsync(action) {
     method: 'POST',
     headers: {
       'Content-Type': 'Application/json',
-      Authorization: 'Bearer' + localStorage.getItem('token'),
+      Authorization: `${localStorage.getItem('token')}`,
     },
     body: JSON.stringify(action.payload),
   });
@@ -85,7 +86,7 @@ function* putReviwesStatus(action) {
     method: 'PUT',
     headers: {
       'Content-Type': 'Application/json',
-      Authorization: 'Bearer' + localStorage.getItem('token'),
+      Authorization: `${localStorage.getItem('token')}`,
     },
     body: JSON.stringify(action.payload)
   });
@@ -112,7 +113,7 @@ function* deleteHome(action) {
     method: 'DELETE',
     headers: {
       'Content-Type': 'Application/json',
-      Authorization: 'Bearer' + localStorage.getItem('token'),
+      Authorization: `${localStorage.getItem('token')}`,
     },
   });
   yield put(deleteHomeAC(home))
@@ -130,6 +131,30 @@ function* postAddReviews(action) {
   yield put(addReviews(newReview))
 }
 
+function* getAllFreeHouse(action) {
+  const freeHouse = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.order}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  })
+  yield put(getFreeHouseAC(freeHouse))
+}
+
+function* getInitReservations() {
+  const reservations = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.admin.allReservations}`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: `${localStorage.getItem('token')}`,
+    },
+  });
+
+  //  method put works like dispatch(change my state)
+  yield put(initReservationsAC(reservations))
+}
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
@@ -140,4 +165,6 @@ export function* globalWatcher() {
   yield takeEvery("FETCH_DELETE_HOME", deleteHome)
   yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
   yield takeEvery("FETCH_PUT_HOMES", putHouseDates);
+  yield takeEvery("FETCH_GET_FREE_HOUSE", getAllFreeHouse)
+  yield takeEvery(FIND_RESERVATIONS_FETCH, getInitReservations);
 }
