@@ -24,6 +24,7 @@ import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 import NotFound from '../NotFound/NotFound';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
 import FormBooking from '../Booking/Form/FormBooking';
+import AdminEditReservations from '../AdminComponents/AdminEditReservations/AdminEditReservations.jsx'
 
 function App() {
 
@@ -49,6 +50,8 @@ function App() {
             <Route path={reactRouter.admin.login} element={<AdminLogin />} />
             <Route path={reactRouter.user.house} element={<HomesList />} />
             <Route path={reactRouter.user.addedHouse} element={<FormBooking />} />
+
+            <Route path={reactRouter.admin.editReservations} element={<AdminEditReservations />} />
 
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
             <Route path={reactRouter.user.notfound} element={<NotFound />} />

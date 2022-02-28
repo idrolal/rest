@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
-import { INIT_RESERVATIONS } from '../actionType/reservationAT.js'
+import { FIND_RESERVATIONS_FETCH } from '../actionType/reservationAT.js'
 import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
 import { getFreeHouseAC } from '../actionCreators/orderAC'
 
@@ -72,7 +72,7 @@ function* addHouseAsync(action) {
     method: 'POST',
     headers: {
       'Content-Type': 'Application/json',
-      Authorization: 'Bearer' + localStorage.getItem('token'),
+      Authorization: `${localStorage.getItem('token')}`,
     },
     body: JSON.stringify(action.payload),
   });
@@ -86,7 +86,7 @@ function* putReviwesStatus(action) {
     method: 'PUT',
     headers: {
       'Content-Type': 'Application/json',
-      Authorization: 'Bearer' + localStorage.getItem('token'),
+      Authorization: `${localStorage.getItem('token')}`,
     },
     body: JSON.stringify(action.payload)
   });
@@ -113,7 +113,7 @@ function* deleteHome(action) {
     method: 'DELETE',
     headers: {
       'Content-Type': 'Application/json',
-      Authorization: 'Bearer' + localStorage.getItem('token'),
+      Authorization: `${localStorage.getItem('token')}`,
     },
   });
   yield put(deleteHomeAC(home))
@@ -147,9 +147,10 @@ function* getInitReservations() {
     method: 'GET',
     headers: {
       'Content-Type': 'Application/json',
-      Authorization: 'Bearer' + localStorage.getItem('token'),
+      Authorization: `${localStorage.getItem('token')}`,
     },
   });
+
   //  method put works like dispatch(change my state)
   yield put(initReservationsAC(reservations))
 }
@@ -164,6 +165,7 @@ function* saveOrder(action) {
   })
 }
 
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
@@ -175,6 +177,6 @@ export function* globalWatcher() {
   yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
   yield takeEvery("FETCH_PUT_HOMES", putHouseDates);
   yield takeEvery("FETCH_GET_FREE_HOUSE", getAllFreeHouse);
-  yield takeEvery(INIT_RESERVATIONS, getInitReservations);
-  yield takeEvery("SAVE_MY_ORDER", saveOrder)
+  yield takeEvery("SAVE_MY_ORDER", saveOrder);
+  yield takeEvery(FIND_RESERVATIONS_FETCH, getInitReservations);
 }
