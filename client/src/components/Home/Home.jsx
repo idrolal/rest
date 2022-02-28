@@ -8,6 +8,8 @@ import Parallax from './Parallax/Parallax';
 import { MapsApi } from '../MapsApi/MapsApi';
 import './Home.css'
 import PhotoSlider from './PhotoSlider/PhotoSlider';
+import { WeatherApi } from '../WeatherApi/WeatherApi'
+
 
 function Home(props) {
   return (
@@ -23,7 +25,9 @@ function Home(props) {
       <Terms/>
       <Questions/>
       <MapsApi />
+
       </div>
+      <WeatherApi />
     </div>
   );
 }
