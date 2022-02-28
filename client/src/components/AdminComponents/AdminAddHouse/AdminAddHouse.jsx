@@ -22,12 +22,13 @@ function AdminAddHouse(props) {
         data.append('homesImg', img);
       });
       const headers = {
-        'Content-Type': 'multipart/form-data',
+
+        Authorization: 'Bearer' + localStorage.getItem('token'),
       };
       const options = {
         method: 'PUT',
         body: data,
-        // headers,
+        headers,
       };
       fetch(url, options)
         .then(res => res.json())
@@ -45,7 +46,6 @@ function AdminAddHouse(props) {
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
     dispatch(addHouseAdminAC(data))
-
   }
 
   return (
@@ -66,7 +66,7 @@ function AdminAddHouse(props) {
         <div>
           {/* нормальный селект опшион */}
           <select name='chips' style={{ display: 'block' }}>
-            <option value='5hjdjd'>Дополнительные услуги при заезде: </option>
+            <option value='extenstions'>Дополнительные услуги при заезде: </option>
             <option value="С животными">С животными - бесплатно </option>
             <option value="Детская кроватка">Детская кроватка - бесплатно</option>
             <option value="Трансфер">Трансфер - 5000 &#8381;</option>
@@ -87,14 +87,14 @@ function AdminAddHouse(props) {
             {
               imgPaths.pathArr?.length ?
                 imgPaths.pathArr.map(img => {
-                  return <div style={{ height: '100px', backgroundColor: 'grey', width: '200px' }} key={img}>
-                    <img src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img}`} alt="..." />
+                  return <div style={{ height: '100px', width: '200px', backgroundColor: 'grey' }} key={img}>
+                    <img src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img}`} alt="..." style={{ height: '100px', width: '200px', }} />
                   </div>
                 })
                 :
                 <div></div>
             }
-            <input type="file" multiple onChange={sendFiles} />
+            <input type="file" multiple onChange={() => sendFiles} />
           </div>
 
         </div>

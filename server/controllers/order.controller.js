@@ -36,6 +36,9 @@ async function getFreeHouse(req, res) {
           freeHouse.push(House.findAll({
             where: { id: el.house_id },
           }));
+        } else {
+          const free = house.filter((ho) => ho.id !== el.house_id);
+          freeHouse.push(free);
         }
       }
       if (interval[0] === dataOutUser) {
@@ -46,8 +49,7 @@ async function getFreeHouse(req, res) {
 
       return Promise.all(freeHouse);
     }));
-
-
+    console.log(allFreeHouse);
     const arrOfFreeHouse = allFreeHouse.map((el) => el[0][0]);
     const uniqueArrOfFreeHouse = unique(arrOfFreeHouse, 'id');
     const otherHouse = uniqueArrOfFreeHouse.map((ar) => {
@@ -62,7 +64,7 @@ async function getFreeHouse(req, res) {
     });
 
     const freeHouseAndOrder = otherHouse.map((el) => unique(el, 'id'));
-    
+
     if (uniqueArrOfFreeHouse.length) {
       res.json(freeHouseAndOrder);
     } else {

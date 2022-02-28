@@ -1,28 +1,26 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import AdminHomesCard from '../AdminHomesCard/AdminHomesCard.jsx';
 
 function AdminAllHouses() {
   const { homes } = useSelector(state => state.homesReducer)
 
   const dispatch = useDispatch();
 
-  function deleteHome(id) {
-    dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` })
-
-  }
-
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GET_HOMES' })
+  }, [dispatch])
 
   return (
     <>
-      {homes?.length ? homes.map(el => {
-        return <>
-          <div>{el?.description}</div>
-          <div>{el?.price}</div>
-          <div>{el?.chips[0].map(el => <h3>{el}</h3>)}</div>
-          <button onClick={deleteHome(el.id)}></button>
-        </>
-      }) : <div>None!</div>}
-
+      <h1>Homes List</h1>
+      {
+        homes.length ?
+          homes.map(el => <AdminHomesCard key={el.id} home={el} />)
+          :
+          <div>There are not homes</div>
+      }
     </>
   )
 }

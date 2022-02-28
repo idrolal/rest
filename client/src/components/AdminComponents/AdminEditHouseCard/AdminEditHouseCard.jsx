@@ -1,10 +1,15 @@
 import React from 'react';
 import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-export const AdminEditHouseCard = ({homes}) => {
-  
+export const AdminEditHouseCard = () => {
+
   const dispatch = useDispatch()
+
+  const { id } = useParams();
+  const { homes } = useSelector(state => state.homesReducer)
+  const curHome = homes.find(home => home.id === +id)
 
   const nameRef = useRef()
   const descriptionRef = useRef()
@@ -13,29 +18,29 @@ export const AdminEditHouseCard = ({homes}) => {
   const handlerUpdate = (e) => {
     e.preventDefault()
     const updateHouse = {
-      id: `${homes.id}`,
+      id: `${id}`,
       name: nameRef.current.value,
       description: descriptionRef.current.value,
-      price: priceRef.current.value, 
+      price: priceRef.current.value,
     }
     // console.log(updateHouse)
 
-    dispatch({type: "FETCH_PUT_HOMES", payload: updateHouse})
+    dispatch({ type: "FETCH_PUT_HOMES", payload: updateHouse })
     // console.log(descriptionRef.current.value)
   }
 
   return (
-<form onSubmit={handlerUpdate}>
-    <div>
-    <input defaultValue={homes.name} ref={nameRef}/>
-      <br/>
-    <input defaultValue={homes.description} ref={descriptionRef}/>
-      <br/>
-    <input defaultValue={homes.price} ref={priceRef}/>
-      <br/>
-    </div>
-    <button>Update</button>
-    </form> 
+    <form onSubmit={handlerUpdate}>
+      <div>
+        <input defaultValue={curHome.name} ref={nameRef} />
+        <br />
+        <input defaultValue={curHome.description} ref={descriptionRef} />
+        <br />
+        <input defaultValue={curHome.price} ref={priceRef} />
+        <br />
+      </div>
+      <button>Update</button>
+    </form>
   );
 };
 
