@@ -10,15 +10,16 @@ export function AdminEditHouse(props) {
   // console.log(homes)
 
   useEffect(() => {
-    dispatch({type: "FETCH_GET_HOMES"})
+    dispatch({ type: "FETCH_GET_HOMES" })
   }, [dispatch])
 
   return (
     <div>
-  {homes?.length ? homes.map(home => {
-    return <AdminEditHouseCard key={home.id} homes={home} />
-  }) : <div>None!</div>
-}
+      {homes?.length ? homes.map(home => {
+        return <AdminEditHouseCard key={home.id} homes={home} />
+
+      }) : <div>None!</div>
+      }
     </div>
   );
 }

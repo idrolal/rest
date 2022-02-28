@@ -67,14 +67,13 @@ function* getInitReviews() {
 function* addHouseAsync(action) {
   console.log(action.payload);
   const house = yield call(fetchData, {
-    url: process.env.REACT_APP_URL + router.admin.addHouseServerPath,
+    url: `${process.env.REACT_APP_URL}${router.admin.addHouseServerPath}`,
     method: 'POST',
     headers: {
       'Content-Type': 'Application/json',
       Authorization: 'Bearer' + localStorage.getItem('token'),
     },
     body: JSON.stringify(action.payload),
-
   });
   //  method put works like dispatch(change my state)
   yield put(addHouseAdminAC(house))
@@ -116,21 +115,20 @@ function* deleteHome(action) {
       Authorization: 'Bearer' + localStorage.getItem('token'),
     },
   });
-
   yield put(deleteHomeAC(home))
 }
 
 // Dobavlyaet novii otziv 
-  function* postAddReviews(action) {
-    const newReview = yield call(fetchData, {
+function* postAddReviews(action) {
+  const newReview = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.reviews}`,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload),
-    });
-    //  method put works like dispatch(change my state)
-    yield put(addReviews(newReview))
-    }
+  });
+  //  method put works like dispatch(change my state)
+  yield put(addReviews(newReview))
+}
 
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);

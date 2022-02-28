@@ -5,12 +5,15 @@ import "react-calendar/dist/Calendar.css"
 
 function CalendarBook(minDate) {
   const [calenadarValue, onChangeCalendar] = useState(new Date())
+  // formatLongDate(calenadarValue)
+  // console.log(minDate);
 
-  console.log(minDate);
 
+  console.log(calenadarValue.value);
   return (
     <div className='calendar'>
-      <Calendar onChange={onChangeCalendar} value={calenadarValue} />
+      {/* <Calendar onClick={console.log(123)} value={calenadarValue} /> */}
+      <input type='date'>VREMYA</input>
     </div>
   );
 }
