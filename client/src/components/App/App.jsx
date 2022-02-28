@@ -22,7 +22,6 @@ import Home from '../Home/Home';
 import Booking2 from '../Booking/Booking2';
 import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 import NotFound from '../NotFound/NotFound';
-import { MapsApi } from '../MapsApi/MapsApi';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
 
 function App() {
@@ -53,7 +52,6 @@ function App() {
             <Route path={reactRouter.user.notfound} element={<NotFound />} />
 
           </Routes>
-          <MapsApi />
         </div>
       </BrowserRouter>
 
