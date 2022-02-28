@@ -2,26 +2,22 @@ const serviceAdmin = require('../services/admin');
 const { House } = require('../db/models');
 const { Word } = require('../db/models');
 const { ImageHouse } = require('../db/models');
+const { Order } = require('../db/models');
 
 async function saveImgController(req, res) {
   const { files } = req;
-  console.log(files);
   const imgPathes = files.map((file) => file.filename);
   res.json({ message: 'картинки успешно загружены', pathArr: imgPathes });
-  // console.log(imgPathes);
 }
 
 async function addHouseController(req, res) {
+  const {
+    name, description, price, img,
+  } = req.body;
   try {
-    const {
-      name, description, price, img,
-    } = req.body;
-    console.log(req.body);
-
     const newHouse = await House.create({
       name, description, price,
     });
-    console.log(newHouse.id);
 
     const imgHouse = [];
     const saveImgs = img.forEach(async (pic) => {
@@ -29,15 +25,13 @@ async function addHouseController(req, res) {
         name: pic,
         house_id: newHouse.id,
       });
-      console.log(eachPic.name);
-      imgHouse.push(eachPic.name);
+      return imgHouse.push(eachPic.name);
     });
 
     const houseInfo = { ...newHouse, img: imgHouse };
-
-    res.status(201).json({ isCreated: true, message: 'Новый дом успешно создался', houseInfo });
+    return res.status(201).json({ isCreated: true, message: 'Новый дом успешно создался', houseInfo });
   } catch (error) {
-    res.json({ isCreated: false, message: `Произошла непредвиденная ошибка: ${error.message}` });
+    return res.json({ isCreated: false, message: `Произошла непредвиденная ошибка: ${error.message}` });
   }
 }
 
@@ -66,7 +60,6 @@ async function adminLogin(req, res) {
 
 async function editHouseController(req, res) {
   const { name, description, price } = req.body;
-  // console.log(name, description)
   let newHouses;
   try {
     newHouses = await House.update({
@@ -79,8 +72,9 @@ async function editHouseController(req, res) {
       },
     });
     if (newHouses) {
-      res.json(newHouses);
+      return res.json({ message: 'успешное обновление дома', newHouses });
     }
+    return res.json({ message: 'что-то пошло не так' });
   } catch (error) {
     return ({
       message: error.message,
@@ -88,6 +82,11 @@ async function editHouseController(req, res) {
   }
 }
 
+async function getAllReservations(req, res) {
+  const allReservations = await Order.findAll();
+  res.json({ reservations: allReservations });
+}
+
 module.exports = {
-  saveImgController, addHouseController, adminLogin, editHouseController,
+  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations,
 };

@@ -7,7 +7,8 @@ export const router = {
     addHouseServerPath: '/api/admin/addHouse',
     addHouseServerIMGPath: '/api/admin/addHouse/img',
     imgHousePath: '/images/homes/',
-    editHouse: '/api/admin/editHouse'
+    editHouse: '/api/admin/editHouse',
+    allReservations: '/api/admin/reservations/all',
   }
 }
 
