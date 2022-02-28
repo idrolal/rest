@@ -1,4 +1,5 @@
 const { House } = require('../db/models');
+const { ImageHouse } = require('../db/models');
 
 async function getAllHouses(req, res) {
   try {
@@ -13,6 +14,8 @@ async function getAllHouses(req, res) {
 
 function deleteHomes(req, res) {
   const { id } = req.params;
+  ImageHouse.destroy({ where: { house_id: id } });
+
   House.destroy({ where: { id } })
     .then((data) => (data ? res.json(id) : res.status(404).json(data)))
     .catch((error) => res.status(500).json(error));

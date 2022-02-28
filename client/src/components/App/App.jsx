@@ -33,7 +33,7 @@ function App() {
       <BrowserRouter>
         <div className="app-container">
           <Nav />
-           <Routes>
+          <Routes>
 
             <Route path={reactRouter.user.homepage} element={<Home />} />
             {/* <Route path={reactRouter.user.booking} element={<Booking />} /> */}
