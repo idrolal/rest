@@ -1,8 +1,9 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { router } from '../../../utils/utils.js'
-import { addHouseAdminAC } from '../../../redux/actionCreators/homesAC.js'
+import { addHouseAdminFetchAC } from '../../../redux/actionCreators/homesAC.js'
 import { useNavigate } from 'react-router-dom';
+// import { ADD_HOUSE_FETCH } from '../../../redux/actionType/homesAT.js';
 
 function AdminAddHouse(props) {
   const navigate = useNavigate()
@@ -25,7 +26,7 @@ function AdminAddHouse(props) {
       });
 
       const headers = {
-        Authorization: 'Bearer' + localStorage.getItem('token'),
+        Authorization: `${localStorage.getItem('token')}`,
       };
 
       const options = {
@@ -47,16 +48,14 @@ function AdminAddHouse(props) {
 
   const formAddHouse = useRef()
 
-  // useEffect (() => {
   const createHouse = (e) => {
     e.preventDefault()
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
-    dispatch(addHouseAdminAC(data))
-    navigate('/admin/houses/all')
+    dispatch(addHouseAdminFetchAC(data))
+
+    // navigate('/admin/houses/all')
   }
-  // бесконечный фетч решить
-  // })
 
 
 
@@ -112,6 +111,7 @@ function AdminAddHouse(props) {
         </div>
 
         <button>Добавить дом</button>
+        <div></div>
       </form>
     </div>
   );

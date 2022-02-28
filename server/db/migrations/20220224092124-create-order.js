@@ -17,11 +17,11 @@ module.exports = {
       },
       dataIn: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
       },
       dataOut: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
       },
       summa: {
         allowNull: false,
