@@ -5,6 +5,8 @@ import Terms from './Terms/Terms';
 import PhotoCollage from './PhotoCollage/PhotoCollage';
 import Questions from './Questions/Questions';
 import { MapsApi } from '../MapsApi/MapsApi';
+import { WeatherApi } from '../WeatherApi/WeatherApi'
+
 
 function Home(props) {
   return (
@@ -16,6 +18,7 @@ function Home(props) {
       <Terms/>
       <Questions/>
       <MapsApi />
+      <WeatherApi />
     </div>
   );
 }
