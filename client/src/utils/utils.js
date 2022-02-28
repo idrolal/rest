@@ -30,7 +30,7 @@ export const reactRouter = {
     allReservations: '/admin/reservations/all',
     addReservation: '/admin/reservations/add',
     editReservations: '/admin/reservations/edit/:id',
-
+    editReservationForParamas: '/admin/reservations/edit/',
     allHouses: '/admin/houses/all',
     addHouse: '/admin/houses/add',
     login: '/admin/login',
