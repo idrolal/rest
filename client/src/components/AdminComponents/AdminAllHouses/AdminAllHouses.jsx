@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AdminHomesCard from '../AdminHomesCard/AdminHomesCard.jsx';
 
 function AdminAllHouses() {
-  const { homes } = useSelector(state => state.homesReducer)
+  const { homes } = useSelector(state => state.homesReducer.homes)
   console.log(homes);
 
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function AdminAllHouses() {
     <>
       <h1>Homes List</h1>
       {
-        homes.length ?
+        homes?.length ?
           homes.map(el => <AdminHomesCard key={el.name} home={el} />)
           :
           <div>There are not homes</div>
