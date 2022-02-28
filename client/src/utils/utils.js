@@ -1,6 +1,7 @@
 export const router = {
   login: '/api/admin/login',
   home: '/api/homes',
+  order: '/api/order/free',
   reviews: '/api/reviews',
   admin: {
     addHouseServerPath: '/api/admin/addHouse',

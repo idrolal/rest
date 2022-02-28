@@ -3,6 +3,7 @@ import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
 
 import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
+import { getFreeHouseAC } from '../actionCreators/orderAC'
 
 // Authorization: 'Bearer' + localStorage.getItem('token'),
 import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
@@ -121,16 +122,26 @@ function* deleteHome(action) {
 }
 
 // Dobavlyaet novii otziv 
-  function* postAddReviews(action) {
-    const newReview = yield call(fetchData, {
+function* postAddReviews(action) {
+  const newReview = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.reviews}`,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload),
-    });
-    //  method put works like dispatch(change my state)
-    yield put(addReviews(newReview))
-    }
+  });
+  //  method put works like dispatch(change my state)
+  yield put(addReviews(newReview))
+}
+
+function* getAllFreeHouse(action) {
+  const freeHouse = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.order}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  })
+  yield put(getFreeHouseAC(freeHouse))
+}
 
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
@@ -142,4 +153,5 @@ export function* globalWatcher() {
   yield takeEvery("FETCH_DELETE_HOME", deleteHome)
   yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
   yield takeEvery("FETCH_PUT_HOMES", putHouseDates);
+  yield takeEvery("FETCH_GET_FREE_HOUSE", getAllFreeHouse)
 }

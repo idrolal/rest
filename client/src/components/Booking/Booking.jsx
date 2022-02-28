@@ -44,8 +44,9 @@ console.log(newService);
 <h1>Параметры бронирования</h1>
    {/* <p>Выберите дату от: <input type="date" name="calendar"/></p>
    <p>Выберите дату от: <input type="date" name="calendar"/></p> */}
+   
+   {/* <CalendarBook/> */}
 
-   <CalendarBook/>
    
 </div>}
 
