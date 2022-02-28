@@ -6,10 +6,8 @@ const { Order } = require('../db/models');
 
 async function saveImgController(req, res) {
   const { files } = req;
-  console.log(files);
   const imgPathes = files.map((file) => file.filename);
   res.json({ message: 'картинки успешно загружены', pathArr: imgPathes });
-  // console.log(imgPathes);
 }
 
 async function addHouseController(req, res) {
@@ -62,7 +60,6 @@ async function adminLogin(req, res) {
 
 async function editHouseController(req, res) {
   const { name, description, price } = req.body;
-  // console.log(name, description)
   let newHouses;
   try {
     newHouses = await House.update({

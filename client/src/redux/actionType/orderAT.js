@@ -1,0 +1,1 @@
+export const GET_FREE_HOUSE = 'GET_FREE_HOUSE'
