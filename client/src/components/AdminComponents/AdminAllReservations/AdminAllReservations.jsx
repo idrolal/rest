@@ -6,6 +6,7 @@ function AdminAllReservations(props) {
 
   const dispatch = useDispatch()
   // const { reservations } = useSelector(state => state.reservationsReducer)
+  // console.log(reservations)
 
   return (
     <div>
