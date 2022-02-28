@@ -4,7 +4,6 @@ import { router } from '../../../utils/utils.js'
 import { addHouseAdminAC } from '../../../redux/actionCreators/homesAC.js'
 import { useNavigate } from 'react-router-dom';
 import { ADD_HOUSE_FETCH } from '../../../redux/actionType/homesAT.js';
-import { useMemo } from 'react';
 
 function AdminAddHouse(props) {
   const navigate = useNavigate()
@@ -55,14 +54,14 @@ function AdminAddHouse(props) {
     e.preventDefault()
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
-    return data
+    // return data
     // dispatch(addHouseAdminAC(data))
     // navigate('/admin/houses/all')
   }
 
-  useEffect(() => {
-    dispatch({ type: ADD_HOUSE_FETCH, payload: data })
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch({ type: ADD_HOUSE_FETCH, payload: data })
+  // }, [dispatch])
 
 
 
