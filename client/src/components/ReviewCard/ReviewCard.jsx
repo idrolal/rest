@@ -5,14 +5,14 @@ import React from 'react';
 // TODO VITYA ВЫВОДИТЬ ТОЛЬКО ОТЗЫВЫ ПОДТВЕРЖДЕННЫЕ АДМИНОМ
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import './ReviewCard.css'
 import { confirmReviewsAC } from '../../redux/actionCreators/reviewsAC'
 
 function ReviewCard({review}) {
   
   const dispatch = useDispatch()
-
   const descriptionRef = useRef()
-
+  
   const handlerUpdate = (e) => {
     e.preventDefault()
     dispatch({type: "FETCH_PUT_REVIEW", payload: {id: `${review.id}`, info: descriptionRef.current.value}})
@@ -22,7 +22,10 @@ function ReviewCard({review}) {
 
   return (
     <>
-    <div>
+   {review.status === false ? 
+   <div></div>
+   :
+    <div className='reviewcard-container'>
       {review.nameUser}
       <br/>
       {review.description}
@@ -30,8 +33,9 @@ function ReviewCard({review}) {
       {review.rating}
       <br/>
     </div>
+    }
 
-<form onSubmit={handlerUpdate}>
+{/* <form onSubmit={handlerUpdate}>
     <div>
       {review.nameUser}
       <br/>
@@ -41,7 +45,7 @@ function ReviewCard({review}) {
       <br/>
     </div>
     <button>Click</button>
-    </form> 
+    </form>  */}
 
         </>
   );

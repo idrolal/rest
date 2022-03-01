@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import Typical from "react-typical";
+// import Typical from "react-typical";
+import Carousel from 'react-elastic-carousel';
+import Item from './Item';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import Form from './Form/Form';
 import './ReviewsList.css';
+
+const breakPoints = [
+  {width: 1, itemsToShow: 1},
+  {width: 550, itemsToShow: 2},
+  {width: 768, itemsToShow: 3},
+  {width: 1200, itemsToShow: 4},
+]
 
 function ReviewsList(props) {
   const [open, setOpen] = useState(false);
@@ -24,7 +33,15 @@ function ReviewsList(props) {
 
       <h1>Отзывы</h1>
     <div>
-    {reviews.length ? reviews.map(review => <ReviewCard key={review.id} review={review}/>) : <p>Пусто</p>}
+      <Carousel   breakPoints={breakPoints}>
+ 
+    {reviews.length ? reviews.map(review => 
+    <Item><ReviewCard key={review.id} review={review}/></Item>) 
+    : 
+    <p>Пусто</p>
+    }
+  
+    </Carousel>
     </div>
     </>
   );
