@@ -85,7 +85,7 @@ async function editHouseController(req, res) {
 
 async function getAllReservations(req, res) {
   const allReservations = await Order.findAll();
-  res.json({ reservations: allReservations });
+  res.json(allReservations);
 }
 
 async function deleteReservationController(req, res) {
