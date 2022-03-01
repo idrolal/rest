@@ -14,5 +14,6 @@ router.post('/login', adminController.adminLogin);
 router.put('/editHouse/:id', isAdmin, adminController.editHouseController);
 
 router.get('/reservations/all', isAdmin, adminController.getAllReservations);
+router.delete('/reservations/all/:id', isAdmin, adminController.deleteReservationController);
 
 module.exports = router;
