@@ -1,5 +1,5 @@
 import {GET_FREE_HOUSE, SAVE_INTERVAL, DELETE_INTERVAL} from '../actionType/orderAT'
-const initialState = { orders: [], interval: [] };
+const initialState = { orders: [], interval: [], startDate: '', endDate: '' };
 
 export function orderReducer(state = initialState, action) {
   switch (action.type) {

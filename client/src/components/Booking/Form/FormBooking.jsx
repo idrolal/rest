@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { deleteInterval } from '../../../redux/actionCreators/orderAC'
+import { deleteInterval } from '../../../redux/actionCreators/orderAC';
+import { reactRouter } from '../../../utils/utils';
 
 function FormBooking() {
 
@@ -17,7 +18,7 @@ function FormBooking() {
   const { id } = useParams();
   const { orders, interval } = useSelector(state => state.orderReducer);
   const allDay = foo(interval.dataOutUser, interval?.dataInUser);
-  const currentHouse = orders[0].find(el => el.id === +id);
+  const currentHouse = orders.find(el => el.id === +id);
   const summa = `${allDay * currentHouse.price}`
   const createOrderForm = useRef();
   const dispatch = useDispatch();
@@ -32,7 +33,8 @@ function FormBooking() {
     event.preventDefault();
     const info = Object.fromEntries(new FormData(createOrderForm.current))
     dispatch({ type: "SAVE_MY_ORDER", payload: { info, interval, currentHouse, summa } })
-    console.log(info)
+    //Добавить тосты
+    navigate(reactRouter.user.homepage)
   }
   return (
     <div>
@@ -44,10 +46,15 @@ function FormBooking() {
       </div>
 
       <form ref={createOrderForm} onSubmit={createOrder}>
-        <input type='text' placeholder='Имя' name='name' required/>
-        <input type='email' placeholder='Email' name='email'required />
-        <input type='text' placeholder='+7(123)-456-78-90' name='phone' required />
-        <input type='text' placeholder='Ваш комментарий' name='comment'/>
+        <input type='text' placeholder='Имя' name='name' required />
+        <input type='email' placeholder='Email' name='email' required />
+     
+        <input type='text' placeholder='8(123)-456-78-90' name='phone' id='phone' minLength='11' required  onKeyPress={(event)=>{
+          if(!/[0-9]/.test(event.key)){
+            event.preventDefault()
+          }
+        }} />
+        <input type='text' placeholder='Ваш комментарий' name='comment' />
         <button>Забронировать</button>
       </form>
       <button onClick={goBack}>Назад</button>

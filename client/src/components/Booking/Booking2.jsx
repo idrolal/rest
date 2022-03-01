@@ -53,7 +53,7 @@ function Booking2(props) {
         <button onClick={searchFreeHouse}>Click</button>
       </div>
       <div>
-        {orders.length ? orders[0].map(el => <HomesCard homes={el} key={el.id}  /> ) : <div>{orders.message}</div>}
+        {orders.length ? orders.map(el => <HomesCard homes={el} key={el.id}  /> ) : <div>{orders.message}</div>}
       </div>
     </>
   );

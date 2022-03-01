@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState, useEffect}from "react";
 import "./PhotoCollage.css";
 import aaa from '../../../img/aaa.webp';
+
 
 function PhotoCollage(props) {
   return (

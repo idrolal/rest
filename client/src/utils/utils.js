@@ -7,6 +7,7 @@ export const router = {
     },
 
   reviews: '/api/reviews',
+  services: '/api/services',
   admin: {
     addHouseServerPath: '/api/admin/addHouse',
     addHouseServerIMGPath: '/api/admin/addHouse/img',

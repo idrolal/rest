@@ -1,14 +1,5 @@
+const { Op } = require('sequelize');
 const { Order, House, User } = require('../db/models');
-
-function foo(max, min) {
-  const maxDay = Date.parse(max);
-  const minDay = Date.parse(min);
-  const interval = [];
-  for (let i = minDay; i <= maxDay; i += 60 * 60 * 24 * 1000) {
-    interval.push(new Date(i).toISOString().substring(0, 10));
-  }
-  return interval;
-}
 
 function unique(arr, prop) {
   const seen = {};
@@ -22,60 +13,40 @@ function unique(arr, prop) {
   return result;
 }
 
-async function getFreeHouse(req, res) {
+async function getHouse(req, res) {
   const { dataInUser, dataOutUser } = req.body;
-  const house = await House.findAll();
+  const avalibleHouses = [];
+  const unavelebleHouses = [];
+  const houses = await House.findAll();
 
-  try {
-    const order = await Order.findAll();
-    const allFreeHouse = await Promise.all(order.map((el) => {
-      const interval = foo(el.dataOut, el.dataIn);
-      const freeHouse = [];
-      if (!interval.includes(dataInUser) && !interval.includes(dataOutUser) || interval[interval.length - 1] === dataInUser) {
-        if (Date.parse(interval[0]) < Date.parse(dataOutUser)) {
-          freeHouse.push(House.findAll({
-            where: { id: el.house_id },
-          }));
-        }
-      }
-      if (interval[0] === dataOutUser) {
-        freeHouse.push(House.findAll({
-          where: { id: el.house_id },
-        }));
-      }
+  const occupieHouse = await Order.findAll({
+    where: {
+      [Op.or]: [
+        {
+          dataIn: { [Op.lte]: dataInUser },
+          dataOut: { [Op.gte]: dataOutUser },
+        },
+        {
+          dataIn: { [Op.gte]: dataInUser },
+          dataOut: { [Op.lte]: dataOutUser },
+        },
+      ],
+    },
 
-      return Promise.all(freeHouse);
-    }));
+    raw: true,
+    include: [{
+      model: House,
+    }],
+  });
+  const filterOrder = unique(occupieHouse, 'house_id');
+  unavelebleHouses.push(...filterOrder);
 
-    console.log(allFreeHouse);
-
-    if (allFreeHouse.map((el) => el.length < 1)) {
-      res.json({ message: 'Свободных домиков нет:(' });
-    } else {
-      const arrOfFreeHouse = allFreeHouse.map((el) => el[0][0]);
-      const uniqueArrOfFreeHouse = unique(arrOfFreeHouse, 'id');
-      const otherHouse = uniqueArrOfFreeHouse.map((ar) => {
-        const all = [];
-        house.map((home) => {
-          if (home.id !== ar.house_id) {
-            all.push(home, ar);
-          }
-          return all;
-        });
-        return all;
-      });
-
-      const freeHouseAndOrder = otherHouse.map((el) => unique(el, 'id'));
-
-      if (uniqueArrOfFreeHouse.length) {
-        res.json(freeHouseAndOrder);
-      } else {
-        res.json(house);
-      }
+  houses.forEach((home) => {
+    if (!unavelebleHouses.find((el) => el.house_id === home.id)) {
+      avalibleHouses.push(home);
     }
-  } catch (e) {
-    res.status(400).json({ message: e.message });
-  }
+  });
+  res.json(avalibleHouses);
 }
 
 async function saveOrder(req, res) {
@@ -83,6 +54,37 @@ async function saveOrder(req, res) {
     currentHouse, info, interval, summa,
   } = req.body;
   try {
+    const user = await User.findOne({
+      where: { email: info.email },
+    });
+
+    if (user) {
+      const order = await Order.findOne({
+        where: {
+          user_id: user.id,
+          dataIn: interval.dataInUser,
+          dataOut: interval.dataOutUser,
+          house_id: currentHouse.id,
+        },
+      });
+
+      if (order) {
+        return res.status(400).json({ message: 'Дом забронирован' });
+      }
+
+      if (!order) {
+        await Order.create({
+          user_id: user.id,
+          dataIn: interval.dataInUser,
+          dataOut: interval.dataOutUser,
+          comment: info.comment,
+          summa,
+          house_id: currentHouse.id,
+        });
+        return res.status(200).json({ message: 'Бронирование успешно создано!' });
+      }
+    }
+
     const newUser = await User.create({
       name: info.name,
       email: info.email,
@@ -97,9 +99,10 @@ async function saveOrder(req, res) {
       summa,
       house_id: currentHouse.id,
     });
+    res.status(200).json({ message: 'Бронирование успешно создано!' });
   } catch (e) {
-    console.log(e.message);
+    res.status(400).json({ message: e.message });
   }
 }
 
-module.exports = { getFreeHouse, saveOrder };
+module.exports = { saveOrder, getHouse };

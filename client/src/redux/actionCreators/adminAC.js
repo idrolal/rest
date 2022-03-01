@@ -1,4 +1,4 @@
-import { LOGIN_ADMIN, LOGOUT } from '../actionType/adminAT'
+import { LOGIN_ADMIN, LOGOUT , ERROR_LOGIN} from '../actionType/adminAT'
 
 
 export const loginAdminAC = (payload) => {
@@ -14,4 +14,12 @@ export const logoutAdminAC = (payload) => {
     payload,
   }
 }
+
+export const errorLoginAdminAC = (payload) => {
+  return {
+    type: ERROR_LOGIN,
+    payload,
+  }
+}
+
 

@@ -14,10 +14,10 @@ function AdminHomesCard({ home }) {
     dispatch({ type: 'FETCH_GET_HOMES' })
   }, [dispatch]);
 
-  function deleteHome() {
-    const { id } = home
-    dispatch({ type: "FETCH_DELETE_HOME", payload: id })
+  function deleteHome(id) {
+   dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` })
   }
+
   return (
     <div className='house_card'>
       <div>{home?.description}</div>

@@ -10,7 +10,7 @@ import AdminCreateReservation from '../AdminComponents//AdminCreateReservation/A
 import AdminAllReservations from '../AdminComponents//AdminAllReservations/AdminAllReservations.jsx';
 import AdminAllHouses from '../AdminComponents//AdminAllHouses/AdminAllHouses.jsx';
 import Nav from '../Nav/Nav';
-import './App.css'
+// import './App.css'
 
 import AdminLogin from '../AdminComponents/AdminLogin/AdminLogin';
 import { HomesList } from '../HomesList/HomesList';
@@ -24,7 +24,9 @@ import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 import NotFound from '../NotFound/NotFound';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
 import FormBooking from '../Booking/Form/FormBooking';
+import ServicesList from '../ServicesList/ServicesList';
 import AdminEditReservations from '../AdminComponents/AdminEditReservations/AdminEditReservations.jsx'
+import Booking3 from '../Booking/Booking3';
 
 function App() {
 
@@ -33,8 +35,8 @@ function App() {
 
     <Provider store={store}>
       <BrowserRouter>
-        <div className="app-container">
           <Nav />
+        {/* <div className="app-container"> */}
           <Routes>
 
             <Route path={reactRouter.user.homepage} element={<Home />} />
@@ -50,14 +52,13 @@ function App() {
             <Route path={reactRouter.admin.login} element={<AdminLogin />} />
             <Route path={reactRouter.user.house} element={<HomesList />} />
             <Route path={reactRouter.user.addedHouse} element={<FormBooking />} />
-
+            <Route path={reactRouter.user.services} element={<ServicesList />} />
             <Route path={reactRouter.admin.editReservations} element={<AdminEditReservations />} />
-
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
             <Route path={reactRouter.user.notfound} element={<NotFound />} />
 
           </Routes>
-        </div>
+        {/* </div> */}
       </BrowserRouter>
 
     </Provider>

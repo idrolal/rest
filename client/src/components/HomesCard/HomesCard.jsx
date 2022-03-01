@@ -15,7 +15,7 @@ export const HomesCard = ({ homes }) => {
 
   return (
     <div className='homesCard_box'>
-
+      <div>{homes?.name}</div>
       <div>{homes?.description}</div>
       <div>{homes?.price}</div>
       <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`}>Click</Link>
