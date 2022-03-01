@@ -7,15 +7,23 @@ import { router } from '../../../utils/utils.js';
 
 function AdminHomesCard({ home }) {
   const dispatch = useDispatch();
-  const { imagesHomes } = useSelector(state => state.homesReducer.homes)
+
+  const { imagesHomes, homes } = useSelector(state => state.homesReducer.homes)
   const curImg = imagesHomes.filter(img => img.house_id === home.id)
 
+<<<<<<< HEAD
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
   }, []);
+=======
+  // useEffect(() => {
+  //   dispatch({ type: 'FETCH_GET_HOMES' })
+  // }, [dispatch, home]);
+>>>>>>> e229fd7e59bb4110e308e9438ea3774646e88d5a
 
   function deleteHome(id) {
-   dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` })
+    dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` });
+    dispatch({ type: 'FETCH_GET_HOMES' })
   }
 
   return (
@@ -37,7 +45,7 @@ function AdminHomesCard({ home }) {
           :
           <div>None</div>
       }
-      <button onClick={deleteHome}>Удалить домик</button>
+      <button onClick={() => deleteHome(home.id)}>Удалить домик</button>
       <Link to={`${reactRouter.admin.editHouse}${home.id}`} key={home?.id}>Изменить дом</Link>
     </div>
   );

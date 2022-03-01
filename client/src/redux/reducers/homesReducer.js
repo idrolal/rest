@@ -9,13 +9,14 @@ export const homesReducer = (state = initialState, action) => {
       return { ...state, homes: action.payload }
 
     case DELETE_HOME:
-      return { ...state, homes: state.homes.filter(el => el.id !== action.payload) }
+      // return { ...state, homes: state.homes.filter(el => el.id !== action.payload) }
+      return { ...state, homes: { ...state.homes, homes: state.homes.homes.filter(el => el.id !== action.payload) } }
 
     case ADD_HOUSE:
       return {
         ...state, homes: [...state.homes, action.payload]
       }
-    
+
     case EDIT_HOUSE:
       return {
         ...state, homes: state.homes.map(el => {
@@ -29,7 +30,7 @@ export const homesReducer = (state = initialState, action) => {
           } else {
             return el
           }
-        }) 
+        })
       }
 
     default:
