@@ -1,14 +1,12 @@
-import React from 'react';
+import { Parallax } from 'react-parallax';
+import fon from '../../img/fon.jpeg';
+import './ImageMain.css';
 import Typical from "react-typical";
-import fon from "../../../img/fon.jpeg";
-import './Parallax.css'
 
-function Parallax(props) {
-  return (
-    <>
-          <div class="parallax-container">
-      <div class="parallax"><img src={fon} alt=''/></div>
-      <div class="parallax-text">
+const ImageMain = () => (
+    <Parallax className='image-imageMain' bgImage={fon}  strength={200}>
+        <div className="image-content">
+        <div class="parallax-text">
       <p>Подарите <br></br>незабываемые выходные в загородном доме</p>
       <div class="parallax-text-2">
                 <Typical
@@ -24,17 +22,9 @@ function Parallax(props) {
                 />
                 </div>
                 <button className='bnt-buy'>  <a href="/boking"><span>БРОНИРОВАТЬ</span></a></button>
-
-
-
-
-
-
-                
                 </div>
-    </div>
-    </>
-  );
-}
+        </div>
+    </Parallax>
+);
 
-export default Parallax;
+export default ImageMain;
