@@ -10,7 +10,7 @@ function AdminAllHouses() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
-  }, [dispatch])
+  }, [dispatch, homes])
 
   return (
     <>

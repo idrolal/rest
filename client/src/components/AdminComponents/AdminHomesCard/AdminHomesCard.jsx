@@ -8,7 +8,7 @@ import { router } from '../../../utils/utils.js';
 function AdminHomesCard({ home }) {
   const dispatch = useDispatch();
 
-  // const { homes } = useSelector(state => state.homesReducer)
+  const { homes } = useSelector(state => state.homesReducer)
 
   // useEffect(() => {
   //   dispatch({ type: 'FETCH_GET_HOMES' })
@@ -21,6 +21,7 @@ function AdminHomesCard({ home }) {
 
   return (
     <div className='house_card'>
+      <div>{home?.name}</div>
       <div>{home?.description}</div>
       <div>{home?.price}</div>
 

@@ -6,7 +6,7 @@ export const HomesCard = ({ homes }) => {
 
   return (
     <div className='homesCard_box'>
-
+      <div>{homes?.name}</div>
       <div>{homes?.description}</div>
       <div>{homes?.price}</div>
       {/* <div>{homes?.chips[0].map(el=> <h3>{el}</h3>)}</div> */}
