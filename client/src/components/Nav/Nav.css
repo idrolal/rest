@@ -66,9 +66,9 @@
   text-decoration: none;
 }
 .nav-text:hover {
-  font-size: 17px;
-  transform: scale(1.07);
-  transition: 0.4s ease-out;
+  /* font-size: 17px; */
+  /* transform: scale(1.07);
+  transition: 0.4s ease-out; */
   color: rgba(86, 181, 184);
 }
 .nav-text-booking {
@@ -77,9 +77,9 @@
   text-decoration: none;
 }
 .nav-text-booking:hover {
-  font-size: 17px;
-  transform: scale(1.07);
-  transition: 0.4s ease-out;
+  /* font-size: 17px; */
+  /* transform: scale(1.07);
+  transition: 0.4s ease-out; */
   color: rgba(86, 181, 184);
 }
 .nav-text-booking_none {

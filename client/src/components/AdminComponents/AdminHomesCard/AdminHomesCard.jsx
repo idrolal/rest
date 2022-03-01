@@ -8,8 +8,11 @@ import { router } from '../../../utils/utils.js';
 function AdminHomesCard({ home }) {
   const dispatch = useDispatch();
 
-  const { homes } = useSelector(state => state.homesReducer)
+  // const { homes } = useSelector(state => state.homesReducer)
 
+  // useEffect(() => {
+  //   dispatch({ type: 'FETCH_GET_HOMES' })
+  // }, [dispatch, home]);
 
   function deleteHome(id) {
     dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` });

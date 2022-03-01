@@ -4,17 +4,17 @@ import About from './About/About';
 import Terms from './Terms/Terms';
 import PhotoCollage from './PhotoCollage/PhotoCollage';
 import Questions from './Questions/Questions';
-import Parallax from './Parallax/Parallax';
 import { MapsApi } from '../MapsApi/MapsApi';
 import './Home.css'
 import PhotoSlider from './PhotoSlider/PhotoSlider';
 import { WeatherApi } from '../WeatherApi/WeatherApi'
+import ImageMain from '../ImageMain/ImageMain';
 
 
 function Home(props) {
   return (
     <div>
-      <Parallax/>
+      <ImageMain/>
       <div className="app-container">
       <About/>
       </div>
