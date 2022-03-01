@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import { WeatherApi } from '../WeatherApi/WeatherApi'
 import { reactRouter } from '../../utils/utils.js'
 import insta from "../../img/insta.svg";
 import logo from "../../img/logo.svg";
@@ -26,22 +27,22 @@ function Nav(props) {
             <a href="tel:+79218683650" className="header-contacts-link">
               8 (812) 300 0 300
             </a>
+            <WeatherApi />
           </div>
         </div>
-      </div>
-      <div className="header-container">
-        <div className="header-parent">
-          <NavLink to={reactRouter.user.booking} className={({ isActive }) => `${isActive ? 'nav-text-booking_none' : 'nav-text-booking'}`}>Бронировать</NavLink>
-          <a className='nav-text' href="#AboutUs">О нас</a>
-          <NavLink to={reactRouter.user.house} className={({ isActive }) => `${isActive ? '' : 'nav-text'}`}>Домики</NavLink>
-          <a className='nav-text' href="#Reviews">Услуги</a>
-          <NavLink to={reactRouter.user.contacts} className={({ isActive }) => `${isActive ? '' : 'nav-text'}`}>Контакты</NavLink>
-          {localStorage.getItem('token') && <NavLink to={reactRouter.admin.logout} className='nav-text'>Выйти</NavLink>}
+        <div className="header-container">
+          <div className="header-parent">
+            <NavLink to={reactRouter.user.booking} className={({ isActive }) => `${isActive ? 'nav-text-booking_none' : 'nav-text-booking'}`}>Бронировать</NavLink>
+            <a className='nav-text' href="#AboutUs">О нас</a>
+            <NavLink to={reactRouter.user.house} className={({ isActive }) => `${isActive ? '' : 'nav-text'}`}>Домики</NavLink>
+            <a className='nav-text' href="#Reviews">Услуги</a>
+            <NavLink to={reactRouter.user.contacts} className={({ isActive }) => `${isActive ? '' : 'nav-text'}`}>Контакты</NavLink>
+            {localStorage.getItem('token') && <NavLink to={reactRouter.admin.logout} className='nav-text'>Выйти</NavLink>}
+          </div>
         </div>
-      </div>
 
-    </>
-  );
+      </>
+      );
 }
 
-export default Nav;
+      export default Nav;

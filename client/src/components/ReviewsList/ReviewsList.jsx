@@ -8,9 +8,10 @@ import './ReviewsList.css';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
-  { width: 550, itemsToShow: 2 },
-  { width: 768, itemsToShow: 3 },
-  { width: 1200, itemsToShow: 4 },
+  { width: 150, itemsToShow: 2 },
+  { width: 368, itemsToShow: 3 },
+  { width: 400, itemsToShow: 4 },
+  { width: 500, itemsToShow: 5 },
 ]
 
 function ReviewsList(props) {
@@ -33,7 +34,7 @@ function ReviewsList(props) {
       </div>
 
 
-      <h1>Отзывы</h1>
+      <center><h3 className="title-text">отзывы</h3></center>
       <div>
         <Carousel breakPoints={breakPoints}>
 
