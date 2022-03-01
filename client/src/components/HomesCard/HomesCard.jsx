@@ -1,17 +1,10 @@
 import React from 'react';
 import {reactRouter} from '../../utils/utils';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux'
 import { router } from '../../utils/utils';
 
 
 export const HomesCard = ({ homes }) => {
-  const { imagesHomes } = useSelector(state => state.homesReducer.homes)
-
-  const curImg = imagesHomes.filter(img => img.house_id === homes.id)
-  console.log(curImg);
-
-  // console.log(homes.id);
 
   return (
     <div className='homesCard_box'>
@@ -21,9 +14,9 @@ export const HomesCard = ({ homes }) => {
       <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`}>Click</Link>
       {/* <div>{homes?.chips[0].map(el=> <h3>{el}</h3>)}</div> */}
       {
-        curImg
+        homes.ImageHouses
           ?
-          curImg.map(img =>
+          homes.ImageHouses.map(img =>
             <img
               src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name}`}
               alt={img.name}
@@ -31,7 +24,7 @@ export const HomesCard = ({ homes }) => {
               style={{ height: '100px', width: '100px' }} />
           )
           :
-          <div></div>
+          <></>
       }
     </div>
   );

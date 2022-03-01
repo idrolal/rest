@@ -1,15 +1,15 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { loginAdminAC, logoutAdminAC , errorLoginAdminAC} from '../actionCreators/adminAC'
+import { loginAdminAC, logoutAdminAC, errorLoginAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
 import { FIND_RESERVATIONS_FETCH } from '../actionType/reservationAT.js'
 import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
 import { getFreeHouseAC } from '../actionCreators/orderAC'
 
 // Authorization: 'Bearer' + localStorage.getItem('token'),
-import { initReservationsAC } from '../actionCreators/reservationsAC.js'
+import { deleteReservationsAC, initReservationsAC } from '../actionCreators/reservationsAC.js'
 import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
-import { initServicesAC} from '../actionCreators/servicesAC'
+import { initServicesAC } from '../actionCreators/servicesAC'
 
 
 async function fetchData({ url, method, headers, body }) {
@@ -96,7 +96,10 @@ function* putHouseDates(action) {
   const homes = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.admin.editHouse}/${action.payload.id}`,
     method: 'PUT',
-    headers: { 'Content-Type': 'Application/json' },
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: `${localStorage.getItem('token')}`
+    },
     body: JSON.stringify(action.payload)
   });
   yield put(editHouseAdminAC(homes))
@@ -160,7 +163,7 @@ function* getInitReservations() {
 
 function* saveOrder(action) {
   console.log(action.payload)
-    yield call(fetchData, {
+  yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.order.save}`,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
@@ -168,6 +171,18 @@ function* saveOrder(action) {
   })
 }
 
+
+function* deleteReservations(action) {
+  const reservation = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.admin.allReservations}/${action.payload}`,
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: `${localStorage.getItem('token')}`,
+    },
+  });
+  yield put(deleteReservationsAC(reservation))
+}
 
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
@@ -183,4 +198,5 @@ export function* globalWatcher() {
   yield takeEvery("SAVE_MY_ORDER", saveOrder);
   yield takeEvery("FETCH_GET_SERVICES", getServices);
   yield takeEvery(FIND_RESERVATIONS_FETCH, getInitReservations);
+  yield takeEvery("FETCH_DELETE_RESERVATION", deleteReservations);
 }

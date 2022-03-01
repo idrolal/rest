@@ -9,6 +9,7 @@ export const AdminEditHouseCard = () => {
 
   const { id } = useParams();
   const { homes } = useSelector(state => state.homesReducer)
+  console.log(homes);
   const curHome = homes.find(home => home.id === +id)
 
   const nameRef = useRef()
@@ -23,10 +24,7 @@ export const AdminEditHouseCard = () => {
       description: descriptionRef.current.value,
       price: priceRef.current.value,
     }
-    // console.log(updateHouse)
-
     dispatch({ type: "FETCH_PUT_HOMES", payload: updateHouse })
-    // console.log(descriptionRef.current.value)
   }
 
   return (

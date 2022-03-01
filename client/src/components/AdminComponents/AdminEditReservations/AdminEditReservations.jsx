@@ -5,9 +5,7 @@ import { useParams } from 'react-router-dom';
 function AdminEditReservations() {
   const { id } = useParams()
   const { reservations } = useSelector(state => state.reservationsReducer.reservations)
-  console.log(reservations);
   const reserv = reservations.find(el => el.id === +id)
-  console.log(reserv);
 
   return (
     <div>
@@ -21,7 +19,7 @@ function AdminEditReservations() {
           <p>Оплата при заселении</p>
       }
       <textarea defaultValue={reserv.comment} />
-      <p>Выбранный дом: </p><p>{reserv.house_id}</p>
+      <p>Выбранный дом: {reserv.house_id}</p>
       <select name="" id="">
         <option defaultValue=""></option>
       </select>

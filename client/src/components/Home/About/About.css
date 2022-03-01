@@ -3,8 +3,9 @@
   display: flex;
   justify-content: space-between;
 }
-.about-picture img{
+.about-picture img {
   width: 100%;
+  border-radius: 20px;
   /* width: 220px;
   height: 220px; */
 }
@@ -29,7 +30,7 @@
   border-radius: 50px;
   line-height: 3.05;
   font-size: 17px;
-  background-color:rgba(86, 181, 184);
+  background-color: rgba(86, 181, 184);
 }
 .btn-about a {
   color: white;
@@ -37,5 +38,4 @@
 }
 .text-p {
   font-family: "Montserrat Black";
-  }
-
+}

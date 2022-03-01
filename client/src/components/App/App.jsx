@@ -35,10 +35,10 @@ function App() {
 
     <Provider store={store}>
       <BrowserRouter>
-          <Nav />
-        {/* <div className="app-container"> */}
-          <Routes>
 
+          <Nav />
+          
+          <Routes>
             <Route path={reactRouter.user.homepage} element={<Home />} />
             {/* <Route path={reactRouter.user.booking} element={<Booking />} /> */}
             <Route path={reactRouter.user.booking} element={<Booking2 />} />
@@ -56,9 +56,8 @@ function App() {
             <Route path={reactRouter.admin.editReservations} element={<AdminEditReservations />} />
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
             <Route path={reactRouter.user.notfound} element={<NotFound />} />
-
           </Routes>
-        {/* </div> */}
+
       </BrowserRouter>
 
     </Provider>

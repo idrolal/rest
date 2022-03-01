@@ -14,6 +14,7 @@ export const router = {
     imgHousePath: '/images/homes/',
     editHouse: '/api/admin/editHouse',
     allReservations: '/api/admin/reservations/all',
+    // deleteReservations: '/api/admin/reservations/all',
   }
 }
 

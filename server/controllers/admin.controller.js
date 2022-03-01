@@ -85,9 +85,22 @@ async function editHouseController(req, res) {
 
 async function getAllReservations(req, res) {
   const allReservations = await Order.findAll();
-  res.json({ reservations: allReservations });
+  res.json(allReservations);
+}
+
+async function deleteReservationController(req, res) {
+  try {
+    await Order.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.json({id: req.params.id});
+  } catch (error) {
+    res.json({ message: error.message });
+  }
 }
 
 module.exports = {
-  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations,
+  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations, deleteReservationController
 };
