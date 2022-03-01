@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-
 const routerHomes = require('./routerHomes');
 const adminMainRouter = require('./adminMainRouter');
 const reviewsRouter = require('./reviewsRouter');
