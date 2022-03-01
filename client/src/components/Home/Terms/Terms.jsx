@@ -10,7 +10,7 @@ import money from "../../../img/money.svg"
 function Contacts(props) {
   return (
     <>
-    <div className="container-options">
+    <div className="container-options1">
       <div className="options-title">
         <div className="options-logo"><img src={clock} alt="" /></div>
         <h6 className="h6_options">ВРЕМЯ ЗАЕЗДА И ВЫЕЗДА</h6>
@@ -32,7 +32,7 @@ function Contacts(props) {
        а для аллергиков есть 2 купола "строго без животных", чтобы вам было комфортно.</span>
       </div>
       </div>
-      <div className="container-options">
+      <div className="container-options2">
       <div className="options-title">
         <div className="options-logo"><img src={family} alt="" /></div>
         <h6 className="h6_options">КОЛИЧЕСТВО ГОСТЕЙ</h6>
