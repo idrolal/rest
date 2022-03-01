@@ -4,6 +4,7 @@ import aaa from '../../../img/aaa.webp';
 
 
 function PhotoCollage(props) {
+  
   return (
     <>
           <div className="flex">
