@@ -8,9 +8,7 @@ import { router } from '../../../utils/utils.js';
 function AdminHomesCard({ home }) {
   const dispatch = useDispatch();
 
-  const { imagesHomes, homes } = useSelector(state => state.homesReducer.homes)
-  const curImg = imagesHomes.filter(img => img.house_id === home.id)
-
+  const { homes } = useSelector(state => state.homesReducer)
 
 
   function deleteHome(id) {
@@ -24,10 +22,11 @@ function AdminHomesCard({ home }) {
       <div>{home?.price}</div>
 
       {/* <div>{home?.chips[0].map(el => <h3>{home}</h3>)}</div> */}
+
       {
-        curImg
+        home.ImageHouses
           ?
-          curImg.map(img =>
+          home.ImageHouses.map(img =>
             <img
               src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name}`}
               alt={img.name}
