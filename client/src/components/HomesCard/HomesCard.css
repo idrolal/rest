@@ -1,0 +1,12 @@
+.allHomes_box {
+  display: flex;
+}
+
+.swiper_style {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #aeafaf;
+  /* height: 200px; */
+  /* border-radius: 5px; */
+}

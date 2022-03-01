@@ -1,28 +1,48 @@
 import React from 'react';
 import { router } from '../../utils/utils';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import './HomesCard.css'
+SwiperCore.use([Autoplay]);
 
 
 export const HomesCard = ({ homes }) => {
-
+  console.log(homes.ImageHouses);
+  homes.ImageHouses.map(img => console.log(img.name))
   return (
-    <div className='homesCard_box'>
-      <div>{homes?.name}</div>
-      <div>{homes?.description}</div>
-      <div>{homes?.price}</div>
-      {/* <div>{homes?.chips[0].map(el=> <h3>{el}</h3>)}</div> */}
-      {
-        homes.ImageHouses
-          ?
+
+    <div className='allHomes_box'>
+      <div>
+        <div>{homes?.name}</div>
+        <div>{homes?.description}</div>
+        <div>{homes?.price}</div>
+      </div>
+
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        // spaceBetween={10}
+        slidesPerView={1}
+        // navigation
+        autoplay={{
+          delay: 2000,
+        }}
+        speed={2000}
+        pagination={{ clickable: true }}
+        className='swiper_style'
+      >
+        {
           homes.ImageHouses.map(img =>
-            <img
-              src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name}`}
-              alt={img.name}
-              key={img.name}
-              style={{ height: '100px', width: '100px' }} />
+            <SwiperSlide className='swiper_style' style={{ backgroundImage: `url(${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name})` }} key={img.name} >
+              <div></div>
+            </SwiperSlide>
           )
-          :
-          <></>
-      }
+        }
+      </Swiper>
     </div>
   );
 };

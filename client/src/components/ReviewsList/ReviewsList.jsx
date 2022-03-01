@@ -7,41 +7,44 @@ import Form from './Form/Form';
 import './ReviewsList.css';
 
 const breakPoints = [
-  {width: 1, itemsToShow: 1},
-  {width: 550, itemsToShow: 2},
-  {width: 768, itemsToShow: 3},
-  {width: 1200, itemsToShow: 4},
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2 },
+  { width: 768, itemsToShow: 3 },
+  { width: 1200, itemsToShow: 4 },
 ]
 
 function ReviewsList(props) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const { reviews } = useSelector((state) => state.reviewsReducer);
+  const state = useSelector((state) => state);
+  console.log(state);
+  console.log(reviews);
 
-  useEffect(() => { 
-    dispatch({type: "FETCH_GET_REVIEWS"})
+  useEffect(() => {
+    dispatch({ type: "FETCH_GET_REVIEWS" })
   }, [dispatch]);
   return (
     <>
-    <div className="reviews">
-      <button onClick={() => setOpen(!open)} className="header-button"><span className="button-text">Оставить отзыв</span></button>
+      <div className="reviews">
+        <button onClick={() => setOpen(!open)} className="header-button"><span className="button-text">Оставить отзыв</span></button>
 
-      {open ? <Form/> : <></>}
+        {open ? <Form /> : <></>}
       </div>
 
 
       <h1>Отзывы</h1>
-    <div>
-      <Carousel   breakPoints={breakPoints}>
- 
-    {reviews.length ? reviews.map(review => 
-    <Item><ReviewCard key={review.id} review={review}/></Item>) 
-    : 
-    <p>Пусто</p>
-    }
-  
-    </Carousel>
-    </div>
+      <div>
+        <Carousel breakPoints={breakPoints}>
+
+          {reviews.length ? reviews.map(review =>
+            <Item><ReviewCard key={review.id} review={review} /></Item>)
+            :
+            <p>Пусто</p>
+          }
+
+        </Carousel>
+      </div>
     </>
   );
 }
