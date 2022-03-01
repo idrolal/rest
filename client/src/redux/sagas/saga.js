@@ -9,7 +9,7 @@ import { getFreeHouseAC } from '../actionCreators/orderAC'
 import { deleteReservationsAC, initReservationsAC } from '../actionCreators/reservationsAC.js'
 import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
-import { initServicesAC} from '../actionCreators/servicesAC'
+import { initServicesAC } from '../actionCreators/servicesAC'
 
 
 async function fetchData({ url, method, headers, body }) {
@@ -37,7 +37,6 @@ function* postLoginAdmin(action) {
   }
 
 }
-
 
 //
 function* getInitHomes() {
