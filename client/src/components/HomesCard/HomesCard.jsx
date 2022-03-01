@@ -1,4 +1,6 @@
 import React from 'react';
+import { reactRouter } from '../../utils/utils';
+import { Link } from 'react-router-dom';
 import { router } from '../../utils/utils';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import SwiperCore, { Autoplay } from 'swiper';
@@ -21,6 +23,7 @@ export const HomesCard = ({ homes }) => {
         <div>{homes?.name}</div>
         <div>{homes?.description}</div>
         <div>{homes?.price}</div>
+        <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`}>Перейти к бронированию</Link>
       </div>
 
       <Swiper
