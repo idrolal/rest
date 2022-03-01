@@ -8,7 +8,7 @@ export const AdminEditHouseCard = () => {
   const dispatch = useDispatch()
 
   const { id } = useParams();
-  const { homes } = useSelector(state => state.homesReducer.homes)
+  const { homes } = useSelector(state => state.homesReducer)
   console.log(homes);
   const curHome = homes.find(home => home.id === +id)
 
