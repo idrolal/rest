@@ -12,7 +12,7 @@ function AdminHomesCard({ home }) {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
-  }, [dispatch, homes]);
+  }, []);
 
   function deleteHome(id) {
    dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` })
