@@ -1,4 +1,5 @@
 import React from 'react';
+import avatar from '../../img/avatar.svg'
 
 
 
@@ -26,12 +27,18 @@ function ReviewCard({review}) {
    <div></div>
    :
     <div className='reviewcard-container'>
+      <div className='reviewcard-name'>
+      <div className='reviewcard-photo'>
+        <img src={avatar} alt=""/>
+          </div>
       {review.nameUser}
-      <br/>
-      {review.description}
-      <br/>
-      {review.rating}
-      <br/>
+      </div>
+      <div className='reviewcard-description'>
+      “{review.description}”
+      </div>
+      <div className='reviewcard-rating'>
+      Оценка: {review.rating}
+      </div>
     </div>
     }
 
