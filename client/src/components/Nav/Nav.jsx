@@ -30,7 +30,7 @@ function Nav(props) {
         </div>
     </div>
       <div className="header-container">
-      <div className="header-parent animate__animated animate__headShake">
+      <div className="header-parent">
         <NavLink to={reactRouter.user.booking} className={({isActive}) =>`${isActive ? 'nav-text-booking_none' : 'nav-text-booking'}`}>Бронировать</NavLink>
         <a className='nav-text' href="#AboutUs">О нас</a>
         <NavLink to={reactRouter.user.house} className={({isActive}) =>`${isActive ? '' : 'nav-text'}`}>Домики</NavLink>
