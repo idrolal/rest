@@ -1,35 +1,41 @@
-.flex {
+.about-container {
+  margin-top: 130px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-top: 15px;
 }
-.about-photo {
-  margin-bottom: 150px;
-  overflow: hidden;
-  border-radius: 20px;
+.about-picture img{
+  width: 100%;
+  /* width: 220px;
+  height: 220px; */
 }
-.about-text {
-    font-family: "Montserrat Regular";
+.about-options {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  /* margin-right: 20px; */
+  padding-left: 40px;
 }
-.about-h1 {
-  font-family: "Montserrat Medium";
-}
-.about-h2 {
-  font-size: 30px;
+.text-span {
+  font-size: 20px;
   font-family: "Montserrat Bold";
 }
-.about-photo-1 {
-  height: 380px;
-  width: 410px;
-  background-color: bisque;
-  background-image: url("../../../img/foto_1.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 20px;
+.btn-about {
+  margin-left: 250px;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  margin-top: 37px;
+  border: 0px;
+  border-radius: 50px;
+  line-height: 3.05;
+  font-size: 17px;
+  background-color:rgba(86, 181, 184);
 }
-.about-photo-1:hover {
-  transform: scale(1.07);
-  transition: 1s ease-out;
+.btn-about a {
+  color: white;
+  font-family: "Montserrat Light";
 }
+.text-p {
+  font-family: "Montserrat Black";
+  }
+

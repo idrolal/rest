@@ -49,7 +49,7 @@ async function getFreeHouse(req, res) {
 
     console.log(allFreeHouse);
 
-    if (allFreeHouse[0].length < 1) {
+    if (allFreeHouse.map((el) => el.length < 1)) {
       res.json({ message: 'Свободных домиков нет:(' });
     } else {
       const arrOfFreeHouse = allFreeHouse.map((el) => el[0][0]);
@@ -59,8 +59,8 @@ async function getFreeHouse(req, res) {
         house.map((home) => {
           if (home.id !== ar.house_id) {
             all.push(home, ar);
-            return all;
           }
+          return all;
         });
         return all;
       });
@@ -98,7 +98,7 @@ async function saveOrder(req, res) {
       house_id: currentHouse.id,
     });
   } catch (e) {
-    console.log(e.message)
+    console.log(e.message);
   }
 }
 
