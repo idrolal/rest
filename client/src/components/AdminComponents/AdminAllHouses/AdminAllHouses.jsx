@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import AdminHomesCard from '../AdminHomesCard/AdminHomesCard.jsx';
 
 function AdminAllHouses() {
-  const { homes } = useSelector(state => state.homesReducer.homes)
-  console.log(homes);
+  const { homes } = useSelector(state => state.homesReducer)
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
-  }, [dispatch])
+  }, [dispatch, homes])
 
   return (
     <>

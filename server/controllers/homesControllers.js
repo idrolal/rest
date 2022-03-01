@@ -4,18 +4,13 @@ const { ImageHouse } = require('../db/models');
 async function getAllHouses(req, res) {
   try {
     const allHomes = await House.findAll({
-      raw: true,
+      include: [
+        {
+          model: ImageHouse,
+        },
+      ],
     });
-
-    const allImg = await ImageHouse.findAll({
-      raw: true,
-    });
-
-    const allHomesData = {
-      homes: allHomes,
-      imagesHomes: allImg,
-    };
-    res.json(allHomesData);
+    res.json(allHomes);
   } catch (error) {
     res.status(401).json({ message: error.message });
   }
