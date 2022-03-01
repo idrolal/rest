@@ -1,1 +1,3 @@
-export const GET_FREE_HOUSE = 'GET_FREE_HOUSE'
+export const GET_FREE_HOUSE = 'GET_FREE_HOUSE';
+export const SAVE_INTERVAL = 'SAVE_INTERVAL';
+export const DELETE_INTERVAL = 'DELETE_INTERVAL';

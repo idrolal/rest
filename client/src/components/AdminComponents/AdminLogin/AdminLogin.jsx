@@ -6,11 +6,10 @@ function AdminLogin(props) {
 
   const emailRef = useRef();
   const passRef = useRef();
-  const checkedRef = useRef()
-  const navigate = useNavigate()
+  const checkedRef = useRef();
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
   const login = (event) => {
     event.preventDefault()
     const user = {
@@ -18,9 +17,9 @@ function AdminLogin(props) {
       password: passRef.current.value,
       checked: checkedRef.current.value,
     }
-    console.log(user)
     dispatch({ type: "FETCH_POST_LOGIN", payload: user })
-    navigate(reactRouter.admin.main)
+      navigate(reactRouter.admin.main)
+ 
   }
 
   return (
