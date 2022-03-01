@@ -11,7 +11,9 @@ function AdminHomesCard({ home }) {
   const { imagesHomes, homes } = useSelector(state => state.homesReducer.homes)
   const curImg = imagesHomes.filter(img => img.house_id === home.id)
 
-
+  // useEffect(() => {
+  //   dispatch({ type: 'FETCH_GET_HOMES' })
+  // }, [dispatch, home]);
 
   function deleteHome(id) {
     dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` });
