@@ -3,6 +3,7 @@ export const router = {
   home: '/api/homes',
   order: '/api/order/free',
   reviews: '/api/reviews',
+  services: '/api/services',
   admin: {
     addHouseServerPath: '/api/admin/addHouse',
     addHouseServerIMGPath: '/api/admin/addHouse/img',

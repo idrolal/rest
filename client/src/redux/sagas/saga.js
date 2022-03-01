@@ -9,6 +9,7 @@ import { getFreeHouseAC } from '../actionCreators/orderAC'
 import { initReservationsAC } from '../actionCreators/reservationsAC.js'
 import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
+import { initServicesAC} from '../actionCreators/servicesAC'
 
 
 async function fetchData({ url, method, headers, body }) {
@@ -131,6 +132,16 @@ function* postAddReviews(action) {
   yield put(addReviews(newReview))
 }
 
+function* getServices(action) {
+  const newServise = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.services}`,
+    method: 'GET',
+    headers: { 'Content-Type': 'Application/json' },
+  });
+  //  method put works like dispatch(change my state)
+  yield put(initServicesAC(newServise))
+}
+
 function* getAllFreeHouse(action) {
   const freeHouse = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.order}`,
@@ -165,6 +176,7 @@ export function* globalWatcher() {
   yield takeEvery("FETCH_DELETE_HOME", deleteHome)
   yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
   yield takeEvery("FETCH_PUT_HOMES", putHouseDates);
+  yield takeEvery("FETCH_GET_SERVICES", getServices)
   yield takeEvery("FETCH_GET_FREE_HOUSE", getAllFreeHouse)
   yield takeEvery(FIND_RESERVATIONS_FETCH, getInitReservations);
 }
