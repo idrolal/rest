@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-// import Typical from "react-typical";
 import Carousel from 'react-elastic-carousel';
 import Item from './Item';
 import ReviewCard from '../ReviewCard/ReviewCard';
