@@ -13,6 +13,7 @@
   margin-bottom: -80px;
 }
 .photo-text{
+  position: absolute;
   font-family: "Montserrat Medium";
   color: white;
   font-size: 24px;

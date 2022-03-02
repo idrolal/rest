@@ -1,5 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
+import {reactRouter} from '../../utils/utils';
+import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { HomesCard } from '../HomesCard/HomesCard';
@@ -43,7 +45,9 @@ function Booking2(props) {
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
   }, [dispatch, orders]);
+ const qwe =()=>{
 
+ }
 
   return (
     <>
@@ -53,7 +57,7 @@ function Booking2(props) {
         <button onClick={searchFreeHouse}>Click</button>
       </div>
       <div>
-        {orders.length ? orders.map(el => <HomesCard homes={el} key={el.id}  /> ) : <div>{orders.message}</div>}
+        {orders.length ? orders.map(el => <><HomesCard homes={el} key={el.id}  /> <Link key={el.id} to={`${reactRouter.user.booking}/${el.id}`}>Click</Link> </>) : <div>{orders.message}</div>}
       </div>
     </>
   );

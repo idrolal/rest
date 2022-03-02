@@ -1,5 +1,5 @@
-import {GET_FREE_HOUSE, SAVE_INTERVAL, DELETE_INTERVAL} from '../actionType/orderAT'
-const initialState = { orders: [], interval: [], startDate: '', endDate: '' };
+import {GET_FREE_HOUSE, SAVE_INTERVAL, DELETE_INTERVAL, INIT_UNAVALIBLE_DATE} from '../actionType/orderAT'
+const initialState = { orders: [], interval: [], unavalibleDate: []};
 
 export function orderReducer(state = initialState, action) {
   switch (action.type) {
@@ -15,6 +15,10 @@ export function orderReducer(state = initialState, action) {
     case DELETE_INTERVAL: 
     return { 
       ...state, interval: action.payload 
+    };
+    case INIT_UNAVALIBLE_DATE: 
+    return { 
+      ...state, unavalibleDate: action.payload, 
     };
 
     default:

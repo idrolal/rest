@@ -3,7 +3,7 @@ import { loginAdminAC, logoutAdminAC, errorLoginAdminAC } from '../actionCreator
 import { router } from '../../utils/utils'
 import { FIND_RESERVATIONS_FETCH } from '../actionType/reservationAT.js'
 import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
-import { getFreeHouseAC } from '../actionCreators/orderAC'
+import { getFreeHouseAC, initUnavalibleDate } from '../actionCreators/orderAC'
 
 // Authorization: 'Bearer' + localStorage.getItem('token'),
 import { deleteReservationsAC, initReservationsAC } from '../actionCreators/reservationsAC.js'
@@ -184,6 +184,18 @@ function* deleteReservations(action) {
   yield put(deleteReservationsAC(reservation))
 }
 
+function* postUnavalibleDate(action) {
+  const date = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.order.get}/${action.payload.id}`,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'Application/json',
+    },
+    body: JSON.stringify(action.payload)
+  });
+  yield put(initUnavalibleDate(date))
+}
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
@@ -199,4 +211,6 @@ export function* globalWatcher() {
   yield takeEvery("FETCH_GET_SERVICES", getServices);
   yield takeEvery(FIND_RESERVATIONS_FETCH, getInitReservations);
   yield takeEvery("FETCH_DELETE_RESERVATION", deleteReservations);
+  yield takeEvery("FETCH_UNAVALIBLE_DATE", postUnavalibleDate);
+
 }

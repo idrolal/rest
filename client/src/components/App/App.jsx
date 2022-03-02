@@ -25,15 +25,18 @@ import NotFound from '../NotFound/NotFound';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
 import FormBooking from '../Booking/Form/FormBooking';
 import ServicesList from '../ServicesList/ServicesList';
-import AdminEditReservations from '../AdminComponents/AdminEditReservations/AdminEditReservations.jsx'
-import Booking3 from '../Booking/Booking3';
+import AdminEditReservations from '../AdminComponents/AdminEditReservations/AdminEditReservations.jsx';
+import CalendarBook from '../CalendarBook/CalendarBook';
+import HomeCardCurrent from '../Home/HomeCardCurrent/HomeCardCurrent';
 
 function App() {
+  
 
   return (
 
 
     <Provider store={store}>
+
       <BrowserRouter>
 
           <Nav />
@@ -51,11 +54,13 @@ function App() {
             <Route path={reactRouter.admin.chooseEditHouse} element={<AdminEditHouseCard />} />
             <Route path={reactRouter.admin.login} element={<AdminLogin />} />
             <Route path={reactRouter.user.house} element={<HomesList />} />
+            <Route path={reactRouter.user.currentHouse} element={<HomeCardCurrent/>}/>
             <Route path={reactRouter.user.addedHouse} element={<FormBooking />} />
             <Route path={reactRouter.user.services} element={<ServicesList />} />
             <Route path={reactRouter.admin.editReservations} element={<AdminEditReservations />} />
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
             <Route path={reactRouter.user.notfound} element={<NotFound />} />
+            <Route path='/calend' element={<CalendarBook/>}/>
           </Routes>
 
       </BrowserRouter>

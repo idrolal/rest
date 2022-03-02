@@ -1,6 +1,4 @@
 import React from 'react';
-import {reactRouter} from '../../utils/utils';
-import { Link } from 'react-router-dom';
 import { router } from '../../utils/utils';
 
 
@@ -11,7 +9,7 @@ export const HomesCard = ({ homes }) => {
       <div>{homes?.name}</div>
       <div>{homes?.description}</div>
       <div>{homes?.price}</div>
-      <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`}>Click</Link>
+      
       {/* <div>{homes?.chips[0].map(el=> <h3>{el}</h3>)}</div> */}
       {
         homes.ImageHouses
@@ -26,7 +24,7 @@ export const HomesCard = ({ homes }) => {
           :
           <></>
       }
-    </div>
+    </div>  
   );
 };
 
