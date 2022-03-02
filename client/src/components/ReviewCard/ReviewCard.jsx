@@ -41,29 +41,6 @@ function ReviewCard({ review }) {
           </div>
         </div>
       }
-
-      <div className='reviewcard-container'>
-        {review.nameUser}
-        <br />
-        {review.description}
-        <br />
-        {review.rating}
-        <br />
-      </div>
-
-
-      {/* <form onSubmit={handlerUpdate}>
-    <div>
-      {review.nameUser}
-      <br/>
-      <input defaultValue={review.description} ref={descriptionRef}/>
-      <br/>
-      {review.rating}
-      <br/>
-    </div>
-    <button>Click</button>
-    </form>  */}
-
     </>
   );
 }

@@ -13,9 +13,9 @@ export const HomesList = () => {
   }, [dispatch])
 
   return (
-    <>
+    <div className='app-container'>
       <h1>Homes List</h1>
       {homes?.length ? homes.map(el => <HomesCard key={el.id} homes={el} />) : <div>There are not homes</div>}
-    </>
+    </div>
   );
 };

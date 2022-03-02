@@ -14,13 +14,14 @@ SwiperCore.use([Autoplay]);
 
 
 export const HomesCard = ({ homes }) => {
+  console.log(homes.ImageHouses);
 
   return (
     <div className='allHomes_box'>
-      <div>
-        <div>{homes?.name}</div>
+      <div className='allHomes_info'>
+        <div>{homes?.name.toUpperCase()}</div>
         <div>{homes?.description}</div>
-        <div>{homes?.price}</div>
+        <div>{homes?.price} &#8381;</div>
         <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`}>Перейти к бронированию</Link>
       </div>
 
@@ -28,12 +29,12 @@ export const HomesCard = ({ homes }) => {
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         // spaceBetween={10}
         slidesPerView={1}
-        // navigation
+        navigation
         autoplay={{
-          delay: 2000,
+          delay: 3000,
         }}
-        speed={2000}
-        pagination={{ clickable: true }}
+        speed={4000}
+        // pagination={{ clickable: true }}
         className='swiper_style'
       >
         {
