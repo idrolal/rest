@@ -26,7 +26,7 @@ async function sendCreatedReservationMail(to, dataOrder, house) {
         <p>Дата заезда: <b>${dataOrder.dataIn}</b></p>
         <p>Дата выезда: <b>${dataOrder.dataOut}</b></p>
         <p>Общая сумма: <b>${dataOrder.summa} &#8381;</b></p>
-        <h2>Ждем Вас для лучшего отдыха!</р>
+        <p>Ждем Вас для лучшего отдыха!</р>
       </div>
       `,
   });

@@ -31,7 +31,7 @@ export const HomesCard = ({ homes }) => {
         autoplay={{
           delay: 3000,
         }}
-        speed={4000}
+        speed={3000}
         // pagination={{ clickable: true }}
         className='swiper_style'
       >
