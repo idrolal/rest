@@ -14,10 +14,9 @@ SwiperCore.use([Autoplay]);
 
 
 export const HomesCard = ({ homes }) => {
-  console.log(homes.ImageHouses);
-  homes.ImageHouses.map(img => console.log(img.name))
+  // console.log(homes.ImageHouses);
+  // homes.ImageHouses.map(img => console.log(img.name))
   return (
-
     <div className='allHomes_box'>
       <div>
         <div>{homes?.name}</div>
@@ -39,7 +38,7 @@ export const HomesCard = ({ homes }) => {
         className='swiper_style'
       >
         {
-          homes.ImageHouses.map(img =>
+          homes.ImageHouses?.map(img =>
             <SwiperSlide className='swiper_style' style={{ backgroundImage: `url(${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name})` }} key={img.name} >
               <div></div>
             </SwiperSlide>
