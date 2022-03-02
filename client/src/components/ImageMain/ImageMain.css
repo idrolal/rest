@@ -53,6 +53,7 @@
   -webkit-box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
   -moz-box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
   box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
+  transition: 400ms ease-in;
 }
 
 .bnt-buy span {

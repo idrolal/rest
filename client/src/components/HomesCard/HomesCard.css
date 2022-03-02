@@ -36,5 +36,43 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px 20px 20px 0;
+  padding: 20px 50px 20px 0;
+}
+
+.allHomes_title {
+  margin-bottom: 30px;
+}
+
+.allHomes_reservBtn {
+  margin-top: 30px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: transparent;
+  background: -webkit-linear-gradient(135deg,
+      rgb(152, 207, 195),
+      rgb(86, 181, 184));
+  background: -moz-linear-gradient(135deg,
+      rgb(152, 207, 195),
+      rgb(86, 181, 184));
+  background: linear-gradient(135deg, rgb(152, 207, 195), rgb(86, 181, 184));
+  box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
+  transition: 400ms;
+}
+
+.allHomes_reservBtn_font {
+  color: rgb(0, 0, 0);
+  font-family: "Montserrat Light";
+  font-weight: 600;
+  font-size: 17px;
+  padding: 15px;
+  text-transform: uppercase;
+}
+
+.allHomes_reservBtn:hover {
+  transform: scale(1.05);
+  color: white;
+  transition: 400ms ease-out;
 }

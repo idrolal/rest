@@ -17,10 +17,15 @@ export const HomesCard = ({ homes }) => {
   return (
     <div className='allHomes_box'>
       <div className='allHomes_info'>
-        <div>{homes?.name.toUpperCase()}</div>
+        <div className='allHomes_title'>
+          <h4>{homes?.name.toUpperCase()}</h4>
+          <h6>{homes?.price} &#8381;</h6>
+        </div>
         <div>{homes?.description}</div>
-        <div>{homes?.price} &#8381;</div>
-        <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`}>Перейти к бронированию</Link>
+        <div className='allHomes_reservBtn'>
+          <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`} className='allHomes_reservBtn_font'>Перейти к бронированию</Link>
+        </div>
+
       </div>
 
       <Swiper
