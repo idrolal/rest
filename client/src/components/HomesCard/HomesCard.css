@@ -69,6 +69,10 @@
 }
 
 .allHomes_reservBtn_font {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   color: rgb(0, 0, 0);
   font-family: "Montserrat Light";
   font-weight: 600;
@@ -79,6 +83,5 @@
 
 .allHomes_reservBtn:hover {
   transform: scale(1.05);
-  color: white;
   transition: 400ms ease-out;
 }

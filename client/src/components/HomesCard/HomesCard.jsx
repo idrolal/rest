@@ -1,5 +1,6 @@
 import React from 'react';
-import { router } from '../../utils/utils';
+import { router, reactRouter } from '../../utils/utils';
+import { Link } from 'react-router-dom';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -20,9 +21,10 @@ export const HomesCard = ({ homes }) => {
           <h6>{homes?.price} &#8381;</h6>
         </div>
         <div className='allHomes_description'>{homes?.description}</div>
-        <div className='allHomes_reservBtn'>
-          <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`} className='allHomes_reservBtn_font'>Перейти к бронированию</Link>
-        </div>
+        {/* <div className='allHomes_reservBtn'> */}
+        {/* <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`} className='allHomes_reservBtn_font'>Перейти к бронированию</Link> */}
+        {/* <Link key={homes.id} to={`${reactRouter.user.house}/${homes.id}`} className='allHomes_reservBtn_font'>Перейти к бронированию</Link> */}
+        {/* </div> */}
 
       </div>
 
