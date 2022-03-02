@@ -24,7 +24,7 @@ export function MapsApi() {
   };
 
   return (
-    <div className="map-container">
+    <div className="map-container" id='Contacts'>
       <YMaps>
         <Map width={"150%"} height={"100vh"} defaultState={mapData}>
           {coordinates.map((coordinate, idx) => (

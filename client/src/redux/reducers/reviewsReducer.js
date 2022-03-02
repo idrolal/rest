@@ -20,7 +20,7 @@ export function reviewsReducer(state = initialState, action) {
     }
 
     return {
-      ...state, reviews: state.reviews ? [...state.reviews, newReview] : [newReview]
+      ...state, reviews: [...state.reviews, newReview] 
     }
 
     case CONFIRM_REVIEWS:
