@@ -16,7 +16,7 @@ function About(props) {
         первозданная чистота природы и всеобъемлющая тишина. Даже в шторм на
         контрасте с силой природы ваши впечатления будут лишь ярче.
       </p>
-      <button className='btn-about_us'><a href="#contacts">Как добраться?</a></button>
+      <button className='btn-about_us'><a href="#Contacts">Как добраться?</a></button>
       </div>
     </div>
 

@@ -24,7 +24,7 @@ function ReviewCard({ review }) {
   return (
     <>
       {review.status === false ?
-        <div></div>
+        <></>
         :
         <div className='reviewcard-container'>
           <div className='reviewcard-name'>
@@ -38,6 +38,7 @@ function ReviewCard({ review }) {
           </div>
           <div className='reviewcard-rating'>
             Оценка: {review.rating}
+
           </div>
         </div>
       }
