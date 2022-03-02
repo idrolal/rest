@@ -1,31 +1,48 @@
 import React from 'react';
-import {reactRouter} from '../../utils/utils';
+import { reactRouter } from '../../utils/utils';
 import { Link } from 'react-router-dom';
 import { router } from '../../utils/utils';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import './HomesCard.css'
+SwiperCore.use([Autoplay]);
 
 
 export const HomesCard = ({ homes }) => {
-
   return (
-    <div className='homesCard_box'>
-      <div>{homes?.name}</div>
-      <div>{homes?.description}</div>
-      <div>{homes?.price}</div>
-      <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`}>Click</Link>
-      {/* <div>{homes?.chips[0].map(el=> <h3>{el}</h3>)}</div> */}
-      {
-        homes.ImageHouses
-          ?
-          homes.ImageHouses.map(img =>
-            <img
-              src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name}`}
-              alt={img.name}
-              key={img.name}
-              style={{ height: '100px', width: '100px' }} />
+    <div className='allHomes_box'>
+      <div className='allHomes_info'>
+        <div>{homes?.name.toUpperCase()}</div>
+        <div>{homes?.description}</div>
+        <div>{homes?.price} &#8381;</div>
+        <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`}>Перейти к бронированию</Link>
+      </div>
+
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        // spaceBetween={10}
+        slidesPerView={1}
+        navigation
+        autoplay={{
+          delay: 3000,
+        }}
+        speed={4000}
+        // pagination={{ clickable: true }}
+        className='swiper_style'
+      >
+        {
+          homes.ImageHouses?.map(img =>
+            <SwiperSlide className='swiper_style' style={{ backgroundImage: `url(${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name})` }} key={img.name} >
+              <div></div>
+            </SwiperSlide>
           )
-          :
-          <></>
-      }
+        }
+      </Swiper>
     </div>
   );
 };

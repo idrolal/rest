@@ -5,9 +5,7 @@ import { HomesCard } from '../HomesCard/HomesCard'
 
 
 export const HomesList = () => {
-
   const { homes } = useSelector(state => state.homesReducer)
-  console.log(homes);
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -15,9 +13,9 @@ export const HomesList = () => {
   }, [dispatch])
 
   return (
-    <>
-      <h1>Homes List</h1>
+    <div className='app-container'>
+      <h1>Все домики</h1>
       {homes?.length ? homes.map(el => <HomesCard key={el.id} homes={el} />) : <div>There are not homes</div>}
-    </>
+    </div>
   );
 };

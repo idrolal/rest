@@ -1,5 +1,6 @@
 const { Op } = require('sequelize');
 const { Order, House, User } = require('../db/models');
+const { sendCreatedReservationMail } = require('./mail.controller');
 
 function unique(arr, prop) {
   const seen = {};
@@ -58,6 +59,12 @@ async function saveOrder(req, res) {
       where: { email: info.email },
     });
 
+    const chosenHouse = await House.findOne({
+      where: {
+        id: currentHouse.id,
+      },
+    });
+
     if (user) {
       const order = await Order.findOne({
         where: {
@@ -73,7 +80,7 @@ async function saveOrder(req, res) {
       }
 
       if (!order) {
-        await Order.create({
+        const newOrderExistUser = await Order.create({
           user_id: user.id,
           dataIn: interval.dataInUser,
           dataOut: interval.dataOutUser,
@@ -81,6 +88,8 @@ async function saveOrder(req, res) {
           summa,
           house_id: currentHouse.id,
         });
+        // тут будет отправление email
+        await sendCreatedReservationMail(user.email, newOrderExistUser, chosenHouse);
         return res.status(200).json({ message: 'Бронирование успешно создано!' });
       }
     }
@@ -91,7 +100,7 @@ async function saveOrder(req, res) {
       phone: info.phone,
     });
 
-    await Order.create({
+    const newOrder = await Order.create({
       user_id: newUser.id,
       dataIn: interval.dataInUser,
       dataOut: interval.dataOutUser,
@@ -99,9 +108,11 @@ async function saveOrder(req, res) {
       summa,
       house_id: currentHouse.id,
     });
-    res.status(200).json({ message: 'Бронирование успешно создано!' });
+    // тут будет отправление email
+    await sendCreatedReservationMail(info.email, newOrder, chosenHouse);
+    return res.status(200).json({ message: 'Бронирование успешно создано!' });
   } catch (e) {
-    res.status(400).json({ message: e.message });
+    return res.status(400).json({ message: e.message });
   }
 }
 

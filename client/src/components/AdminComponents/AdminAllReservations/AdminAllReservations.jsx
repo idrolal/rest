@@ -5,20 +5,15 @@ import AdminReservationsList from '../AdminReservationsList/AdminReservationsLis
 import { FIND_RESERVATIONS_FETCH } from '../../../redux/actionType/reservationAT.js'
 
 function AdminAllReservations(props) {
-
   const dispatch = useDispatch()
-
   const { reservations } = useSelector(state => state.reservationsReducer)
-  // console.log(reservations);
-  // console.log(reservations[0].dataIn);
 
   useEffect(() => {
     dispatch({ type: FIND_RESERVATIONS_FETCH })
   }, [dispatch])
 
-
   return (
-    <div>
+    <div className='app-container'>
       <h1>Admin All Reservations</h1>
       {
         reservations?.length ?
