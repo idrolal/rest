@@ -34,17 +34,21 @@ function ReviewsList(props) {
 
 
       <center><h3 className="title-text">отзывы</h3></center>
-      <div>
-        <Carousel breakPoints={breakPoints}>
 
-          {reviews.length ? reviews.map(review =>
-            <Item><ReviewCard key={review.id} review={review} /></Item>)
-            :
-            <p>Пусто</p>
-          }
-
-        </Carousel>
-      </div>
+    <div>
+      <Carousel breakPoints={breakPoints}>
+ 
+    {reviews.length ? reviews.map(review => {
+    if (review.status) {
+      return <Item><ReviewCard key={review.id} review={review}/></Item>
+    } 
+    })
+    : 
+    <p>Пусто</p>
+    }
+  
+    </Carousel>
+    </div>
     </>
   );
 }

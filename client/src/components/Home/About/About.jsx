@@ -19,7 +19,6 @@ function About(props) {
           <button className='btn-about_us'><a href="#contacts">Как добраться?</a></button>
         </div>
       </div>
-
     </>
   );
 }

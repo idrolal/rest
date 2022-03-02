@@ -26,6 +26,7 @@ export const reactRouter = {
     booking: '/booking',
     addedHouse: '/booking/:id',
     house: '/house',
+    currentHouse: '/house/:id',
     services: '/services',
     contacts: '/contacts',
     notfound: '*',

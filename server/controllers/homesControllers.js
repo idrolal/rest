@@ -24,4 +24,4 @@ function deleteHomes(req, res) {
     .catch((error) => res.status(500).json(error));
 }
 
-module.exports = { getAllHouses, deleteHomes };
+module.exports = { getAllHouses, deleteHomes};

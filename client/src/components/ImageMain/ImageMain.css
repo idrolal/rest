@@ -62,14 +62,11 @@
 
 .bnt-buy:hover {
   transform: scale(1.05);
-  color: white;
+  /* color: white; */
   transition: 0.4s ease-out;
-  background: -webkit-linear-gradient(315deg, rgb(215, 56, 242) 31%, rgb(203, 113, 255));
-  background: -moz-linear-gradient(315deg, rgb(215, 56, 242) 31%, rgb(203, 113, 255));
-  background: linear-gradient(315deg, rgb(215, 56, 242) 31%, rgb(203, 113, 255));
 }
 
 .bnt-buy:hover span {
-  color: white;
+  /* color: white; */
   transition: 0.3s ease-out;
 }
