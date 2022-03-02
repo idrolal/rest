@@ -5,7 +5,7 @@ import right from '../../../img/right.svg'
 function Questions(props) {
   return (
     <>
-    <h3>часто задаваемые вопросы</h3>
+    <center><h3 style={{'font-family': "Montserrat Medium"}}>часто задаваемые вопросы</h3></center>
     <ul class="collapsible">
     <li>
       <div class="collapsible-header"><img className='collapse-logo' src={right} alt="" /><span className='collapsible-head'>Как осуществить бронь?</span></div>

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import './WeatherApi.css'
 
 
 export const WeatherApi = () => {
   const [temperature, setTemperature] = useState("");
   const [desc, setDesc] = useState("");
-  const [city, setCity] = useState("Bangkok");
+  const [city, setCity] = useState("Saint Petersburg");
  
 
   const getWeatherData = (city) => {
@@ -48,10 +49,9 @@ export const WeatherApi = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="api-weather-container">
           {/* <p >Город: {city}</p> */}
-          <p>Температура: {Math.round(temperature * 100) / 100} ℃</p>
-          <p>Описание: {weather()} </p>
+          <p>{Math.round(Math.round(temperature * 100) / 100)} ℃<span> {weather()} </span></p>
         {/* <input type="text" readOnly value={city} onChange={(e) => setCity(e.target.value)} /> */}
         {/* <button className="btn-about a" >Click</button> */}
       </div>

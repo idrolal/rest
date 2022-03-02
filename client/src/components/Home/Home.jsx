@@ -7,7 +7,6 @@ import Questions from './Questions/Questions';
 import { MapsApi } from '../MapsApi/MapsApi';
 import './Home.css'
 import PhotoSlider from './PhotoSlider/PhotoSlider';
-import { WeatherApi } from '../WeatherApi/WeatherApi'
 import ImageMain from '../ImageMain/ImageMain';
 
 
@@ -27,7 +26,6 @@ function Home(props) {
       <MapsApi />
 
       </div>
-      <WeatherApi />
     </div>
   );
 }

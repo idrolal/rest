@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import { WeatherApi } from '../WeatherApi/WeatherApi'
 import { reactRouter } from '../../utils/utils.js'
 import insta from "../../img/insta.svg";
 import logo from "../../img/logo.svg";
@@ -26,6 +27,7 @@ function Nav(props) {
         <a href="tel:+79218683650" className="header-contacts-link">
               8 (812) 300 0 300
             </a>
+            <WeatherApi/>
         </div>
         </div>
     </div>
