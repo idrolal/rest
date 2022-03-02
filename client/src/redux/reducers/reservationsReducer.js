@@ -10,7 +10,7 @@ export const reservationsReducer = (state = initialState, action) => {
 
     case DELETE_RESERVATIONS:
       // console.log(action.payload)
-    return {...state, reservations: state.reservations.filter(el => el.id !== Number(action.payload.id))}
+      return { ...state, reservations: state.reservations.filter(el => el.id !== Number(action.payload.id)) }
 
     case UPDATE_RESERVATIONS:
       return {

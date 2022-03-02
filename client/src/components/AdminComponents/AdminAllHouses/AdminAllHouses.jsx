@@ -13,7 +13,7 @@ function AdminAllHouses() {
   }, [dispatch, homes])
 
   return (
-    <>
+    <div className='app-container'>
       <h1>Homes List</h1>
       {
         homes?.length ?
@@ -21,7 +21,7 @@ function AdminAllHouses() {
           :
           <div>There are not homes</div>
       }
-    </>
+    </div>
   )
 }
 

@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ServicesCard from '../ServicesCard/ServicesCard'
 function ServicesList(props) {
 
-  const {services} = useSelector(state => state.servicesReducer)
-  console.log(services)
-  const dispatch = useDispatch() 
+  const { services } = useSelector(state => state.servicesReducer)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_SERVICES' })

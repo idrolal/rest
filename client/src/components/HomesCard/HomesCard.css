@@ -1,0 +1,29 @@
+.allHomes_box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 20px 20px 0;
+}
+
+.swiper_style {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #aeafaf;
+  max-height: auto;
+  min-height: 350px;
+  width: 100%;
+  /* border-radius: 20px; */
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: rgba(253, 247, 247, 0.425);
+}
+
+.allHomes_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 20px 20px 0;
+}
