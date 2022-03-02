@@ -1,5 +1,4 @@
-const { House } = require('../db/models');
-const { ImageHouse } = require('../db/models');
+const { House, ImageHouse } = require('../db/models');
 
 async function getAllHouses(req, res) {
   try {

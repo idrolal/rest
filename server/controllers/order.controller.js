@@ -1,5 +1,7 @@
 const { Op } = require('sequelize');
-const { Order, House, User } = require('../db/models');
+const {
+  Order, House, User, ImageHouse,
+} = require('../db/models');
 const { sendCreatedReservationMail } = require('./mail.controller');
 
 function unique(arr, prop) {
@@ -18,7 +20,13 @@ async function getHouse(req, res) {
   const { dataInUser, dataOutUser } = req.body;
   const avalibleHouses = [];
   const unavelebleHouses = [];
-  const houses = await House.findAll();
+  const houses = await House.findAll({
+    include: [
+      {
+        model: ImageHouse,
+      },
+    ],
+  });
 
   const occupieHouse = await Order.findAll({
     where: {
