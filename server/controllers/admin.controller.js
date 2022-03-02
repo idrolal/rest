@@ -101,6 +101,30 @@ async function deleteReservationController(req, res) {
   }
 }
 
+async function updateReservationController(req, res) {
+  const { dataIn, dataOut, summa, comment } = req.body
+  let newOrder;
+  try {
+    newHouses = await Order.update({
+      dataIn,
+      dataOut,
+      summa,
+      comment
+    }, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (newOrder) {
+      return res.json(newOrder);
+    }
+  } catch (error) {
+    return ({
+      message: error.message,
+    });
+  }
+}
+
 module.exports = {
-  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations, deleteReservationController
+  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations, deleteReservationController, updateReservationController
 };
