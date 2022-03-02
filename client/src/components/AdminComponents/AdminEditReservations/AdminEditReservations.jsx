@@ -1,16 +1,21 @@
 import React from 'react';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function AdminEditReservations() {
 
   const dispatch = useDispatch()
   const { id } = useParams()
+  const navigate = useNavigate()
   // console.log(id)
   const { reservations } = useSelector(state => state.reservationsReducer)
   // console.log(reservations)
   const reserv = reservations.find(el => el.id === +id)
+
+  const goBack = () => {
+    navigate(-1)
+  }
 
   const dataInInput = useRef();
   const dataOutInput = useRef();
@@ -28,10 +33,8 @@ function AdminEditReservations() {
   comment: comment.current.value
   }
   dispatch({ type: "FETCH_UPDATE_RESERVATIONS", payload: updateData })
+
 }
-
-  
-
 
   return (
     <div>
@@ -47,7 +50,8 @@ function AdminEditReservations() {
       }
       <textarea ref={comment} defaultValue={reserv.comment} />
       <p>Выбранный дом: {reserv.house_id}</p>
-      <button>Сохранить изменения</button>
+      <button onClick={goBack}>Сохранить изменения</button>
+
       </form>
     </div>
   );
