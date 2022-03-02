@@ -101,28 +101,42 @@
   font-size: 20px;
   font-family: "Montserrat Bold";
 }
-.btn-about {
-  margin-left: 250px;
-  width: 200px;
-  height: 60px;
+.btn-about_reviews {
+  width: 240px;
+  height: 70px;
   text-align: center;
-  margin-top: 37px;
-  border: 0px;
-  border-radius: 50px;
+  border-radius: 5px;
+  font-weight: 200;
   line-height: 3.05;
   font-size: 17px;
-  background-color:rgba(86, 181, 184);
-}
-/* .btn-about a {
-  color: white;
+  border: 0px;
   font-family: "Montserrat Light";
-} */
-/* .text-p {
-  font-family: "Montserrat Black";
-  } */
+  background: transparent;
+  background: -webkit-linear-gradient(
+    135deg,
+    rgb(152, 207, 195),
+    rgb(86, 181, 184)
+  );
+  background: -moz-linear-gradient(
+    135deg,
+    rgb(152, 207, 195),
+    rgb(86, 181, 184)
+  );
+  background: linear-gradient(135deg, rgb(152, 207, 195), rgb(86, 181, 184));
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
+  box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
+}
+.btn-about_reviews:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease-out;
+}
+.btn-about_reviews a {
+  color: black;
+}
 .review-text {
   font-family: "Montserrat Light";
 }
 .review-h1 {
-  font-family: "Montserrat Medium";
+  font-family: "Montserrat Bold";
 }
