@@ -18,10 +18,10 @@ function Home(props) {
       <About/>
       </div>
       <PhotoCollage/>
-      <PhotoSlider/>
+      {/* <PhotoSlider/> */}
       <div className="app-container">
       <ReviewsList/>
-      <Terms/>
+      <Terms/>      
       <Questions/>
       <MapsApi />
 

@@ -23,15 +23,14 @@ function PhotoCollage(props) {
     <div className="review-options">
       <h3 className='review-h1' >услуги</h3>
       <p className='review-text'>
-      {/* <p>О комплексе<span className='text-span'>eco</span><span className='text-p'>PARK</span>?</p> */}
       Мы учли все детали, чтобы Вам было комфортно.⁣
 На территории расположены:
 - 2 видовые скандинавские сауны,
 - 2 купели на дровах Dutchtub от Weltevree под открытым небом
 - комната отдыха с панорамным остеклением, шезлонгами и живописными видами,
-- зона отдыха на террасе, с тропическим душем и имитацией обливания из ведра
+- зона отдыха на террасе, с тропическим душем и имитацией обливания из ведра.
       </p>
-      <button className='btn-about'><a href="#contacts">Подробнее</a></button>
+      <button className='btn-about_reviews'><a href="#contacts">Подробнее</a></button>
       </div>
     </div>
     </>
