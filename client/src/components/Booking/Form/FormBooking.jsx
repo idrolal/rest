@@ -11,6 +11,7 @@ function FormBooking() {
   function foo(max, min) {
     const maxDay = Date.parse(max);
     const minDay = Date.parse(min);
+
     const interval = [];
     for (let i = minDay; i <= maxDay; i += 60 * 60 * 24 * 1000) {
       interval.push(new Date(i).toISOString().substring(0, 10));
@@ -25,6 +26,7 @@ function FormBooking() {
   const createOrderForm = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const goBack = (event) => {
     event.preventDefault()
     dispatch(deleteInterval({}))
@@ -59,9 +61,9 @@ function FormBooking() {
 
       <form ref={createOrderForm} onSubmit={createOrder}>
         <div className='formbooking-input'>
-        <div className='formbooking-div'><input className='input1' type='text' placeholder='Имя' name='name' required /></div>
-        <div className='formbooking-div'><input className='input1' type='email' placeholder='Email' name='email' required /></div>
-        <div className='formbooking-div'><input className='input1' type='text' placeholder='8(123)-456-78-90' name='phone' id='phone' minLength='11' required  onKeyPress={(event)=>{
+        <div className='formbooking-div'><input className='input1' type='text' placeholder='Имя' name='name' required autoComplete='off'/></div>
+        <div className='formbooking-div'><input className='input1' type='email' placeholder='Email' name='email' required autoComplete='off'/></div>
+        <div className='formbooking-div'><input className='input1' type='text' placeholder='8(123)-456-78-90' name='phone' id='phone' minLength='11' required  autoComplete='off' onKeyPress={(event)=>{
           if(!/[0-9]/.test(event.key)){
             event.preventDefault()
           }

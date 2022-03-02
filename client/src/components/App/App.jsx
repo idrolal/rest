@@ -1,8 +1,6 @@
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { store } from '../../redux/store'
 import { reactRouter } from '../../utils/utils.js'
 import AdminPanel from '../AdminComponents//AdminPanel/AdminPanel';
 import AdminAddHouse from '../AdminComponents//AdminAddHouse/AdminAddHouse.jsx'
@@ -25,15 +23,26 @@ import NotFound from '../NotFound/NotFound';
 import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminEditHouseCard';
 import FormBooking from '../Booking/Form/FormBooking';
 import ServicesList from '../ServicesList/ServicesList';
-import AdminEditReservations from '../AdminComponents/AdminEditReservations/AdminEditReservations.jsx'
-import Booking3 from '../Booking/Booking3';
+import AdminEditReservations from '../AdminComponents/AdminEditReservations/AdminEditReservations.jsx';
+import CalendarBook from '../CalendarBook/CalendarBook';
+import HomeCardCurrent from '../Home/HomeCardCurrent/HomeCardCurrent';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function App() {
+  
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    console.log('qwertyuiop')
+    dispatch({ type: 'FETCH_GET_HOMES' })
+  }, [dispatch])
 
   return (
 
+    
 
-    <Provider store={store}>
       <BrowserRouter>
 
           <Nav />
@@ -47,6 +56,7 @@ function App() {
             <Route path={reactRouter.admin.addReservation} element={<AdminCreateReservation />} />
             <Route path={reactRouter.admin.allReservations} element={<AdminAllReservations />} />
             <Route path={reactRouter.admin.allHouses} element={< AdminAllHouses />} />
+            <Route path={reactRouter.user.currentHouse} element={<HomeCardCurrent/>}/>
             <Route path={reactRouter.admin.confirmReviews} element={<AdminConfirmReviews />} />
             <Route path={reactRouter.admin.chooseEditHouse} element={<AdminEditHouseCard />} />
             <Route path={reactRouter.admin.login} element={<AdminLogin />} />
@@ -56,11 +66,12 @@ function App() {
             <Route path={reactRouter.admin.editReservations} element={<AdminEditReservations />} />
             {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
             <Route path={reactRouter.user.notfound} element={<NotFound />} />
+            <Route path='/calend' element={<CalendarBook/>}/>
           </Routes>
 
       </BrowserRouter>
 
-    </Provider>
+
   );
 }
 

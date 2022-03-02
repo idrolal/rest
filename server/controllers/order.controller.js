@@ -1,5 +1,7 @@
 const { Op } = require('sequelize');
-const { Order, House, User } = require('../db/models');
+const {
+  Order, House, User, ImageHouse,
+} = require('../db/models');
 const { sendCreatedReservationMail } = require('./mail.controller');
 
 function unique(arr, prop) {
@@ -14,11 +16,27 @@ function unique(arr, prop) {
   return result;
 }
 
+function foo(max, min) {
+  const maxDay = Date.parse(max);
+  const minDay = Date.parse(min);
+  const interval = [];
+  for (let i = minDay; i <= maxDay; i += 60 * 60 * 24 * 1000) {
+    interval.push(new Date(i).toISOString().substring(0, 10));
+  }
+  return interval;
+}
+
 async function getHouse(req, res) {
   const { dataInUser, dataOutUser } = req.body;
   const avalibleHouses = [];
   const unavelebleHouses = [];
-  const houses = await House.findAll();
+  const houses = await House.findAll({
+    include: [
+      {
+        model: ImageHouse,
+      },
+    ],
+  });
 
   const occupieHouse = await Order.findAll({
     where: {
@@ -76,7 +94,7 @@ async function saveOrder(req, res) {
       });
 
       if (order) {
-        return res.status(400).json({ message: 'Дом забронирован' });
+        return res.status(400).json({ message: 'Дом забронирован', success: false });
       }
 
       if (!order) {
@@ -112,8 +130,28 @@ async function saveOrder(req, res) {
     await sendCreatedReservationMail(info.email, newOrder, chosenHouse);
     return res.status(200).json({ message: 'Бронирование успешно создано!' });
   } catch (e) {
+    res.status(400).json({ message: e.message });
+  }
+}
+
+async function getUnavalibleDate(req, res) {
+  const { id } = req.params;
+  try {
+    const unavalibleDate = [];
+    const date = await Order.findAll({
+      where: { house_id: id },
+      raw: true,
+    });
+    date.map((el) => {
+      const interval = foo(el.dataOut, el.dataIn);
+      unavalibleDate.push(interval);
+    });
+    const flatArr = unavalibleDate.flat();
+    const response = [...new Set(flatArr)];
+    return res.json(response);
+  } catch (e) {
     return res.status(400).json({ message: e.message });
   }
 }
 
-module.exports = { saveOrder, getHouse };
+module.exports = { saveOrder, getHouse, getUnavalibleDate };
