@@ -6,7 +6,7 @@ const { Order } = require('../db/models');
 
 async function saveImgController(req, res) {
   const { files } = req;
-  console.log(files);
+
   const imgPathes = files.map((file) => file.filename);
   res.json({ message: 'картинки успешно загружены', pathArr: imgPathes });
 }
@@ -95,12 +95,36 @@ async function deleteReservationController(req, res) {
         id: req.params.id,
       },
     });
-    res.json({id: req.params.id});
+    res.json({ id: req.params.id });
   } catch (error) {
     res.json({ message: error.message });
   }
 }
 
+async function updateReservationController(req, res) {
+  const { dataIn, dataOut, summa, comment } = req.body
+  let newOrder;
+  try {
+    newHouses = await Order.update({
+      dataIn,
+      dataOut,
+      summa,
+      comment
+    }, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (newOrder) {
+      return res.json(newOrder);
+    }
+  } catch (error) {
+    return ({
+      message: error.message,
+    });
+  }
+}
+
 module.exports = {
-  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations, deleteReservationController
+  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations, deleteReservationController, updateReservationController
 };

@@ -21,7 +21,7 @@ const ImageMain = () => (
                   ]}
                 />
                 </div>
-                <button className='bnt-buy'>  <a href="/boking"><span>БРОНИРОВАТЬ</span></a></button>
+                <button className='bnt-buy'>  <a href="/booking"><span>Бронировать?</span></a></button>
                 </div>
         </div>
     </Parallax>

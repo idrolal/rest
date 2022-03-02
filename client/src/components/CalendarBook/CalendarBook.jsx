@@ -9,6 +9,7 @@ import { saveInterval } from '../../redux/actionCreators/orderAC'
 function CalendarBook({ currentHome }) {
   const { unavalibleDate } = useSelector(state => state.orderReducer)
 
+  const dispatch = useDispatch();
   const searchFreeHouse = (dates) => {
     const info = {
       dataInUser: dates.from,
@@ -20,10 +21,6 @@ function CalendarBook({ currentHome }) {
       dispatch({ type: 'FETCH_GET_FREE_HOUSE', payload: info })
     }
   }
-
-
-
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: 'FETCH_UNAVALIBLE_DATE', payload: currentHome })
   }, [dispatch, currentHome]);
@@ -36,7 +33,7 @@ function CalendarBook({ currentHome }) {
         onChange={searchFreeHouse}
       >
       </RangePicker >
-      <Link key={currentHome.id} to={`${reactRouter.user.booking}/${currentHome.id}`}>Забронировать</Link>
+      <Link key={currentHome?.id} to={`${reactRouter.user.booking}/${currentHome?.id}`}><h1>Забронировать</h1></Link>
     </>
   );
 }

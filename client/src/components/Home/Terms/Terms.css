@@ -1,6 +1,16 @@
-.container-options {
-  margin-top: 30px;
+.container-options1 {
+  margin-top: 60px;
   display: flex;
+  margin-bottom: 30px;
+  /* flex-wrap:wrap;/ */
+  /* justify-content: space-around; */
+  /* flex: 0 0 48px; */
+  /* margin: 0 -15px */
+}
+.container-options2 {
+  /* margin-top: 60px; */
+  display: flex;
+  margin-bottom: 100px;
   /* flex-wrap:wrap;/ */
   /* justify-content: space-around; */
   /* flex: 0 0 48px; */

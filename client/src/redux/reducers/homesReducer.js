@@ -1,6 +1,6 @@
-import { DELETE_HOME, INIT_HOMES, ADD_HOUSE, EDIT_HOUSE } from "../actionType/homesAT";
+import { DELETE_HOME, INIT_HOMES, ADD_HOUSE, EDIT_HOUSE, GET_ONE_HOUSE } from "../actionType/homesAT";
 
-const initialState = { homes: [] };
+const initialState = { homes: [], oneHome: [] };
 
 export const homesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -10,11 +10,15 @@ export const homesReducer = (state = initialState, action) => {
 
     case DELETE_HOME:
       return { ...state, homes: state.homes.filter(el => el.id !== action.payload) }
-    // return { ...state, homes: { ...state.homes, homes: state.homes.homes.filter(el => el.id !== action.payload) } }
 
     case ADD_HOUSE:
       return {
         ...state, homes: [...state.homes, action.payload]
+      }
+
+    case GET_ONE_HOUSE:
+      return {
+        ...state, oneHome: [action.payload]
       }
 
     case EDIT_HOUSE:

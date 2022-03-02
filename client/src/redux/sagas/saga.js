@@ -2,11 +2,11 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC, logoutAdminAC, errorLoginAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
 import { FIND_RESERVATIONS_FETCH } from '../actionType/reservationAT.js'
-import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
+import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC} from '../actionCreators/homesAC';
 import { getFreeHouseAC, initUnavalibleDate } from '../actionCreators/orderAC'
 
 // Authorization: 'Bearer' + localStorage.getItem('token'),
-import { deleteReservationsAC, initReservationsAC } from '../actionCreators/reservationsAC.js'
+import { deleteReservationsAC, initReservationsAC, updateReservationsAC } from '../actionCreators/reservationsAC.js'
 import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
 import { initServicesAC } from '../actionCreators/servicesAC'
@@ -38,7 +38,6 @@ function* postLoginAdmin(action) {
 
 }
 
-
 //
 function* getInitHomes() {
   const homes = yield call(fetchData, {
@@ -66,7 +65,7 @@ function* getInitReviews() {
 }
 
 function* addHouseAsync(action) {
-  console.log(action.payload);
+
   const house = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.admin.addHouseServerPath}`,
     method: 'POST',
@@ -79,7 +78,7 @@ function* addHouseAsync(action) {
   yield put(addHouseAdminAC(house))
 }
 function* putReviwesStatus(action) {
-  console.log(action.payload.info)
+
   const reviews = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.reviews}/${action.payload.id}`,
     method: 'PUT',
@@ -162,7 +161,7 @@ function* getInitReservations() {
 }
 
 function* saveOrder(action) {
-  console.log(action.payload)
+
   yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.order.save}`,
     method: 'POST',
@@ -195,6 +194,19 @@ function* postUnavalibleDate(action) {
   });
   yield put(initUnavalibleDate(date))
 }
+function* updateReservations(action) {
+  const reservation = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.admin.updateReservations}/${action.payload.id}`,
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: `${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify(action.payload)
+  });
+  yield put(updateReservationsAC(reservation))
+}
+
 
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
@@ -212,5 +224,6 @@ export function* globalWatcher() {
   yield takeEvery(FIND_RESERVATIONS_FETCH, getInitReservations);
   yield takeEvery("FETCH_DELETE_RESERVATION", deleteReservations);
   yield takeEvery("FETCH_UNAVALIBLE_DATE", postUnavalibleDate);
+  yield takeEvery("FETCH_UPDATE_RESERVATIONS", updateReservations);
 
 }

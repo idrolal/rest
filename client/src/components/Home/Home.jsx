@@ -7,7 +7,6 @@ import Questions from './Questions/Questions';
 import { MapsApi } from '../MapsApi/MapsApi';
 import './Home.css'
 import PhotoSlider from './PhotoSlider/PhotoSlider';
-import { WeatherApi } from '../WeatherApi/WeatherApi'
 import ImageMain from '../ImageMain/ImageMain';
 
 
@@ -19,15 +18,14 @@ function Home(props) {
       <About/>
       </div>
       <PhotoCollage/>
-      <PhotoSlider/>
+      {/* <PhotoSlider/> */}
       <div className="app-container">
       <ReviewsList/>
-      <Terms/>
+      <Terms/>      
       <Questions/>
       <MapsApi />
 
       </div>
-      <WeatherApi />
     </div>
   );
 }
