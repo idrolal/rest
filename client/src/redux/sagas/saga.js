@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { loginAdminAC, logoutAdminAC } from '../actionCreators/adminAC'
+import { loginAdminAC, logoutAdminAC, errorLoginAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
 import { FIND_RESERVATIONS_FETCH } from '../actionType/reservationAT.js'
 import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '../actionCreators/homesAC';
@@ -9,7 +9,7 @@ import { getFreeHouseAC } from '../actionCreators/orderAC'
 import { deleteReservationsAC, initReservationsAC, updateReservationsAC } from '../actionCreators/reservationsAC.js'
 import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
-import { initServicesAC} from '../actionCreators/servicesAC'
+import { initServicesAC } from '../actionCreators/servicesAC'
 
 
 async function fetchData({ url, method, headers, body }) {
@@ -33,7 +33,7 @@ function* postLoginAdmin(action) {
     yield put(loginAdminAC(admin.admin))
     localStorage.setItem('token', admin.token.accessToken);
   } catch {
-    yield put(loginAdminAC(admin.message))
+    yield put(errorLoginAdminAC(admin.message))
   }
 
 }
@@ -62,7 +62,6 @@ function* getInitReviews() {
     method: 'GET',
     headers: { 'Content-Type': 'Application/json' },
   });
-  //  method put works like dispatch(change my state)
   yield put(initReviews(reviews))
 }
 
@@ -77,7 +76,6 @@ function* addHouseAsync(action) {
     },
     body: JSON.stringify(action.payload),
   });
-  //  method put works like dispatch(change my state)
   yield put(addHouseAdminAC(house))
 }
 function* putReviwesStatus(action) {
@@ -91,19 +89,19 @@ function* putReviwesStatus(action) {
     },
     body: JSON.stringify(action.payload)
   });
-  //  method put works like dispatch(change my state)
   yield put(confirmReviewsAC(reviews))
 }
 
 function* putHouseDates(action) {
-  // console.log(action.payload.price)
   const homes = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.admin.editHouse}/${action.payload.id}`,
     method: 'PUT',
-    headers: { 'Content-Type': 'Application/json' },
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: `${localStorage.getItem('token')}`
+    },
     body: JSON.stringify(action.payload)
   });
-  //  method put works like dispatch(change my state)
   yield put(editHouseAdminAC(homes))
 }
 
@@ -128,7 +126,6 @@ function* postAddReviews(action) {
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload),
   });
-  //  method put works like dispatch(change my state)
   yield put(addReviews(newReview))
 }
 
@@ -138,13 +135,12 @@ function* getServices(action) {
     method: 'GET',
     headers: { 'Content-Type': 'Application/json' },
   });
-  //  method put works like dispatch(change my state)
   yield put(initServicesAC(newServise))
 }
 
 function* getAllFreeHouse(action) {
   const freeHouse = yield call(fetchData, {
-    url: `${process.env.REACT_APP_URL}${router.order}`,
+    url: `${process.env.REACT_APP_URL}${router.order.get}`,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload),
@@ -162,9 +158,19 @@ function* getInitReservations() {
     },
   });
 
-  //  method put works like dispatch(change my state)
   yield put(initReservationsAC(reservations))
 }
+
+function* saveOrder(action) {
+  console.log(action.payload)
+  yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.order.save}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  })
+}
+
 
 function* deleteReservations(action) {
   const reservation = yield call(fetchData, {
@@ -201,8 +207,9 @@ export function* globalWatcher() {
   yield takeEvery("FETCH_DELETE_HOME", deleteHome)
   yield takeEvery(ADD_HOUSE_FETCH, addHouseAsync);
   yield takeEvery("FETCH_PUT_HOMES", putHouseDates);
-  yield takeEvery("FETCH_GET_SERVICES", getServices)
-  yield takeEvery("FETCH_GET_FREE_HOUSE", getAllFreeHouse)
+  yield takeEvery("FETCH_GET_FREE_HOUSE", getAllFreeHouse);
+  yield takeEvery("SAVE_MY_ORDER", saveOrder);
+  yield takeEvery("FETCH_GET_SERVICES", getServices);
   yield takeEvery(FIND_RESERVATIONS_FETCH, getInitReservations);
   yield takeEvery("FETCH_DELETE_RESERVATION", deleteReservations);
   yield takeEvery("FETCH_UPDATE_RESERVATIONS", updateReservations);
