@@ -19,8 +19,7 @@ function ReviewsList(props) {
   const dispatch = useDispatch();
   const { reviews } = useSelector((state) => state.reviewsReducer);
   const state = useSelector((state) => state);
-  console.log(state);
-  console.log(reviews);
+
 
   useEffect(() => {
     dispatch({ type: "FETCH_GET_REVIEWS" })

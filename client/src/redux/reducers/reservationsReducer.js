@@ -9,8 +9,8 @@ export const reservationsReducer = (state = initialState, action) => {
       return { ...state, reservations: action.payload }
 
     case DELETE_RESERVATIONS:
-      console.log(action.payload)
-    return {...state, reservations: state.reservations.filter(el => el.id !== Number(action.payload.id))}
+
+      return { ...state, reservations: state.reservations.filter(el => el.id !== Number(action.payload.id)) }
 
     default:
       return state;

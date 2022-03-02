@@ -65,7 +65,7 @@ function* getInitReviews() {
 }
 
 function* addHouseAsync(action) {
-  console.log(action.payload);
+
   const house = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.admin.addHouseServerPath}`,
     method: 'POST',
@@ -78,7 +78,7 @@ function* addHouseAsync(action) {
   yield put(addHouseAdminAC(house))
 }
 function* putReviwesStatus(action) {
-  console.log(action.payload.info)
+
   const reviews = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.reviews}/${action.payload.id}`,
     method: 'PUT',
@@ -161,7 +161,7 @@ function* getInitReservations() {
 }
 
 function* saveOrder(action) {
-  console.log(action.payload)
+
   yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.order.save}`,
     method: 'POST',

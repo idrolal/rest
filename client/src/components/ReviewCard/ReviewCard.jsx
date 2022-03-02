@@ -17,7 +17,6 @@ function ReviewCard({ review }) {
   const handlerUpdate = (e) => {
     e.preventDefault()
     dispatch({ type: "FETCH_PUT_REVIEW", payload: { id: `${review.id}`, info: descriptionRef.current.value } })
-    // console.log(descriptionRef.current.value)
   }
 
 

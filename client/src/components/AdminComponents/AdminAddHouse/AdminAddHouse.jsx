@@ -12,11 +12,10 @@ function AdminAddHouse(props) {
   const [imgPaths, setImgPaths] = useState([])
   const dispatch = useDispatch()
   const state = useSelector(state => state)
-  console.log(state);
 
   const sendFiles = useCallback(async (e) => {
     const picturesData = [...e.target.files]
-    console.log(picturesData);
+
     try {
       const url = `${process.env.REACT_APP_URL}${router.admin.addHouseServerIMGPath}`
 
@@ -40,11 +39,9 @@ function AdminAddHouse(props) {
         .then(imgPath => setImgPaths(imgPath))
 
     } catch (error) {
-      console.log(error);
+
     }
   }, [])
-
-  console.log(imgPaths.pathArr);
 
   const formAddHouse = useRef()
 
