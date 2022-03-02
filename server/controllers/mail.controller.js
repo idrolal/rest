@@ -21,12 +21,12 @@ async function sendCreatedReservationMail(to, dataOrder, house) {
     text: '...',
     html: `
       <div>
-        <h1>Вы успешно забронировали!</h1>
-        <p>Ваш домик: ${house.name}</p>
-        <p>Дата заезда: ${dataOrder.dataIn}</p>
-        <p>Дата выезда: ${dataOrder.dataOut}</p>
-        <p>Общая сумма: ${dataOrder.summa}</p>
-        <p>Ждем Вас для лучшего отдыха!</p>
+        <h1>Вы успешно забронировали номер в EcoPark!</h1>
+        <p>Ваш домик: <b>${house.name}</b></p>
+        <p>Дата заезда: <b>${dataOrder.dataIn}</b></p>
+        <p>Дата выезда: <b>${dataOrder.dataOut}</b></p>
+        <p>Общая сумма: <b>${dataOrder.summa} &#8381;</b></p>
+        <h2>Ждем Вас для лучшего отдыха!</р>
       </div>
       `,
   });
