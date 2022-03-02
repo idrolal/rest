@@ -6,7 +6,7 @@ import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC } from '..
 import { getFreeHouseAC } from '../actionCreators/orderAC'
 
 // Authorization: 'Bearer' + localStorage.getItem('token'),
-import { deleteReservationsAC, initReservationsAC } from '../actionCreators/reservationsAC.js'
+import { deleteReservationsAC, initReservationsAC, updateReservationsAC } from '../actionCreators/reservationsAC.js'
 import { initReviews, confirmReviewsAC, addReviews } from '../actionCreators/reviewsAC';
 import { ADD_HOUSE_FETCH } from '../actionCreatorsAsync/actionCreatorsAsync.js'
 import { initServicesAC} from '../actionCreators/servicesAC'
@@ -178,6 +178,19 @@ function* deleteReservations(action) {
   yield put(deleteReservationsAC(reservation))
 }
 
+function* updateReservations(action) {
+  const reservation = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.admin.updateReservations}/${action.payload.id}`,
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: `${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify(action.payload)
+  });
+  yield put(updateReservationsAC(reservation))
+}
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
@@ -192,4 +205,5 @@ export function* globalWatcher() {
   yield takeEvery("FETCH_GET_FREE_HOUSE", getAllFreeHouse)
   yield takeEvery(FIND_RESERVATIONS_FETCH, getInitReservations);
   yield takeEvery("FETCH_DELETE_RESERVATION", deleteReservations);
+  yield takeEvery("FETCH_UPDATE_RESERVATIONS", updateReservations);
 }
