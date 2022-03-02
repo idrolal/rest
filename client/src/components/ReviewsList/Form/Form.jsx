@@ -1,53 +1,91 @@
-import React, { useRef } from 'react';
-import { useDispatch } from "react-redux";
+import React, { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+// import StarRating from '../../StarRating/StarRating'
+import ReactStars from "react-rating-stars-component";
+import { useState } from 'react';
 
 function Form(props) {
-  const nameInput = useRef();
-  const descInput = useRef();
+  // const nameInput = useRef();
+  // const descInput = useRef();
+  const form = useRef()
+
+  const { homes } = useSelector(state => state.homesReducer)
+  // console.log(homes, '<------')
   const dispatch = useDispatch();
-// SDELAT RATING 
+
+  const [star, setStar] = useState('')
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GET_HOMES' })
+  }, [dispatch])
+
   const formHandler = (e) => {
     e.preventDefault();
-
+    const info = Object.fromEntries(new FormData(form.current));
+    const selected = document.getElementById("select-id");
+    const value = selected.options[selected.selectedIndex].value;
+  
     const newReview = {
-      house_id: 1,
-      nameUser: nameInput.current.value,
-      description: descInput.current.value,
-      rating: 5,
-      status: false,
+      house_id: +value,
+      rating: star,
     }
-    dispatch({type: "FETCH_POST_REVIEW", payload: newReview});
+    const payload = {...newReview, ...info}
+    console.log(payload)
+    dispatch({type: "FETCH_POST_REVIEW", payload});
+    // console.log(newReview);
   }
 
 
+
   return (
+
     <div className="central-form">
-    <div className="col">
-      <h2 className="title">
-        <p className="styles_typicalWrapper__1_Uvh">Напишите свой отзыв 📨</p>
-      </h2>
-    </div>
-    <div className="back-form">
-      <div className="img-back">
+      <div className="col">
+        <h2 className="title">
+          <p className="styles_typicalWrapper__1_Uvh">Напишите свой отзыв 📨</p>
+        </h2>
       </div>
-      <form>
-        <p></p>
-        <label className='label-text'>
-          Имя
-          <input ref={nameInput} className='name-input' type="text" />
-        </label>
-        <label  className='label-text'>
-          Сообщение
-          <textarea ref={descInput} placeholder="Вам понравилось?" type="text"></textarea>
-        </label>
-        <div>
-          <button onClick={formHandler} type="submit">
-            <span className="send-text">Отправить</span>
-          </button>
+      <div className="back-form">
+        <div className="img-back">
         </div>
-      </form>
+        <form ref={form} onSubmit={formHandler}>
+          <p></p>
+          <label className='label-text'>
+            Имя
+            <input name='nameUser' className='name-input' type="text" />
+          </label>
+          <label className='label-text'>
+            Сообщение
+            <textarea name='description' placeholder="Вам понравилось?" type="text"></textarea>
+          </label>
+
+          <div className="input-field col s12" style={{ marginBottom: "50px" }}>
+            <select className="SelFo" style={{ display: 'block' }} id='select-id'>
+              <option value="" disabled selected>Выбери дом</option>
+              {homes?.length ? homes.map(el => <option name='sel' value={el.id} key={el.id}>{el.name}</option>) : <option>None </option>}
+            </select>
+
+          </div>
+
+
+          <label className='label-text'>
+            Оцените нас
+            <ReactStars
+              count={5}
+              onChange={(value) => setStar(value)}
+              size={24}
+              activeColor="#ffd700"
+
+            />
+          </label>
+          <div>
+            <button >
+              <span className="send-text">Отправить</span>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
   );
 }
 
