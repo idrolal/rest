@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { deleteInterval } from '../../../redux/actionCreators/orderAC';
 import { reactRouter } from '../../../utils/utils';
+import './FormBooking.css';
+import calendar from '../../../img/calendar.svg';
 
 function FormBooking() {
 
@@ -36,28 +38,41 @@ function FormBooking() {
     //Добавить тосты
     navigate(reactRouter.user.homepage)
   }
+
   return (
-    <div>
-      <p>{currentHouse?.name}</p>
-      <p>{currentHouse?.price} ₽/день</p>
+    <div className='app-container'>
+      <div className='formbooking-main'>
+      <div className='formbooking-header'>
+        <img className='calendar-logo' src={calendar} alt=''/>
+        <p className='data-calendar'>{(interval?.dataInUser).split('-').reverse().join('.')+' г.'} - {(interval?.dataOutUser).split('-').reverse().join('.')+' г.'} </p>
+        </div>
+        <div className='formbooking-smallmain'>
+        <button className='backbutton' onClick={goBack}>{'< Назад'}</button>
+      {/* <p>{currentHouse?.price} ₽/день</p> */}
       <div>
-        <p>Период: {interval?.dataInUser} - {interval?.dataOutUser}</p>
-        <p>Общая сумма заказа {summa}₽</p>
+        <span className='summa-zakaza'>Общая стоимость: <span className='rub'>{summa}₽</span></span>
+        <p>Время заезда и выезда
+Стандартное время заезда — 15:00, выезда — 12:00.</p>
+      <p>Коттедж: <span className='span-housename'>{currentHouse?.name}</span></p>
+        
       </div>
 
       <form ref={createOrderForm} onSubmit={createOrder}>
-        <input type='text' placeholder='Имя' name='name' required />
-        <input type='email' placeholder='Email' name='email' required />
-     
-        <input type='text' placeholder='8(123)-456-78-90' name='phone' id='phone' minLength='11' required  onKeyPress={(event)=>{
+        <div className='formbooking-input'>
+        <div className='formbooking-div'><input className='input1' type='text' placeholder='Имя' name='name' required /></div>
+        <div className='formbooking-div'><input className='input1' type='email' placeholder='Email' name='email' required /></div>
+        <div className='formbooking-div'><input className='input1' type='text' placeholder='8(123)-456-78-90' name='phone' id='phone' minLength='11' required  onKeyPress={(event)=>{
           if(!/[0-9]/.test(event.key)){
             event.preventDefault()
           }
-        }} />
-        <input type='text' placeholder='Ваш комментарий' name='comment' />
-        <button>Забронировать</button>
+        }} /></div>
+        </div>
+        <p className='dopoptions'>Дополнительные комментарии</p>
+        <textarea style={{backgroundColor: 'white', border: '1px solid black'}}type='text' placeholder='Если у вас есть дополнительные пожелания, пожалуйста, дайте нам знать. Мы постараемся учесть ваши пожелания при наличии такой возможности.' name='comment' />
+        <button className='button-booking-buy'>Забронировать</button>
       </form>
-      <button onClick={goBack}>Назад</button>
+      </div>
+      </div>
     </div>
   );
 }

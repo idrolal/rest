@@ -55,7 +55,7 @@ function Booking2(props) {
         <span className='booking-text'>Дата заезда: <input className='booking-input1' type="date" defaultValue={nowDate} onChange={getDateIn} min={nowDate} name="calendar_in" ref={inputMin} required /></span>
         <span className='booking-text'>Дата выезда: <input className='booking-input2' type="date" defaultValue={nowDate} onChange={getDateOut} name="calendar_out" ref={inputMax} required/></span>
         </div>
-        <button onClick={searchFreeHouse}>Найти</button>
+        <div className='button-booking-container'><button className='button-booking-search' onClick={searchFreeHouse}>Найти</button></div>
         
         {orders.length ? orders.map(el => <HomesCard homes={el} key={el.id}  /> ) : <div>{orders.message}</div>}
 
