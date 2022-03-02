@@ -57,7 +57,7 @@ function AdminAddHouse(props) {
 
 
   return (
-    <div>
+    <div className='app-container'>
       <h1>Admin Add House</h1>
 
       <form ref={formAddHouse} onSubmit={createHouse}>

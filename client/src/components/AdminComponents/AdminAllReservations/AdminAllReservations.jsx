@@ -13,7 +13,7 @@ function AdminAllReservations(props) {
   }, [dispatch])
 
   return (
-    <div>
+    <div className='app-container'>
       <h1>Admin All Reservations</h1>
       {
         reservations?.length ?

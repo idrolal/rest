@@ -27,11 +27,11 @@ export const AdminEditHouseCard = () => {
   }
 
   return (
-    <form onSubmit={handlerUpdate}>
+    <form onSubmit={handlerUpdate} className='app-container'>
       <div>
         <input defaultValue={curHome.name} ref={nameRef} />
         <br />
-        <input defaultValue={curHome.description} ref={descriptionRef} />
+        <textarea defaultValue={curHome.description} ref={descriptionRef} />
         <br />
         <input defaultValue={curHome.price} ref={priceRef} />
         <br />

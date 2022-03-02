@@ -14,8 +14,6 @@ SwiperCore.use([Autoplay]);
 
 
 export const HomesCard = ({ homes }) => {
-  console.log(homes.ImageHouses);
-
   return (
     <div className='allHomes_box'>
       <div className='allHomes_info'>
