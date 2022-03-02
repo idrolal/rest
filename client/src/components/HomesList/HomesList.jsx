@@ -14,7 +14,7 @@ export const HomesList = () => {
 
   return (
     <div className='app-container'>
-      <h1>Все домики</h1>
+      <h1 style={{ fontFamily: "Montserrat Regular" }}>Все домики</h1>
       {homes?.length ? homes.map(el => <HomesCard key={el.id} homes={el} />) : <div>There are not homes</div>}
     </div>
   );

@@ -41,7 +41,13 @@
 
 .allHomes_title {
   margin-bottom: 30px;
+  font-family: "Montserrat Bold";
 }
+
+.allHomes_description {
+  font-family: "Montserrat Regular";
+}
+
 
 .allHomes_reservBtn {
   margin-top: 30px;

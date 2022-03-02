@@ -21,7 +21,7 @@ export const HomesCard = ({ homes }) => {
           <h4>{homes?.name.toUpperCase()}</h4>
           <h6>{homes?.price} &#8381;</h6>
         </div>
-        <div>{homes?.description}</div>
+        <div className='allHomes_description'>{homes?.description}</div>
         <div className='allHomes_reservBtn'>
           <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`} className='allHomes_reservBtn_font'>Перейти к бронированию</Link>
         </div>
