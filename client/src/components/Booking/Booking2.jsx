@@ -61,14 +61,21 @@ function Booking2(props) {
             <span className='booking-text'>Дата выезда: <input className='booking-input2' type="date" defaultValue={nowDate} onChange={getDateOut} name="calendar_out" ref={inputMax} required /></span>
           </div>
           <div className='button-booking-container'><button className='button-booking-search' onClick={searchFreeHouse}>Найти</button></div>
+          {/* {orders.length ? orders.map(el => <><HomesCard homes={el} key={el.id} />
 
+            <div className='booking-main__btnReserve'>
+              <Link key={el.id} to={`${reactRouter.user.booking}/${el.id}`} className='booking-main__font'>Забронировать</Link>
+            </div>
+          </>) : <div>{orders.message}</div>} */}
+        </div>
+
+        <div>
           {orders.length ? orders.map(el => <><HomesCard homes={el} key={el.id} />
 
             <div className='booking-main__btnReserve'>
               <Link key={el.id} to={`${reactRouter.user.booking}/${el.id}`} className='booking-main__font'>Забронировать</Link>
             </div>
           </>) : <div>{orders.message}</div>}
-
         </div>
       </div>
     </>
