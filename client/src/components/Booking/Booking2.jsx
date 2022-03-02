@@ -8,6 +8,7 @@ import { HomesCard } from '../HomesCard/HomesCard';
 import { saveInterval } from '../../redux/actionCreators/orderAC'
 import './Booking2.css';
 
+
 function Booking2(props) {
   const dispatch = useDispatch()
 
@@ -52,7 +53,6 @@ function Booking2(props) {
 
   return (
     <>
-
       <div className='app-container'>
         <div className='booking-main-container'>
           <h4 className='booking-h4'>Выберите даты заезда и выезда</h4>
@@ -62,7 +62,12 @@ function Booking2(props) {
           </div>
           <div className='button-booking-container'><button className='button-booking-search' onClick={searchFreeHouse}>Найти</button></div>
 
-          {orders.length ? orders.map(el => <><HomesCard homes={el} key={el.id} />  <Link key={el.id} to={`${reactRouter.user.booking}/${el.id}`}>Забронировать</Link></>) : <div>{orders.message}</div>}
+          {orders.length ? orders.map(el => <><HomesCard homes={el} key={el.id} />
+
+            <div className='booking-main__btnReserve'>
+              <Link key={el.id} to={`${reactRouter.user.booking}/${el.id}`} className='booking-main__font'>Забронировать</Link>
+            </div>
+          </>) : <div>{orders.message}</div>}
 
         </div>
       </div>
