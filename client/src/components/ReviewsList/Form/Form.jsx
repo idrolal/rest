@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import ReactStars from "react-rating-stars-component";
 import { useState } from 'react';
 
-function Form({onSubmit}) {
+function Form({ onSubmit }) {
   const form = useRef()
 
   const { homes } = useSelector(state => state.homesReducer)
-  
+
   const dispatch = useDispatch();
   const [star, setStar] = useState('')
 
@@ -18,7 +18,7 @@ function Form({onSubmit}) {
 
   const formHandler = (e) => {
     e.preventDefault();
-   
+
     const info = Object.fromEntries(new FormData(form.current));
     const selected = document.getElementById("select-id");
     const value = selected.options[selected.selectedIndex].value;
@@ -29,11 +29,11 @@ function Form({onSubmit}) {
     }
     const payload = { ...newReview, ...info }
     dispatch({ type: "FETCH_POST_REVIEW", payload });
-    
+
     onSubmit();
   }
- 
- return (
+
+  return (
 
     <div className="central-form">
       <div className="col">

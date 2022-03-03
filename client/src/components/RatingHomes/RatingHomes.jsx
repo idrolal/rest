@@ -10,6 +10,7 @@ function RatingHomes({id}) {
     activeColor="#ffd700"
     edit={false}
   />
+  
   )
 }
 
