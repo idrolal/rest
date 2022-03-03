@@ -49,6 +49,18 @@ async function getHouse(req, res) {
           dataIn: { [Op.gte]: dataInUser },
           dataOut: { [Op.lte]: dataOutUser },
         },
+        // {
+        //   dataIn: { [Op.lte]: dataInUser },
+        // },
+        // {
+        //   dataOut: { [Op.gte]: dataOutUser },
+        // },
+        // {
+        //   dataIn: { [Op.gte]: dataInUser },
+        // },
+        // {
+        //   dataOut: { [Op.lte]: dataOutUser },
+        // },
       ],
     },
 

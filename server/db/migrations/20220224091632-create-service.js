@@ -19,6 +19,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
+      img: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
