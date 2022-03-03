@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
     "axios": "^0.26.0",
+    "chalk": "^5.0.0",
+    "gensync": "^1.0.0-beta.2",
     "materialize-css": "^1.0.0",
     "moment": "^2.29.1",
     "react": "^16.14.0",
