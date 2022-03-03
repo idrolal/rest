@@ -49,7 +49,7 @@ html {
 
 .pricing-table * {
   text-align: center;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .pricing-plan {
@@ -61,25 +61,21 @@ html {
   border-bottom: none;
 }
 
-/* .pricing-img {
-  margin-bottom: 25px;
-  max-width: 100%;
-} */
 
 .pricing-header {
   /* color: #888;
   font-weight: 600;
   letter-spacing: 1px; */
-  
+  font-family: "Montserrat Regular";
 }
 
 .pricing-features {
-
+  font-family: "Montserrat Regular";
 }
 
 .pricing-features-item {
   border-top: 1px solid #e1f1ff;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.5;
   padding: 15px 0;
 }

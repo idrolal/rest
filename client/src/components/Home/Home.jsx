@@ -18,7 +18,7 @@ function Home(props) {
       <div className="app-container">
       <About/>
       </div>
-      {/* <PhotoCollage/> */}
+      <PhotoCollage/>
       {/* <PhotoSlider/> */}
       <div className="app-container">
       <ServicesList/>
