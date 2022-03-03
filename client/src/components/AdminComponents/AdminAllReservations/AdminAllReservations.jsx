@@ -13,15 +13,18 @@ function AdminAllReservations(props) {
   }, [dispatch])
 
   return (
-    <div className='app-container'>
-      <h1>Admin All Reservations</h1>
-      {
-        reservations?.length ?
-          reservations.map(reserve => <AdminReservationsList key={reserve.id} reserve={reserve} />)
-          :
-          <div>None!</div>
-      }
-    </div>
+    <>
+      {localStorage.getItem('token') &&
+        <div className='app-container'>
+          <h1>Admin All Reservations</h1>
+          {
+            reservations?.length ?
+              reservations.map(reserve => <AdminReservationsList key={reserve.id} reserve={reserve} />)
+              :
+              <div>None!</div>
+          }
+        </div>
+      } </>
   );
 }
 

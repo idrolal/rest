@@ -20,29 +20,34 @@ function AdminHomesCard({ home }) {
   }
 
   return (
-    <div className='house_card'>
-      <div>{home?.name}</div>
-      <div>{home?.description}</div>
-      <div>{home?.price}</div>
-
-      {/* <div>{home?.chips[0].map(el => <h3>{home}</h3>)}</div> */}
-
+    <>
       {
-        home.ImageHouses
-          ?
-          home.ImageHouses.map(img =>
-            <img
-              src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name}`}
-              alt={img.name}
-              key={img.name}
-              style={{ height: '100px', width: '100px' }} />
-          )
-          :
-          <div>None</div>
+        localStorage.getItem('token') &&
+        <div className='house_card'>
+          <div>{home?.name}</div>
+          <div>{home?.description}</div>
+          <div>{home?.price}</div>
+
+          {/* <div>{home?.chips[0].map(el => <h3>{home}</h3>)}</div> */}
+
+          {
+            home.ImageHouses
+              ?
+              home.ImageHouses.map(img =>
+                <img
+                  src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name}`}
+                  alt={img.name}
+                  key={img.name}
+                  style={{ height: '100px', width: '100px' }} />
+              )
+              :
+              <div>None</div>
+          }
+          <button onClick={() => deleteHome(home.id)}>Удалить домик</button>
+          <Link to={`${reactRouter.admin.editHouse}${home.id}`} key={home?.id}>Изменить дом</Link>
+        </div>
       }
-      <button onClick={() => deleteHome(home.id)}>Удалить домик</button>
-      <Link to={`${reactRouter.admin.editHouse}${home.id}`} key={home?.id}>Изменить дом</Link>
-    </div>
+    </>
   );
 }
 

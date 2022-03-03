@@ -13,16 +13,21 @@ function AdminAllHouses() {
   }, [dispatch, homes])
 
   return (
-    <div className='app-container'>
-      <h1>Homes List</h1>
-      {
-        homes?.length ?
-          homes.map(el => <AdminHomesCard key={el.name} home={el} />)
-          :
-          <div>There are not homes</div>
-      }
-    </div>
+    <>
+      {localStorage.getItem('token') &&
+        <div className='app-container'>
+          <h1>Homes List</h1>
+          {
+            homes?.length ?
+              homes.map(el => <AdminHomesCard key={el.name} home={el} />)
+              :
+              <div>There are not homes</div>
+          }
+        </div>
+      } </>
+
   )
 }
 
 export default AdminAllHouses;
+

@@ -57,60 +57,64 @@ function AdminAddHouse(props) {
 
 
   return (
-    <div className='app-container'>
-      <h1>Admin Add House</h1>
+    <>
+      {localStorage.getItem('token') &&
+        < div className='app-container' >
+          <h1>Admin Add House</h1>
 
-      <form ref={formAddHouse} onSubmit={createHouse}>
-        <div>
-          <label htmlFor="houseName">Название дома: </label>
-          <input type="text" id='houseName' name='name' />
-        </div>
+          <form ref={formAddHouse} onSubmit={createHouse}>
+            <div>
+              <label htmlFor="houseName">Название дома: </label>
+              <input type="text" id='houseName' name='name' />
+            </div>
 
-        <div>
-          <label htmlFor="houseDescription">Описание дома: </label>
-          <textarea type="text" id='houseDescription' name='description' />
-        </div>
+            <div>
+              <label htmlFor="houseDescription">Описание дома: </label>
+              <textarea type="text" id='houseDescription' name='description' />
+            </div>
 
-        <div>
-          {/* нормальный селект опшион */}
-          <select name='chips' style={{ display: 'block' }}>
-            <option value='extenstions'>Дополнительные услуги при заезде: </option>
-            <option value="С животными">С животными - бесплатно </option>
-            <option value="Детская кроватка">Детская кроватка - бесплатно</option>
-            <option value="Трансфер">Трансфер - 5000 &#8381;</option>
-          </select>
-        </div>
+            <div>
+              {/* нормальный селект опшион */}
+              <select name='chips' style={{ display: 'block' }}>
+                <option value='extenstions'>Дополнительные услуги при заезде: </option>
+                <option value="С животными">С животными - бесплатно </option>
+                <option value="Детская кроватка">Детская кроватка - бесплатно</option>
+                <option value="Трансфер">Трансфер - 5000 &#8381;</option>
+              </select>
+            </div>
 
-        <div>
-          <label htmlFor="housePrice">Цена: </label>
-          <input type="text" id='housePrice' name='price' onKeyPress={(event) => {
-            if (!/[0-9]/.test(event.key)) {
-              event.preventDefault();
-            }
-          }} />&#8381;
-        </div>
+            <div>
+              <label htmlFor="housePrice">Цена: </label>
+              <input type="text" id='housePrice' name='price' onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }} />&#8381;
+            </div>
 
-        <div className='images_box'>
-          <div className='images_box__eachImg'>
-            {
-              imgPaths.pathArr?.length ?
-                imgPaths.pathArr.map(img => {
-                  return <div style={{ height: '100px', width: '200px', backgroundColor: 'grey' }} key={img}>
-                    <img src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img}`} alt="..." style={{ height: '100px', width: '200px', }} />
-                  </div>
-                })
-                :
-                <div></div>
-            }
-            <input type="file" multiple onChange={sendFiles} />
-          </div>
+            <div className='images_box'>
+              <div className='images_box__eachImg'>
+                {
+                  imgPaths.pathArr?.length ?
+                    imgPaths.pathArr.map(img => {
+                      return <div style={{ height: '100px', width: '200px', backgroundColor: 'grey' }} key={img}>
+                        <img src={`${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img}`} alt="..." style={{ height: '100px', width: '200px', }} />
+                      </div>
+                    })
+                    :
+                    <div></div>
+                }
+                <input type="file" multiple onChange={sendFiles} />
+              </div>
 
-        </div>
+            </div>
 
-        <button>Добавить дом</button>
-        <div></div>
-      </form>
-    </div>
+            <button>Добавить дом</button>
+            <div></div>
+          </form>
+        </div >
+      }
+    </>
   );
 }
 
