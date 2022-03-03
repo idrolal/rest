@@ -139,6 +139,7 @@ function* getServices(action) {
 }
 
 function* getAllFreeHouse(action) {
+  try{
   const freeHouse = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.order.get}`,
     method: 'POST',
@@ -146,6 +147,7 @@ function* getAllFreeHouse(action) {
     body: JSON.stringify(action.payload),
   })
   yield put(getFreeHouseAC(freeHouse))
+} catch{}
 }
 
 function* getInitReservations() {
@@ -185,6 +187,7 @@ function* deleteReservations(action) {
 }
 
 function* postUnavalibleDate(action) {
+  try{
   const date = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.order.get}/${action.payload.id}`,
     method: 'POST',
@@ -194,6 +197,9 @@ function* postUnavalibleDate(action) {
     body: JSON.stringify(action.payload)
   });
   yield put(initUnavalibleDate(date))
+} catch {
+  
+}
 }
 function* updateReservations(action) {
   const reservation = yield call(fetchData, {

@@ -1,5 +1,6 @@
 import React from "react";
 import './ServicesHome.css'
+import { v4 as uuidv4 } from 'uuid';
 
 function ServicesHome({services}) {
   // console.log(services)
@@ -15,12 +16,12 @@ function ServicesHome({services}) {
         
         {services.length ? services.map(el=>{
           return (
-          <div className="pricing-plan">
-          <img src={el.img} alt="" class="pricing-img"/>
-          <h2 className="pricing-header">{el.name}</h2>
-          <ul className="pricing-features">
-            <li className="pricing-features-item">{el.description}</li>
-            <li className="pricing-features-item">{el.price} ₽.</li>
+          <div key={uuidv4()} className="pricing-plan">
+          <img key={uuidv4()}  src={el.img} alt="" className="pricing-img"/>
+          <h2 key={uuidv4()}  className="pricing-header">{el.name}</h2>
+          <ul key={uuidv4()}  className="pricing-features">
+            <li key={uuidv4()}  className="pricing-features-item">{el.description}</li>
+            <li key={uuidv4()}  className="pricing-features-item">{el.price} ₽.</li>
           </ul>
         </div>
           )

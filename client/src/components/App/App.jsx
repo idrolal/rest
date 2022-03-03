@@ -36,6 +36,8 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
+    dispatch({ type: 'FETCH_GET_REVIEWS' })
+    dispatch({ type: 'FETCH_GET_SERVICES' })
   }, [dispatch])
 
   return (

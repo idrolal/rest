@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './HomesCard.css'
 import RatingHomes from '../RatingHomes/RatingHomes';
+import { v4 as uuidv4 } from 'uuid';
 SwiperCore.use([Autoplay]);
 
 
@@ -44,8 +45,7 @@ export const HomesCard = ({ homes }) => {
       >
         {
           homes.ImageHouses?.map(img =>
-            <SwiperSlide className='swiper_style' style={{ backgroundImage: `url(${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name})` }} key={img.name} >
-              <div></div>
+            <SwiperSlide key={uuidv4()} className='swiper_style' style={{ backgroundImage: `url(${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name})` }} >
             </SwiperSlide>
           )
         }

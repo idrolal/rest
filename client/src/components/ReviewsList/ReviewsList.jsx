@@ -40,7 +40,7 @@ function ReviewsList(props) {
  
     {reviews.length ? reviews.map(review => {
     if (review.status) {
-      return <Item><ReviewCard key={review.id} review={review}/></Item>
+      return <Item key={review.id}><ReviewCard key={review.id} review={review}/></Item>
     } 
     })
     : 
