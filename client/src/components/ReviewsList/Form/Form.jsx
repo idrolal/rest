@@ -38,7 +38,7 @@ function Form({ onSubmit }) {
     <div className="central-form">
       <div className="col">
         <h2 className="title">
-          <p className="styles_typicalWrapper__1_Uvh">Напишите свой отзыв 📨</p>
+          <p className="styles_typical">Напишите свой отзыв 📨</p>
         </h2>
       </div>
       <div className="back-form">
@@ -48,7 +48,7 @@ function Form({ onSubmit }) {
           <p></p>
           <label className='label-text'>
             Имя
-            <input name='nameUser' className='name-input' type="text" />
+            <input name='nameUser' className='name-input' type="text" autoFocus />
           </label>
           <label className='label-text'>
             Сообщение
@@ -75,8 +75,8 @@ function Form({ onSubmit }) {
             />
           </label>
           <div>
-            <button>
-              <span className="send-text" >Отправить</span>
+            <button className='header-button-scale-2'>
+              <span>Отправить</span>
             </button>
           </div>
         </form>
