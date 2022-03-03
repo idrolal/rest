@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 function ServicesHome({services}) {
   return (
     <>
-      <h3 className='services-h3'>услуги</h3>
+      <h3 className='services-h3'></h3>
       <div className="review-container" id='Reviews'>
       <div className="review-options">
       <div className="background">
