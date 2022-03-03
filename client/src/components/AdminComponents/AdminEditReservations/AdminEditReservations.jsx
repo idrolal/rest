@@ -23,37 +23,42 @@ function AdminEditReservations() {
   const comment = useRef()
 
   const handlerUpdate = (e) => {
-  e.preventDefault()
-  // console.log(dataInInput.current.value)
-  const updateData = {
-  id,
-  dataIn: dataInInput.current.value,
-  dataOut: dataOutInput.current.value,
-  summa: summa.current.value,
-  comment: comment.current.value
-  }
-  dispatch({ type: "FETCH_UPDATE_RESERVATIONS", payload: updateData })
+    e.preventDefault()
+    // console.log(dataInInput.current.value)
+    const updateData = {
+      id,
+      dataIn: dataInInput.current.value,
+      dataOut: dataOutInput.current.value,
+      summa: summa.current.value,
+      comment: comment.current.value
+    }
+    dispatch({ type: "FETCH_UPDATE_RESERVATIONS", payload: updateData })
 
-}
+  }
 
   return (
-    <div>
-      <form onSubmit={handlerUpdate}> 
-      <input ref={dataInInput} type="date" defaultValue={reserv.dataIn} />
-      <input ref={dataOutInput} type="date" defaultValue={reserv.dataOut} />
-      <input ref={summa} type="number" defaultValue={reserv.summa} />
+    <>
       {
-        reserv?.payded ?
-          <p>Оплачено</p>
-          :
-          <p>Оплата при заселении</p>
-      }
-      <textarea ref={comment} defaultValue={reserv.comment} />
-      <p>Выбранный дом: {reserv.house_id}</p>
-      <button onClick={goBack}>Сохранить изменения</button>
+        localStorage.getItem('token') &&
+        <div>
+          <form onSubmit={handlerUpdate}>
+            <input ref={dataInInput} type="date" defaultValue={reserv.dataIn} />
+            <input ref={dataOutInput} type="date" defaultValue={reserv.dataOut} />
+            <input ref={summa} type="number" defaultValue={reserv.summa} />
+            {
+              reserv?.payded ?
+                <p>Оплачено</p>
+                :
+                <p>Оплата при заселении</p>
+            }
+            <textarea ref={comment} defaultValue={reserv.comment} />
+            <p>Выбранный дом: {reserv.house_id}</p>
+            <button onClick={goBack}>Сохранить изменения</button>
 
-      </form>
-    </div>
+          </form>
+        </div>
+      }
+    </>
   );
 }
 

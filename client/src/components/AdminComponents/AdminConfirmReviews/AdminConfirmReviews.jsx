@@ -14,14 +14,19 @@ export const AdminConfirmReviews = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      {reviews?.length ? reviews.map(review => {
-        if (review.status === false) {
-          return <ReviewCard key={review.id} review={review} />
-        }
+    <>
+      {
+        localStorage.getItem('token') &&
+        <div>
+          {reviews?.length ? reviews.map(review => {
+            if (review.status === false) {
+              return <ReviewCard key={review.id} review={review} />
+            }
+          }
+          ) : <div>None!</div>}
+        </div>
       }
-      ) : <div>None!</div>}
-    </div>
+    </>
   );
 };
 

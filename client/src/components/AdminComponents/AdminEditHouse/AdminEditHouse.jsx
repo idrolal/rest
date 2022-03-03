@@ -13,13 +13,17 @@ export function AdminEditHouse(props) {
   }, [dispatch])
 
   return (
-    <div>
-      {homes?.length ? homes.map(home => {
-        return <AdminEditHouseCard key={home.id} homes={home} />
+    <>
+      {localStorage.getItem('token') &&
+        <div>
+          {homes?.length ? homes.map(home => {
+            return <AdminEditHouseCard key={home.id} homes={home} />
 
-      }) : <div>None!</div>
+          }) : <div>None!</div>
+          }
+        </div>
       }
-    </div>
+    </>
   );
 }
 

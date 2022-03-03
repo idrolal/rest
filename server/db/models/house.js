@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
+    rating: {
+      defaultValue: 0,
+      type: DataTypes.INTEGER,
+    },
   }, {
     sequelize,
     modelName: 'House',
