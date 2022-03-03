@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import ReactStars from "react-rating-stars-component";
 import { useState } from 'react';
 
-function Form({onSubmit}) {
+function Form({ onSubmit }) {
   const form = useRef()
 
   const { homes } = useSelector(state => state.homesReducer)
-  
+
   const dispatch = useDispatch();
   const [star, setStar] = useState('')
 
@@ -18,7 +18,7 @@ function Form({onSubmit}) {
 
   const formHandler = (e) => {
     e.preventDefault();
-   
+
     const info = Object.fromEntries(new FormData(form.current));
     const selected = document.getElementById("select-id");
     const value = selected.options[selected.selectedIndex].value;
@@ -29,16 +29,16 @@ function Form({onSubmit}) {
     }
     const payload = { ...newReview, ...info }
     dispatch({ type: "FETCH_POST_REVIEW", payload });
-    
+
     onSubmit();
   }
- 
- return (
+
+  return (
 
     <div className="central-form">
       <div className="col">
         <h2 className="title">
-          <p className="styles_typicalWrapper__1_Uvh">Напишите свой отзыв 📨</p>
+          <p className="styles_typical">Напишите свой отзыв 📨</p>
         </h2>
       </div>
       <div className="back-form">
@@ -48,7 +48,7 @@ function Form({onSubmit}) {
           <p></p>
           <label className='label-text'>
             Имя
-            <input name='nameUser' className='name-input' type="text" />
+            <input name='nameUser' className='name-input' type="text" autoFocus />
           </label>
           <label className='label-text'>
             Сообщение
@@ -75,8 +75,8 @@ function Form({onSubmit}) {
             />
           </label>
           <div>
-            <button>
-              <span className="send-text" >Отправить</span>
+            <button className='header-button-scale-2'>
+              <span>Отправить</span>
             </button>
           </div>
         </form>

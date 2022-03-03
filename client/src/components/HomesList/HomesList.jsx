@@ -19,6 +19,7 @@ export const HomesList = () => {
         </div>
 
       </>) : <div>There are not homes</div>}
+      
     </div>
     // <div className='app-container'>
     //   <h1>Все домики</h1>

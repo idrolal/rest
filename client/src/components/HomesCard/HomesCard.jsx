@@ -8,6 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './HomesCard.css'
+import RatingHomes from '../RatingHomes/RatingHomes';
 SwiperCore.use([Autoplay]);
 
 
@@ -19,6 +20,7 @@ export const HomesCard = ({ homes }) => {
         <div className='allHomes_title'>
           <h4>{homes?.name.toUpperCase()}</h4>
           <h6>{homes?.price} &#8381;</h6>
+          <RatingHomes id={homes} />
         </div>
         <div className='allHomes_description'>{homes?.description}</div>
         {/* <div className='allHomes_reservBtn'> */}
