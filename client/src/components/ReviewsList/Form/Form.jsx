@@ -1,19 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-// import StarRating from '../../StarRating/StarRating'
 import ReactStars from "react-rating-stars-component";
 import { useState } from 'react';
 
-function Form(props) {
-  // const nameInput = useRef();
-  // const descInput = useRef();
+function Form({onSubmit}) {
   const form = useRef()
 
   const { homes } = useSelector(state => state.homesReducer)
-  // console.log(homes, '<------')
+  
   const dispatch = useDispatch();
-
   const [star, setStar] = useState('')
+
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
@@ -21,23 +18,22 @@ function Form(props) {
 
   const formHandler = (e) => {
     e.preventDefault();
+   
     const info = Object.fromEntries(new FormData(form.current));
     const selected = document.getElementById("select-id");
     const value = selected.options[selected.selectedIndex].value;
-  
+
     const newReview = {
       house_id: +value,
       rating: star,
     }
-    const payload = {...newReview, ...info}
-    console.log(payload)
-    dispatch({type: "FETCH_POST_REVIEW", payload});
-    // console.log(newReview);
+    const payload = { ...newReview, ...info }
+    dispatch({ type: "FETCH_POST_REVIEW", payload });
+    
+    onSubmit();
   }
-
-
-
-  return (
+ 
+ return (
 
     <div className="central-form">
       <div className="col">
@@ -79,8 +75,8 @@ function Form(props) {
             />
           </label>
           <div>
-            <button >
-              <span className="send-text">Отправить</span>
+            <button>
+              <span className="send-text" >Отправить</span>
             </button>
           </div>
         </form>
