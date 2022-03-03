@@ -1,9 +1,6 @@
 import React from 'react';
 import avatar from '../../img/avatar.svg'
 
-
-
-
 // TODO VITYA ВЫВОДИТЬ ТОЛЬКО ОТЗЫВЫ ПОДТВЕРЖДЕННЫЕ АДМИНОМ
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
