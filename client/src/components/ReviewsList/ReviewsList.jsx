@@ -27,7 +27,7 @@ function ReviewsList(props) {
   return (
     <>
     <div className="reviews">
-      <button onClick={() => setOpen(!open)}  className="header-button"><span className="button-text">Оставить отзыв</span></button>
+      <button onClick={() => setOpen(!open)}  className="header-button-scale-1"><span className="button-text">Оставить отзыв</span></button>
 
       {open ? <Form onSubmit={() => setOpen(false)}/> : <></>}
       </div>
