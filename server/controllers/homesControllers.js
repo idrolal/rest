@@ -24,4 +24,24 @@ function deleteHomes(req, res) {
     .catch((error) => res.status(500).json(error));
 }
 
-module.exports = { getAllHouses, deleteHomes};
+async function getOneHome(req, res) {
+  const { id } = req.params;
+  console.log(id, ',<++++++');
+  try {
+    const house = await House.findOne({
+      where: { id },
+      raw: true,
+      include: [
+        {
+          model: ImageHouse,
+        },
+      ],
+    });
+    res.json(house);
+    console.log(house);
+  } catch (error) {
+    res.status(401).json({ message: error.message });
+  }
+}
+
+module.exports = { getAllHouses, deleteHomes, getOneHome };

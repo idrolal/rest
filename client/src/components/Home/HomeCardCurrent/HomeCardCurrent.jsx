@@ -22,10 +22,9 @@ SwiperCore.use([Autoplay]);
 
 function HomeCardCurrent(props) {
   const { id } = useParams()
-  const dispatch = useDispatch()
 
   const { homes } = useSelector(state => state.homesReducer)
-  const currentHome = homes.find(el => el.id === +id);
+  const currentHome = homes.find(el => el.id === +id)
   return (
     // div className='allHomes_box'>
     //   <div className='allHomes_info'>

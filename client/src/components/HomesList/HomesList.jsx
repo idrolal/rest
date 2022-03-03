@@ -8,11 +8,6 @@ import { reactRouter } from '../../utils/utils';
 
 export const HomesList = () => {
   const { homes } = useSelector(state => state.homesReducer)
-  const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch({ type: 'FETCH_GET_HOMES' })
-  // }, [dispatch])
 
   return (
     <div className='app-container'>

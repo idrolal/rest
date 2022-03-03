@@ -18,7 +18,7 @@ export const homesReducer = (state = initialState, action) => {
 
     case GET_ONE_HOUSE:
       return {
-        ...state, oneHome: [action.payload]
+        ...state, oneHome: action.payload
       }
 
     case EDIT_HOUSE:

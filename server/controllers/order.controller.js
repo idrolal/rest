@@ -41,26 +41,26 @@ async function getHouse(req, res) {
   const occupieHouse = await Order.findAll({
     where: {
       [Op.or]: [
-        {
-          dataIn: { [Op.lte]: dataInUser },
-          dataOut: { [Op.gte]: dataOutUser },
-        },
-        {
-          dataIn: { [Op.gte]: dataInUser },
-          dataOut: { [Op.lte]: dataOutUser },
-        },
         // {
         //   dataIn: { [Op.lte]: dataInUser },
-        // },
-        // {
         //   dataOut: { [Op.gte]: dataOutUser },
         // },
         // {
         //   dataIn: { [Op.gte]: dataInUser },
-        // },
-        // {
         //   dataOut: { [Op.lte]: dataOutUser },
         // },
+        {
+          dataIn: { [Op.lte]: dataInUser },
+        },
+        {
+          dataOut: { [Op.gte]: dataOutUser },
+        },
+        {
+          dataIn: { [Op.gte]: dataInUser },
+        },
+        {
+          dataOut: { [Op.lte]: dataOutUser },
+        },
       ],
     },
 

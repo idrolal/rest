@@ -35,7 +35,6 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log('qwertyuiop')
     dispatch({ type: 'FETCH_GET_HOMES' })
   }, [dispatch])
 

@@ -1,6 +1,5 @@
 import React from 'react';
-import { router, reactRouter } from '../../utils/utils';
-import { Link } from 'react-router-dom';
+import { router } from '../../utils/utils';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,6 +13,7 @@ SwiperCore.use([Autoplay]);
 
 
 export const HomesCard = ({ homes }) => {
+
   return (
     <div className='allHomes_box'>
       <div className='allHomes_info'>
