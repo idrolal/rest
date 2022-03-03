@@ -26,14 +26,19 @@ function CalendarBook({ currentHome }) {
   }, [dispatch, currentHome]);
   return (
     <>
+    <div className='calendar-container'>
       <RangePicker autoResponsive={false}
         numberOfMonths={2}
         disabledBeforToday={true}
         disabledDays={unavalibleDate.slice(1, -1)}
         onChange={searchFreeHouse}
+        // handleChange={data => console.log(data)}
       >
       </RangePicker >
-      <Link key={currentHome?.id} to={`${reactRouter.user.booking}/${currentHome?.id}`}><h1>Забронировать</h1></Link>
+    </div>
+    <div className='link-to-booking'>
+      <Link key={currentHome?.id} to={`${reactRouter.user.booking}/${currentHome?.id}`}><p>Забронировать</p></Link>
+      </div>
     </>
   );
 }
