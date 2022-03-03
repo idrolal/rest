@@ -27,17 +27,22 @@ export const AdminEditHouseCard = () => {
   }
 
   return (
-    <form onSubmit={handlerUpdate} className='app-container'>
-      <div>
-        <input defaultValue={curHome.name} ref={nameRef} />
-        <br />
-        <textarea defaultValue={curHome.description} ref={descriptionRef} />
-        <br />
-        <input defaultValue={curHome.price} ref={priceRef} />
-        <br />
-      </div>
-      <button>Update</button>
-    </form>
+    <>
+      {
+        localStorage.getItem('token') &&
+        <form onSubmit={handlerUpdate} className='app-container'>
+          <div>
+            <input defaultValue={curHome.name} ref={nameRef} />
+            <br />
+            <textarea defaultValue={curHome.description} ref={descriptionRef} />
+            <br />
+            <input defaultValue={curHome.price} ref={priceRef} />
+            <br />
+          </div>
+          <button>Update</button>
+        </form>
+      }
+    </>
   );
 };
 
