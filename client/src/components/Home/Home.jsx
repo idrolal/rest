@@ -9,6 +9,7 @@ import './Home.css'
 import PhotoSlider from './PhotoSlider/PhotoSlider';
 import ImageMain from '../ImageMain/ImageMain';
 import ServicesList from '../ServicesList/ServicesList';
+import Galeria from '../Galeria/Galeria';
 
 
 function Home(props) {
@@ -17,8 +18,9 @@ function Home(props) {
       <ImageMain/>
       <div className="app-container">
       <About/>
+      <Galeria/>
       </div>
-      <PhotoCollage/>
+      {/* <PhotoCollage/> */}
       {/* <PhotoSlider/> */}
       <div className="app-container">
       <ServicesList/>
