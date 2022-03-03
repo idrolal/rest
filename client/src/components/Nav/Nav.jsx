@@ -2,9 +2,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import { WeatherApi } from '../WeatherApi/WeatherApi'
 import { reactRouter } from '../../utils/utils.js'
-import insta from "../../img/insta.svg";
 import logo from "../../img/logo.svg";
-// import 'animate.css';
 import './Nav.css';
 
 
@@ -23,7 +21,6 @@ function Nav(props) {
             </NavLink>
           </div>
           <div className="header-contacts-logo">
-            {/* <img src={insta} alt="" /> */}
             <a href="tel:+79218683650" className="header-contacts-link">
               8 (812) 300 0 300
             </a>

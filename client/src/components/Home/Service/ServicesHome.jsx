@@ -3,8 +3,6 @@ import './ServicesHome.css'
 import { v4 as uuidv4 } from 'uuid';
 
 function ServicesHome({services}) {
-  // console.log(services)
-  // /favicon.ico
   return (
     <>
       <h3 className='services-h3'>услуги</h3>

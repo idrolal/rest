@@ -26,7 +26,6 @@ function deleteHomes(req, res) {
 
 async function getOneHome(req, res) {
   const { id } = req.params;
-  console.log(id, ',<++++++');
   try {
     const house = await House.findOne({
       where: { id },
@@ -38,7 +37,6 @@ async function getOneHome(req, res) {
       ],
     });
     res.json(house);
-    console.log(house);
   } catch (error) {
     res.status(401).json({ message: error.message });
   }

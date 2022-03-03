@@ -1,13 +1,11 @@
-import React, {useState, useEffect}from "react";
+import React from "react";
 import "./PhotoCollage.css";
-import aaa from '../../../img/aaa.webp';
-import ServicesList from "../../ServicesList/ServicesList";
 
-function PhotoCollage({services}) {
+function PhotoCollage() {
 
   return (
     <>
-          <div className="flex">
+    <div className="flex">
     <div className='about-photo'>
     <div className='about-photo-1'><div className='photo-text'><span>ВСЕГО 2 ЧАСА ЕЗДЫ ОТ ПЕТЕРБУРГА</span></div></div>
     </div>

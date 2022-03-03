@@ -39,7 +39,7 @@ export const AdminEditHouseCard = () => {
             <input defaultValue={curHome.price} ref={priceRef} />
             <br />
           </div>
-          <button>Update</button>
+          <button>Обновить</button>
         </form>
       }
     </>

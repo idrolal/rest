@@ -35,13 +35,13 @@ function Galeria(props) {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src={dom1} />
+          <img src={dom1} alt='' />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={dom2} />
+          <img src={dom2} alt=''  />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={dom3} />
+          <img src={dom3} alt='' />
         </SwiperSlide>
       </Swiper>
       </div>

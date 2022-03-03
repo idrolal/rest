@@ -12,7 +12,6 @@ function AdminMenu(props) {
             <h3>Раздел бронирования</h3>
             <Link to={reactRouter.admin.allReservations}>Все бронирования</Link>
             <br />
-            {/* <Link to={reactRouter.admin.addReservation}>Создать новое бронирование</Link> */}
           </div>
           <div>
             <h3>Раздел по работе с домами</h3>

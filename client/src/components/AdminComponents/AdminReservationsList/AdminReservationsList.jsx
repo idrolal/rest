@@ -1,9 +1,7 @@
 import React from 'react';
-import AdminEditReservations from '../AdminEditReservations/AdminEditReservations.jsx'
 import { Link } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils.js'
-import { useDispatch, useSelector } from 'react-redux';
-import { FIND_RESERVATIONS_FETCH } from '../../../redux/actionType/reservationAT.js'
+import { useDispatch } from 'react-redux';
 
 function AdminReservationsList({ reserve }) {
 
@@ -29,7 +27,6 @@ function AdminReservationsList({ reserve }) {
               <p>Оплата на месте</p>
           }
           <p>{reserve.comment}</p>
-          {/* вытащить по id имя дома  */}
           <p>{reserve.house_id}</p>
           <Link to={reactRouter.admin.editReservationForParamas + reserve.id} key={reserve.id}>Изменить бронь</Link>
           <button onClick={() => deleteReservation(reserve.id)}>Отменить бронь</button>

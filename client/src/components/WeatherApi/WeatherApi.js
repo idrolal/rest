@@ -49,10 +49,7 @@ export const WeatherApi = () => {
   return (
     <>
       <div className="api-weather-container">
-        {/* <p >Город: {city}</p> */}
         <p>{Math.round(Math.round(temperature * 100) / 100)} ℃<span> {weather()} </span></p>
-        {/* <input type="text" readOnly value={city} onChange={(e) => setCity(e.target.value)} /> */}
-        {/* <button className="btn-about a" >Click</button> */}
       </div>
     </>
   );

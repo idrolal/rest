@@ -8,15 +8,12 @@ import AdminCreateReservation from '../AdminComponents//AdminCreateReservation/A
 import AdminAllReservations from '../AdminComponents//AdminAllReservations/AdminAllReservations.jsx';
 import AdminAllHouses from '../AdminComponents//AdminAllHouses/AdminAllHouses.jsx';
 import Nav from '../Nav/Nav';
-// import './App.css'
 
 import AdminLogin from '../AdminComponents/AdminLogin/AdminLogin';
 import { HomesList } from '../HomesList/HomesList';
 import { AdminConfirmReviews } from '../AdminComponents/AdminConfirmReviews/AdminConfirmReviews';
-// import { AdminEditHouse } from '../AdminComponents/AdminEditHouse/AdminEditHouse';
 
 import Home from '../Home/Home';
-// import Booking from '../Booking/Booking';
 import Booking2 from '../Booking/Booking2';
 import AdminLogout from '../AdminComponents/AdminLogout/AdminLogout';
 import NotFound from '../NotFound/NotFound';
@@ -24,7 +21,6 @@ import { AdminEditHouseCard } from '../AdminComponents/AdminEditHouseCard/AdminE
 import FormBooking from '../Booking/Form/FormBooking';
 import ServicesList from '../ServicesList/ServicesList';
 import AdminEditReservations from '../AdminComponents/AdminEditReservations/AdminEditReservations.jsx';
-import CalendarBook from '../CalendarBook/CalendarBook';
 import HomeCardCurrent from '../Home/HomeCardCurrent/HomeCardCurrent';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';

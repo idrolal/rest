@@ -18,7 +18,6 @@ function ReviewsList(props) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const { reviews } = useSelector((state) => state.reviewsReducer);
-  // const state = useSelector((state) => state);
 
 
   useEffect(() => {

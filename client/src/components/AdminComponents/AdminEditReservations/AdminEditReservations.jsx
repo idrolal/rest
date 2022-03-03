@@ -8,9 +8,7 @@ function AdminEditReservations() {
   const dispatch = useDispatch()
   const { id } = useParams()
   const navigate = useNavigate()
-  // console.log(id)
   const { reservations } = useSelector(state => state.reservationsReducer)
-  // console.log(reservations)
   const reserv = reservations.find(el => el.id === +id)
 
   const goBack = () => {
@@ -24,7 +22,6 @@ function AdminEditReservations() {
 
   const handlerUpdate = (e) => {
     e.preventDefault()
-    // console.log(dataInInput.current.value)
     const updateData = {
       id,
       dataIn: dataInInput.current.value,

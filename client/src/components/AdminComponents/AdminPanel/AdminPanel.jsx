@@ -1,7 +1,5 @@
 import React from 'react';
 import AdminMenu from '../AdminMenu/AdminMenu';
-// import { Link } from 'react-router-dom';
-// import { reactRouter } from '../../../utils/utils.js';
 
 function AdminPanel(props) {
   return (
