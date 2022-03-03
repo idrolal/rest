@@ -7,7 +7,6 @@ import { HomesCard } from '../HomesCard/HomesCard'
 export const HomesList = () => {
 
   const { homes } = useSelector(state => state.homesReducer)
-  console.log(homes);
   const dispatch = useDispatch()
 
   useEffect(() => {

@@ -7,6 +7,7 @@ module.exports = {
         price: 5800,
         createdAt: new Date(),
         updatedAt: new Date(),
+        rating: 0,
       },
       {
         name: 'ТАЙНИ ХАУС',
@@ -14,6 +15,7 @@ module.exports = {
         price: 4200,
         createdAt: new Date(),
         updatedAt: new Date(),
+        rating: 0,
       },
       {
         name: 'Сканди хаус',
@@ -21,6 +23,7 @@ module.exports = {
         price: 6900,
         createdAt: new Date(),
         updatedAt: new Date(),
+        rating: 0,
       },
       {
         name: 'РИВЕР ХАУС',
@@ -28,6 +31,7 @@ module.exports = {
         price: 4800,
         createdAt: new Date(),
         updatedAt: new Date(),
+        rating: 0,
       },
 
     ], {});

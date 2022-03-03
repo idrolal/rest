@@ -120,6 +120,7 @@ function* deleteHome(action) {
 
 // Dobavlyaet novii otziv 
 function* postAddReviews(action) {
+  console.log(action.payload)
   const newReview = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.reviews}`,
     method: 'POST',
