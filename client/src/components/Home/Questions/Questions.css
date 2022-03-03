@@ -8,7 +8,6 @@ transform: translateX(-50%);
 }
 .collapsible-header {
   border-radius: 30px;
-
 }
 .collapsible-head {
   margin-left: 40px;
@@ -23,3 +22,42 @@ transform: translateX(-50%);
 .collapse-text {
   font-family: "Montserrat Regular";
 }
+
+/* .faq{
+  max-width: 800px;
+  margin:20px auto;
+}
+
+.faq-item{
+  border: 1px solid green;
+}
+
+.faq-title{
+  display: block;
+  padding: 10px 15px;
+  color: black;
+  cursor: pointer;
+  transition: background .2s
+  ease-out;
+}
+
+.faq-text{
+  display: none;
+  color: rgb(122, 16, 16);
+  font-size: 14px;
+}
+
+.faq-input{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.faq-input:checked + .faq-text{
+  display: block;
+}
+
+.faq-title:hover{
+  background-color: rgb(21, 97, 50);
+} */
