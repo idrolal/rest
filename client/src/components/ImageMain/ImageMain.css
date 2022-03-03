@@ -53,6 +53,7 @@
   -webkit-box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
   -moz-box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
   box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
+  transition: 400ms ease-in;
 }
 
 .bnt-buy span {
@@ -61,9 +62,11 @@
 
 .bnt-buy:hover {
   transform: scale(1.05);
+  /* color: white; */
   transition: 0.4s ease-out;
 }
 
 .bnt-buy:hover span {
+  /* color: white; */
   transition: 0.3s ease-out;
 }

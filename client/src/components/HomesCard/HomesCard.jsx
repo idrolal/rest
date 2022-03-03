@@ -1,5 +1,6 @@
 import React from 'react';
-import { router } from '../../utils/utils';
+import { router, reactRouter } from '../../utils/utils';
+import { Link } from 'react-router-dom';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,9 +16,16 @@ export const HomesCard = ({ homes }) => {
   return (
     <div className='allHomes_box'>
       <div className='allHomes_info'>
-        <div>{homes?.name.toUpperCase()}</div>
-        <div>{homes?.description}</div>
-        <div>{homes?.price} &#8381;</div>
+        <div className='allHomes_title'>
+          <h4>{homes?.name.toUpperCase()}</h4>
+          <h6>{homes?.price} &#8381;</h6>
+        </div>
+        <div className='allHomes_description'>{homes?.description}</div>
+        {/* <div className='allHomes_reservBtn'> */}
+        {/* <Link key={homes.id} to={`${reactRouter.user.booking}/${homes.id}`} className='allHomes_reservBtn_font'>Перейти к бронированию</Link> */}
+        {/* <Link key={homes.id} to={`${reactRouter.user.house}/${homes.id}`} className='allHomes_reservBtn_font'>Перейти к бронированию</Link> */}
+        {/* </div> */}
+
       </div>
 
       <Swiper
@@ -28,7 +36,7 @@ export const HomesCard = ({ homes }) => {
         autoplay={{
           delay: 3000,
         }}
-        speed={4000}
+        speed={3000}
         // pagination={{ clickable: true }}
         className='swiper_style'
       >

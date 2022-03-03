@@ -36,7 +36,6 @@ async function generateJwtToken(admin) {
   }
 }
 
-
 module.exports = {
   generateJwtToken,
   login,
