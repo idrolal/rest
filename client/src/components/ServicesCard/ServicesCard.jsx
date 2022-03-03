@@ -1,14 +1,15 @@
 import React from 'react';
+import './ServicesCard.css'
 
 function Services({services}) {
   return (
     <>
     <div>{services?.description}</div>
-    <div>{services?.description}</div>
-    <div>{services?.price}</div>
-    
+    <div>{services?.price} р.</div>
     </>
   );
 }
+
+
 
 export default Services;
