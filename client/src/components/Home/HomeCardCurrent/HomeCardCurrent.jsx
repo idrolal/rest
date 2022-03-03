@@ -16,16 +16,18 @@ SwiperCore.use([Autoplay]);
 function HomeCardCurrent(props) {
   const { id } = useParams()
   const dispatch = useDispatch()
- 
+
   const { homes } = useSelector(state => state.homesReducer)
   const currentHome = homes.find(el => el.id === +id);
   return (
-    <div className='homesCard_box'>
-      <>
-        <div>{currentHome?.name}</div>
-        <div>{currentHome?.description}</div>
-        <div>{currentHome?.price}</div>
-      </>
+    <div className='allHomes_box'>
+      <div className='allHomes_info'>
+        <div className='allHomes_title'>
+          <h5>{currentHome?.name.toUpperCase()}</h5>
+          <h6>{currentHome?.price} &#8381;</h6>
+        </div>
+      </div>
+
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         // spaceBetween={10}
