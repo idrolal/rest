@@ -5,12 +5,13 @@
 
 .image-content {
   display: flex;
-   align-items: center;
-   justify-content: center;
-   position: absolute;
-   /* height: 100vh; */
-   width: 110vh;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  /* height: 100vh; */
+  width: 110vh;
 }
+
 .parallax-text {
   /* width: 50%; */
   margin-top: 150px;
@@ -21,39 +22,51 @@
   font-family: "Montserrat Bold";
   line-height: 1.1;
 }
+
 .parallax-text p {
   margin-bottom: -13px;
 }
+
 .parallax-text-2 {
   margin-bottom: 30px;
   font-family: "Montserrat Light";
 }
+
 .bnt-buy {
-  width: 220px;
-  height: 55px;
+  width: 240px;
+  height: 70px;
   text-align: center;
   border-radius: 5px;
-  border: 2px solid rgb(215, 56, 242);
-  /* border: 0px; */
   font-weight: 200;
   line-height: 3.05;
-  font-size: 15px;
-  /* color: rgb(0, 0, 0); */
-  /* background-color: rgb(195, 0, 255); */
-  font-family: "Montserrat Black";
-  background:transparent;
+  font-size: 17px;
+  border: 0px;
+  font-family: "Montserrat Light";
+  background: transparent;
+  background: -webkit-linear-gradient(135deg,
+      rgb(152, 207, 195),
+      rgb(86, 181, 184));
+  background: -moz-linear-gradient(135deg,
+      rgb(152, 207, 195),
+      rgb(86, 181, 184));
+  background: linear-gradient(135deg, rgb(152, 207, 195), rgb(86, 181, 184));
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
+  box-shadow: 4px 4px 8px 0px rgba(39, 169, 157, 0.48);
+  transition: 400ms ease-in;
 }
+
 .bnt-buy span {
-  color: rgb(215, 56, 242);
+  color: rgb(0, 0, 0);
 }
+
 .bnt-buy:hover {
   transform: scale(1.05);
-  color: white; 
+  /* color: white; */
   transition: 0.4s ease-out;
-  background: -webkit-linear-gradient(315deg, rgb(215, 56, 242) 31%, rgb(203, 113, 255));
-  background: -moz-linear-gradient(315deg, rgb(215, 56, 242) 31%, rgb(203, 113, 255));
-  background: linear-gradient(315deg, rgb(215, 56, 242) 31%, rgb(203, 113, 255));
 }
+
 .bnt-buy:hover span {
-  color: white; 
+  /* color: white; */
+  transition: 0.3s ease-out;
 }

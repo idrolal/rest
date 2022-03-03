@@ -1,5 +1,4 @@
-const { House } = require('../db/models');
-const { ImageHouse } = require('../db/models');
+const { House, ImageHouse } = require('../db/models');
 
 async function getAllHouses(req, res) {
   try {
@@ -25,4 +24,4 @@ function deleteHomes(req, res) {
     .catch((error) => res.status(500).json(error));
 }
 
-module.exports = { getAllHouses, deleteHomes };
+module.exports = { getAllHouses, deleteHomes};

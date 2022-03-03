@@ -1,29 +1,58 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function AdminEditReservations() {
+
+  const dispatch = useDispatch()
   const { id } = useParams()
-  const { reservations } = useSelector(state => state.reservationsReducer.reservations)
+  const navigate = useNavigate()
+  // console.log(id)
+  const { reservations } = useSelector(state => state.reservationsReducer)
+  // console.log(reservations)
   const reserv = reservations.find(el => el.id === +id)
+
+  const goBack = () => {
+    navigate(-1)
+  }
+
+  const dataInInput = useRef();
+  const dataOutInput = useRef();
+  const summa = useRef();
+  const comment = useRef()
+
+  const handlerUpdate = (e) => {
+  e.preventDefault()
+  // console.log(dataInInput.current.value)
+  const updateData = {
+  id,
+  dataIn: dataInInput.current.value,
+  dataOut: dataOutInput.current.value,
+  summa: summa.current.value,
+  comment: comment.current.value
+  }
+  dispatch({ type: "FETCH_UPDATE_RESERVATIONS", payload: updateData })
+
+}
 
   return (
     <div>
-      <input type="text" defaultValue={reserv.dataIn} />
-      <input type="text" defaultValue={reserv.dataOut} />
-      <input type="number" defaultValue={reserv.summa} />
+      <form onSubmit={handlerUpdate}> 
+      <input ref={dataInInput} type="date" defaultValue={reserv.dataIn} />
+      <input ref={dataOutInput} type="date" defaultValue={reserv.dataOut} />
+      <input ref={summa} type="number" defaultValue={reserv.summa} />
       {
         reserv?.payded ?
           <p>Оплачено</p>
           :
           <p>Оплата при заселении</p>
       }
-      <textarea defaultValue={reserv.comment} />
+      <textarea ref={comment} defaultValue={reserv.comment} />
       <p>Выбранный дом: {reserv.house_id}</p>
-      <select name="" id="">
-        <option defaultValue=""></option>
-      </select>
+      <button onClick={goBack}>Сохранить изменения</button>
 
+      </form>
     </div>
   );
 }

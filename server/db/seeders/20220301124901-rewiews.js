@@ -39,7 +39,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
 
-    },{
+    }, {
       house_id: 1,
       nameUser: 'Аня',
       description: 'Лучший отдых в жизни',
@@ -68,7 +68,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
 
-    },{
+    }, {
       house_id: 4,
       nameUser: 'Дима',
       description: 'Если есть на свете рай то это ваш домик',

@@ -127,7 +127,7 @@ textarea:focus {
   border: 2px solid rgba(30, 85, 250, 0.47);
   background-color: #fff;
 }
-
+/* 
 form button {
   margin-top: 15px;
   padding: 5px;
@@ -157,7 +157,7 @@ button .load {
 button .load img {
   width: 60px;
   color: green;
-}
+} */
 .col i {
   padding: 7px;
   color: rgb(255, 255, 255);
@@ -166,6 +166,6 @@ button .load img {
   transform: scale(1.5);
 }
 .title-text {
-  font-family: "Montserrat Medium";
+  font-family: "Montserrat Bold";
   
 }

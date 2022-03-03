@@ -5,7 +5,7 @@ import AdminMenu from '../AdminMenu/AdminMenu';
 
 function AdminPanel(props) {
   return (
-    <div>
+    <div className='app-container'>
       <h1>Административный режим</h1>
       <AdminMenu />
     </div>

@@ -7,7 +7,6 @@ export function AdminEditHouse(props) {
 
   const dispatch = useDispatch()
   const { homes } = useSelector(state => state.homesReducer)
-  // console.log(homes)
 
   useEffect(() => {
     dispatch({ type: "FETCH_GET_HOMES" })

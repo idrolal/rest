@@ -14,7 +14,7 @@ export const router = {
     imgHousePath: '/images/homes/',
     editHouse: '/api/admin/editHouse',
     allReservations: '/api/admin/reservations/all',
-    // deleteReservations: '/api/admin/reservations/all',
+    updateReservations: '/api/admin/reservations/all/edit',
   }
 }
 
@@ -26,6 +26,7 @@ export const reactRouter = {
     booking: '/booking',
     addedHouse: '/booking/:id',
     house: '/house',
+    currentHouse: '/house/:id',
     services: '/services',
     contacts: '/contacts',
     notfound: '*',
