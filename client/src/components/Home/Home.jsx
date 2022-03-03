@@ -8,6 +8,7 @@ import { MapsApi } from '../MapsApi/MapsApi';
 import './Home.css'
 import PhotoSlider from './PhotoSlider/PhotoSlider';
 import ImageMain from '../ImageMain/ImageMain';
+import ServicesList from '../ServicesList/ServicesList';
 
 
 function Home(props) {
@@ -20,6 +21,7 @@ function Home(props) {
       <PhotoCollage/>
       {/* <PhotoSlider/> */}
       <div className="app-container">
+      <ServicesList/>
       <ReviewsList/>
       <Terms/>      
       <Questions/>
