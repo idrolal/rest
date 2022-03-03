@@ -46,7 +46,6 @@ function ReviewsList(props) {
     : 
     <p>Пусто</p>
     }
-  
     </Carousel>
     </div>
     </>
