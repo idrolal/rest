@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ServicesCard from '../ServicesCard/ServicesCard'
+import './ServicesList.css'
+import ServicesHome from '../Home/ServicesHome/ServicesHome';
+
 function ServicesList(props) {
 
   const { services } = useSelector(state => state.servicesReducer)
@@ -13,8 +15,7 @@ function ServicesList(props) {
 
   return (
     <>
-      <h1>Страница услуг</h1>
-      {services.length ? services.map(el => <ServicesCard key={el.id} services={el} />) : <div>НЕТ УСЛУГ</div>}
+      {services.length ? <ServicesHome services={services}/> : <h1>No services</h1>}
     </>
   );
 }
