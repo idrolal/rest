@@ -2,7 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { loginAdminAC, logoutAdminAC, errorLoginAdminAC } from '../actionCreators/adminAC'
 import { router } from '../../utils/utils'
 import { FIND_RESERVATIONS_FETCH } from '../actionType/reservationAT.js'
-import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC} from '../actionCreators/homesAC';
+import { initHomesAC, deleteHomeAC, addHouseAdminAC, editHouseAdminAC, initOneHouseAC } from '../actionCreators/homesAC';
 import { getFreeHouseAC, initUnavalibleDate } from '../actionCreators/orderAC'
 
 // Authorization: 'Bearer' + localStorage.getItem('token'),
@@ -209,6 +209,17 @@ function* updateReservations(action) {
 }
 
 
+function* getOneHouse(action) {
+  console.log(action.payload)
+  const oneHouse = yield call(fetchData, {
+    url: `${process.env.REACT_APP_URL}${router.home}/${action.payload}`,
+    method: "GET",
+    headers: { 'Content-Type': 'application/json' },
+  })
+
+  yield put(initOneHouseAC(oneHouse))
+}
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_HOMES", getInitHomes);
   yield takeEvery("FETCH_GET_REVIEWS", getInitReviews);
@@ -226,5 +237,7 @@ export function* globalWatcher() {
   yield takeEvery("FETCH_DELETE_RESERVATION", deleteReservations);
   yield takeEvery("FETCH_UNAVALIBLE_DATE", postUnavalibleDate);
   yield takeEvery("FETCH_UPDATE_RESERVATIONS", updateReservations);
+  yield takeEvery("FETCH_GET_ONE_HOUSE", getOneHouse);
+
 
 }

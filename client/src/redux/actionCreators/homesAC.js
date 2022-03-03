@@ -35,3 +35,11 @@ export const editHouseAdminAC = (payload) => {
   }
 }
 
+export const initOneHouseAC = (payload) => {
+  return {
+    type: GET_ONE_HOUSE,
+    payload,
+  }
+}
+
+

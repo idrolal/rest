@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { saveInterval } from '../../redux/actionCreators/orderAC'
 
 
+
 function CalendarBook({ currentHome }) {
   const { unavalibleDate } = useSelector(state => state.orderReducer)
 
@@ -26,14 +27,16 @@ function CalendarBook({ currentHome }) {
   }, [dispatch, currentHome]);
   return (
     <>
-      <RangePicker autoResponsive={false}
-        numberOfMonths={2}
-        disabledBeforToday={true}
-        disabledDays={unavalibleDate.slice(1, -1)}
-        onChange={searchFreeHouse}
-      >
-      </RangePicker >
-      <Link key={currentHome?.id} to={`${reactRouter.user.booking}/${currentHome?.id}`}><h1>Забронировать</h1></Link>
+    
+        <RangePicker autoResponsive={false}
+          numberOfMonths={2}
+          disabledBeforToday={true}
+          disabledDays={unavalibleDate.slice(1, -1)}
+          onChange={searchFreeHouse}
+        >
+        </RangePicker >
+        <Link key={currentHome?.id} to={`${reactRouter.user.booking}/${currentHome?.id}`}><h1>Забронировать</h1></Link>
+    
     </>
   );
 }

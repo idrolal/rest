@@ -15,10 +15,9 @@ SwiperCore.use([Autoplay]);
 
 function HomeCardCurrent(props) {
   const { id } = useParams()
-  const dispatch = useDispatch()
- 
+
   const { homes } = useSelector(state => state.homesReducer)
-  const currentHome = homes.find(el => el.id === +id);
+  const currentHome = homes.find(el => el.id === +id)
   return (
     <div className='homesCard_box'>
       <>
@@ -43,7 +42,7 @@ function HomeCardCurrent(props) {
             <SwiperSlide className='swiper_style' style={{ backgroundImage: `url(${process.env.REACT_APP_URL}${router.admin.imgHousePath}${img.name})` }} key={img.name} >
               <div></div>
             </SwiperSlide>
-          )
+          ) 
         }
       </Swiper>
 
