@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import ReactStars from "react-rating-stars-component";
 
 function RatingHomes({id}) {

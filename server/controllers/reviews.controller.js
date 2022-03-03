@@ -14,7 +14,6 @@ async function addReview(req, res) {
   const {
     house_id, rating, nameUser, description,
   } = req.body;
-  console.log(req.body);
   try {
     const newReview = await Rewiew.create(req.body);
     const allReviews = await Rewiew.findAll({
@@ -24,14 +23,12 @@ async function addReview(req, res) {
 
     const middleRating = allReviews.reduce((ac, cur) => ac + cur.rating, 0);
     const currentRatingHouse = Math.ceil(middleRating / allReviews.length);
-    console.log(currentRatingHouse);
     const currentHouse = await House.update({
       rating: currentRatingHouse,
     }, {
       where: { id: house_id },
       raw: true,
     });
-    console.log(currentHouse);
 
     res.status(201).json(newReview);
   } catch (error) {
@@ -52,7 +49,7 @@ async function putReviews(req, res) {
       },
     });
     if (newReviews) {
-      res.json(newReviews);
+      return res.json(newReviews);
     }
   } catch (error) {
     return ({

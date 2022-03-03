@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { router } from '../../../utils/utils.js'
 import { addHouseAdminFetchAC } from '../../../redux/actionCreators/homesAC.js'
 import { useNavigate } from 'react-router-dom';
-// import { ADD_HOUSE_FETCH } from '../../../redux/actionType/homesAT.js';
 
 function AdminAddHouse(props) {
   const navigate = useNavigate()
 
-  // const [imgs, setImgs] = useState([])
   const [imgPaths, setImgPaths] = useState([])
   const dispatch = useDispatch()
   const state = useSelector(state => state)
@@ -74,7 +72,6 @@ function AdminAddHouse(props) {
             </div>
 
             <div>
-              {/* нормальный селект опшион */}
               <select name='chips' style={{ display: 'block' }}>
                 <option value='extenstions'>Дополнительные услуги при заезде: </option>
                 <option value="С животными">С животными - бесплатно </option>

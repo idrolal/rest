@@ -119,7 +119,6 @@ function* deleteHome(action) {
 
 // Dobavlyaet novii otziv 
 function* postAddReviews(action) {
-  console.log(action.payload)
   const newReview = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.reviews}`,
     method: 'POST',
@@ -139,6 +138,7 @@ function* getServices(action) {
 }
 
 function* getAllFreeHouse(action) {
+  try{
   const freeHouse = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.order.get}`,
     method: 'POST',
@@ -146,6 +146,7 @@ function* getAllFreeHouse(action) {
     body: JSON.stringify(action.payload),
   })
   yield put(getFreeHouseAC(freeHouse))
+} catch{}
 }
 
 function* getInitReservations() {
@@ -185,6 +186,7 @@ function* deleteReservations(action) {
 }
 
 function* postUnavalibleDate(action) {
+  try{
   const date = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.order.get}/${action.payload.id}`,
     method: 'POST',
@@ -194,6 +196,9 @@ function* postUnavalibleDate(action) {
     body: JSON.stringify(action.payload)
   });
   yield put(initUnavalibleDate(date))
+} catch {
+  
+}
 }
 function* updateReservations(action) {
   const reservation = yield call(fetchData, {
@@ -210,7 +215,6 @@ function* updateReservations(action) {
 
 
 function* getOneHouse(action) {
-  console.log(action.payload)
   const oneHouse = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.home}/${action.payload}`,
     method: "GET",

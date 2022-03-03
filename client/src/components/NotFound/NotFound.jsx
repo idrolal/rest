@@ -5,7 +5,6 @@ import logo from "../../img/logo.svg";
 
 function NotFound(props) {
   return (
-    // <div className='notfound-main'>
       <div className="notfound-container">
         <div className="notfound-picture"><img src={notfound} alt="" /></div>
         <div className="notfound-options">
@@ -15,7 +14,6 @@ function NotFound(props) {
           <a href='/' className="notfount-button">Bернуться на главную</a>
         </div>
       </div>
-    // </div>
   );
 }
 

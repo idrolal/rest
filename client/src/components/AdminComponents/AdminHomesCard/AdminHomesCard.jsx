@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React  from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils.js';
 import { router } from '../../../utils/utils.js';
@@ -9,12 +9,6 @@ import './AdminHomesCard.css';
 function AdminHomesCard({ home }) {
   const dispatch = useDispatch();
 
-  // const { homes } = useSelector(state => state.homesReducer)
-  // console.log(homes);
-
-  // useEffect(() => {
-  //   dispatch({ type: 'FETCH_GET_HOMES' })
-  // }, [dispatch]);
 
   function deleteHome(id) {
     dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` });

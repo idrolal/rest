@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { router } from '../../../utils/utils';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CalendarBook from '../../CalendarBook/CalendarBook';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -26,13 +26,7 @@ function HomeCardCurrent(props) {
   const { homes } = useSelector(state => state.homesReducer)
   const currentHome = homes.find(el => el.id === +id)
   return (
-    // div className='allHomes_box'>
-    //   <div className='allHomes_info'>
-    //     <div className='allHomes_title'>
-    //       <h5>{currentHome?.name.toUpperCase()}</h5>
-    //       <h6>{currentHome?.price} &#8381;</h6>
-    //     </div>
-    //   </div>
+  
     <div className="app-container">
       <div className='homesCard_box'>
         <div className='homesCard-header-container'>
@@ -40,7 +34,7 @@ function HomeCardCurrent(props) {
             <div></div>
             <div className='nameHome-card'><span className='nameHome-span'>Коттедж: "{currentHome?.name}"</span></div>
             <div className='descHome-card'><span>{currentHome?.description}</span></div>
-            <div className='priceHome-card'><span>Стоимость за 1 ночь {currentHome?.price} руб.</span></div>
+            <div className='priceHome-card'><span>Стоимость {currentHome?.price} ₽/сутки</span></div>
             <div className='optionsHome-card'>
               <div className='squareHome-options'><img className='squareHome-logo' src={wifi2} alt='' /><span className='text-options'>Wi-Fi</span></div>
               <div className='squareHome-options'><img className='squareHome-logo' src={bed} alt='' /><span className='text-options'>Двуспальная кровать</span></div>
@@ -53,14 +47,12 @@ function HomeCardCurrent(props) {
         </div>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
-          // spaceBetween={10}
           slidesPerView={1}
           navigation
           autoplay={{
             delay: 3000,
           }}
           speed={4000}
-          // pagination={{ clickable: true }}
           className='swiper_style'
         >
           {

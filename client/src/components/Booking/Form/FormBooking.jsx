@@ -50,7 +50,6 @@ function FormBooking() {
         </div>
         <div className='formbooking-smallmain'>
         <button className='backbutton' onClick={goBack}>{'< Назад'}</button>
-      {/* <p>{currentHouse?.price} ₽/день</p> */}
       <div>
         <span className='summa-zakaza'>Общая стоимость: <span className='rub'>{summa}₽</span></span>
         <p>Время заезда и выезда

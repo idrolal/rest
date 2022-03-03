@@ -18,7 +18,6 @@ function ReviewsList(props) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const { reviews } = useSelector((state) => state.reviewsReducer);
-  // const state = useSelector((state) => state);
 
 
   useEffect(() => {
@@ -40,7 +39,7 @@ function ReviewsList(props) {
  
     {reviews.length ? reviews.map(review => {
     if (review.status) {
-      return <Item><ReviewCard key={review.id} review={review}/></Item>
+      return <Item key={review.id}><ReviewCard key={review.id} review={review}/></Item>
     } 
     })
     : 

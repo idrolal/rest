@@ -33,7 +33,6 @@ function CalendarBook({ currentHome }) {
         disabledBeforToday={true}
         disabledDays={unavalibleDate.slice(1, -1)}
         onChange={searchFreeHouse}
-        // handleChange={data => console.log(data)}
       >
       </RangePicker >
     </div>
