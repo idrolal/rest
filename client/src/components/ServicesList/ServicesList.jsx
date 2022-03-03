@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PhotoCollage from '../Home/PhotoCollage/PhotoCollage';
+import ServicesCard from '../ServicesCard/ServicesCard'
 import './ServicesList.css'
-import ServicesHome from '../Home/ServicesHome/ServicesHome';
+import ServicesHome from '../Home/Service/ServicesHome';
 
 function ServicesList(props) {
 
