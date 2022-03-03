@@ -47,9 +47,10 @@ function Booking2(props) {
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
   }, [dispatch, orders]);
-  const qwe = () => {
 
-  }
+  // const qwe = () => {
+
+  // }
 
   return (
     <>
