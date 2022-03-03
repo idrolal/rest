@@ -8,7 +8,6 @@ async function sendCreatedReservationMail(to, dataOrder, house) {
     port: process.env.SMTP_PORT,
     secure: true,
     auth: {
-
       user: process.env.SMTP_USER_SHARE,
       pass: process.env.SMTP_USER_PASSWORD,
     },
@@ -26,7 +25,8 @@ async function sendCreatedReservationMail(to, dataOrder, house) {
         <p>Дата заезда: <b>${dataOrder.dataIn}</b></p>
         <p>Дата выезда: <b>${dataOrder.dataOut}</b></p>
         <p>Общая сумма: <b>${dataOrder.summa} &#8381;</b></p>
-        <p>Ждем Вас для лучшего отдыха!</р>
+        <p>Для отмены бронирования свяжитесь с администратором</p>
+        <p>Ждем вас для лучшего отдыха!</p>
       </div>
       `,
   });

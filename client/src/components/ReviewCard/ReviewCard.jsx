@@ -1,9 +1,6 @@
 import React from 'react';
 import avatar from '../../img/avatar.svg'
 
-
-
-
 // TODO VITYA ВЫВОДИТЬ ТОЛЬКО ОТЗЫВЫ ПОДТВЕРЖДЕННЫЕ АДМИНОМ
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
@@ -38,7 +35,6 @@ function ReviewCard({ review }) {
           </div>
           <div className='reviewcard-rating'>
             Оценка: {review.rating}
-
           </div>
         </div>
       }
