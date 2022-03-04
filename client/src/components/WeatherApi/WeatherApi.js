@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './WeatherApi.css'
+import  location from "../../img/location.svg";
 
 
 export const WeatherApi = () => {
@@ -49,7 +50,10 @@ export const WeatherApi = () => {
   return (
     <>
       <div className="api-weather-container">
-        <p>{Math.round(Math.round(temperature * 100) / 100)} ℃<span> {weather()} </span></p>
+        {/* <p >Город: {city}</p> */}
+        <p><img className='location-logo' src={location} alt=''/><span>Санкт-Петербург : </span>{Math.round(Math.round(temperature * 100) / 100)} ℃<span> {weather()} </span></p>
+        {/* <input type="text" readOnly value={city} onChange={(e) => setCity(e.target.value)} /> */}
+        {/* <button className="btn-about a" >Click</button> */}
       </div>
     </>
   );
