@@ -32,9 +32,13 @@ function* postLoginAdmin(action) {
   try {
     yield put(loginAdminAC(admin.admin))
     localStorage.setItem('token', admin.token.accessToken);
+    localStorage.setItem('email', admin.admin.email);
+    localStorage.setItem('name', admin.admin.name);
+    
   } catch {
     yield put(errorLoginAdminAC(admin.message))
   }
+
 
 }
 
@@ -51,6 +55,8 @@ function* getInitHomes() {
 
 function* logoutAdmin() {
   yield localStorage.removeItem('token');
+  yield localStorage.removeItem('name');
+  yield localStorage.removeItem('email');
   yield put(logoutAdminAC({}))
 }
 

@@ -1,13 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils.js';
+import NotFound from '../../NotFound/NotFound.jsx';
 import './AdminMenu.css';
 
 function AdminMenu(props) {
+  const { admin } = useSelector(state => state.adminReducer);
   return (
     <>
-      {
-        localStorage.getItem('token') &&
+      {admin?.email ?
         <div>
           <div>
             <h3 className="adminmenu-title">Раздел бронирования</h3>
@@ -25,7 +27,9 @@ function AdminMenu(props) {
             <Link className='adminmenu-link' to={reactRouter.admin.confirmReviews}>Все отзывы</Link>
           </div>
         </div>
-      }
+        : <NotFound />}
+
+
     </>
   );
 }

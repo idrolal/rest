@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import NotFound from '../../NotFound/NotFound';
 import { AdminEditHouseCard } from '../AdminEditHouseCard/AdminEditHouseCard';
 
 
 export function AdminEditHouse(props) {
 
   const dispatch = useDispatch()
-  const { homes } = useSelector(state => state.homesReducer)
+  const { homes } = useSelector(state => state.homesReducer);
+  const { admin } = useSelector(state => state.adminReducer);
 
   useEffect(() => {
     dispatch({ type: "FETCH_GET_HOMES" })
@@ -14,14 +16,14 @@ export function AdminEditHouse(props) {
 
   return (
     <>
-      {localStorage.getItem('token') &&
+      {admin?.email ?
         <div>
           {homes?.length ? homes.map(home => {
             return <AdminEditHouseCard key={home.id} homes={home} />
 
           }) : <div>None!</div>
           }
-        </div>
+        </div> : <NotFound/>
       }
     </>
   );

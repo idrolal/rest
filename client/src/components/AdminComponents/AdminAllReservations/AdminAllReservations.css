@@ -3,3 +3,9 @@
   flex-wrap: wrap;
 
 }
+.go_back{
+  display: flex;
+}
+.arrow_back{
+  cursor: pointer;
+}

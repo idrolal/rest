@@ -22,7 +22,7 @@ function FormBooking() {
   const { orders, interval } = useSelector(state => state.orderReducer);
   const allDay = foo(interval.dataOutUser, interval?.dataInUser);
   const currentHouse = orders.find(el => el.id === +id);
-  const summa = `${allDay * currentHouse.price}`
+  const summa = `${allDay * currentHouse?.price}`
   const createOrderForm = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();

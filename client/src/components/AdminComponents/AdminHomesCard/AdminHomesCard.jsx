@@ -1,24 +1,23 @@
 import React  from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils.js';
 import { router } from '../../../utils/utils.js';
+import NotFound from '../../NotFound/NotFound.jsx';
 import './AdminHomesCard.css';
 
 
 function AdminHomesCard({ home }) {
   const dispatch = useDispatch();
-
+  const { admin } = useSelector(state => state.adminReducer);
 
   function deleteHome(id) {
     dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` });
-    dispatch({ type: 'FETCH_GET_HOMES' })
   }
 
   return (
     <>
-      {
-        localStorage.getItem('token') &&
+      {admin?.email ?
         <div className='house_card'>
           <div>
             <h4 style={{fontFamily: "Montserrat Regular"}}>{home?.name}</h4>
@@ -52,7 +51,7 @@ function AdminHomesCard({ home }) {
                 <div>None</div>
             }
           </div>
-        </div>
+        </div> : <NotFound/>
       }
     </>
   );

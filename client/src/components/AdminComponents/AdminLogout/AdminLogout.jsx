@@ -15,7 +15,6 @@ function AdminLogout(props) {
   }, [dispatch, navigate])
   return (
     <div>
-
     </div>
   );
 }

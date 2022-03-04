@@ -23,17 +23,25 @@ import ServicesList from '../ServicesList/ServicesList';
 import AdminEditReservations from '../AdminComponents/AdminEditReservations/AdminEditReservations.jsx';
 import HomeCardCurrent from '../Home/HomeCardCurrent/HomeCardCurrent';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginAdminAC } from '../../redux/actionCreators/adminAC.js';
 
 function App() {
 
+  const { admin } = useSelector(state => state.adminReducer);
 
   const dispatch = useDispatch()
-
+  const user = {
+    name: localStorage?.getItem('name'),
+    email: localStorage?.getItem('email')
+  }
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
     dispatch({ type: 'FETCH_GET_REVIEWS' })
     dispatch({ type: 'FETCH_GET_SERVICES' })
+    if (user) {
+      dispatch(loginAdminAC(user))
+    }
   }, [dispatch])
 
   return (
@@ -54,7 +62,7 @@ function App() {
         <Route path={reactRouter.admin.chooseEditHouse} element={<AdminEditHouseCard />} />
         <Route path={reactRouter.admin.login} element={<AdminLogin />} />
         <Route path={reactRouter.admin.editReservations} element={<AdminEditReservations />} />
-        {localStorage.getItem('token') && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
+        {admin?.email  && <Route path={reactRouter.admin.logout} element={<AdminLogout />} />}
 
         <Route path={reactRouter.user.homepage} element={<Home />} />
         <Route path={reactRouter.user.booking} element={<Booking2 />} />

@@ -47,9 +47,12 @@ async function putReviews(req, res) {
       where: {
         id: req.params.id,
       },
+      raw: true,
+      returning: true,
     });
-    if (newReviews) {
-      return res.json(newReviews);
+    const arr = [...newReviews[1]];
+    if (arr[0]) {
+      return res.json(arr[0]);
     }
   } catch (error) {
     return ({

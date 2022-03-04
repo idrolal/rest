@@ -1,15 +1,16 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { router } from '../../../utils/utils.js'
+import { reactRouter, router } from '../../../utils/utils.js'
 import { addHouseAdminFetchAC } from '../../../redux/actionCreators/homesAC.js'
 import { useNavigate } from 'react-router-dom';
+import NotFound from '../../NotFound/NotFound.jsx';
 
 function AdminAddHouse(props) {
   const navigate = useNavigate()
 
   const [imgPaths, setImgPaths] = useState([])
   const dispatch = useDispatch()
-  const state = useSelector(state => state)
+  const { admin } = useSelector(state => state.adminReducer)
 
   const sendFiles = useCallback(async (e) => {
     const picturesData = [...e.target.files]
@@ -48,17 +49,19 @@ function AdminAddHouse(props) {
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
     dispatch(addHouseAdminFetchAC(data))
-
-    // navigate('/admin/houses/all')
+    navigate(reactRouter.admin.allHouses)
   }
 
 
 
   return (
     <>
-      {localStorage.getItem('token') &&
+      {admin?.email ?
         < div className='app-container' >
-          <h1>Admin Add House</h1>
+          <div className='go_back'>
+            <h1 className='arrow_back' onClick={() => navigate(reactRouter.admin.main)}>&#8678;</h1>
+            <h1 className='title-text'>Добавление домика</h1>
+          </div>
 
           <form ref={formAddHouse} onSubmit={createHouse}>
             <div>
@@ -69,15 +72,6 @@ function AdminAddHouse(props) {
             <div>
               <label htmlFor="houseDescription">Описание дома: </label>
               <textarea type="text" id='houseDescription' name='description' />
-            </div>
-
-            <div>
-              <select name='chips' style={{ display: 'block' }}>
-                <option value='extenstions'>Дополнительные услуги при заезде: </option>
-                <option value="С животными">С животными - бесплатно </option>
-                <option value="Детская кроватка">Детская кроватка - бесплатно</option>
-                <option value="Трансфер">Трансфер - 5000 &#8381;</option>
-              </select>
             </div>
 
             <div>
@@ -106,10 +100,11 @@ function AdminAddHouse(props) {
 
             </div>
 
-            <button>Добавить дом</button>
+            <button className='waves-effect waves-light btn'>Добавить дом</button>
             <div></div>
           </form>
-        </div >
+        </div > : <NotFound />
+
       }
     </>
   );
