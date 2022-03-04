@@ -9,16 +9,13 @@ import './AdminHomesCard.css';
 function AdminHomesCard({ home }) {
   const dispatch = useDispatch();
 
-
   function deleteHome(id) {
     dispatch({ type: "FETCH_DELETE_HOME", payload: `${id}` });
-    dispatch({ type: 'FETCH_GET_HOMES' })
   }
 
   return (
     <>
-      {
-        localStorage.getItem('token') &&
+      
         <div className='house_card'>
           <div>
             <h4>{home?.name}</h4>
@@ -53,7 +50,7 @@ function AdminHomesCard({ home }) {
             }
           </div>
         </div>
-      }
+      
     </>
   );
 }

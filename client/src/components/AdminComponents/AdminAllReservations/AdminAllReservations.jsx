@@ -3,18 +3,22 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AdminReservationsList from '../AdminReservationsList/AdminReservationsList.jsx'
 import { FIND_RESERVATIONS_FETCH } from '../../../redux/actionType/reservationAT.js'
+import { useNavigate } from 'react-router-dom';
+import { reactRouter } from '../../../utils/utils.js';
 
 function AdminAllReservations(props) {
   const dispatch = useDispatch()
   const { reservations } = useSelector(state => state.reservationsReducer)
 
+  const navigate = useNavigate()
   useEffect(() => {
     dispatch({ type: FIND_RESERVATIONS_FETCH })
-  }, [dispatch])
+  }, [dispatch]);
+
+
 
   return (
     <>
-      {localStorage.getItem('token') &&
         <div className='app-container'>
           <h1>Admin All Reservations</h1>
           {
@@ -23,8 +27,9 @@ function AdminAllReservations(props) {
               :
               <div>None!</div>
           }
+          <button onClick={()=>navigate(reactRouter.admin.main)}>Назад</button>
         </div>
-      } </>
+       </>
   );
 }
 

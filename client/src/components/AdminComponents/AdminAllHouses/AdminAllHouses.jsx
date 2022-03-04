@@ -1,12 +1,15 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { reactRouter } from '../../../utils/utils.js';
 import AdminHomesCard from '../AdminHomesCard/AdminHomesCard.jsx';
 
 function AdminAllHouses() {
   const { homes } = useSelector(state => state.homesReducer)
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_HOMES' })
@@ -14,7 +17,6 @@ function AdminAllHouses() {
 
   return (
     <>
-      {localStorage.getItem('token') &&
         <div className='app-container'>
           <h1>Homes List</h1>
           {
@@ -23,8 +25,9 @@ function AdminAllHouses() {
               :
               <div>There are not homes</div>
           }
+          <button onClick={()=>navigate(reactRouter.admin.main)}>Назад</button>
         </div>
-      } </>
+   </>
 
   )
 }

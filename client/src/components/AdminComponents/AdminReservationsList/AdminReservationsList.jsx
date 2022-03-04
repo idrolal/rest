@@ -13,8 +13,7 @@ function AdminReservationsList({ reserve }) {
 
   return (
     <>
-      {
-        localStorage.getItem('token') &&
+      
         <div>
           <p>Бронирование {reserve.id}</p>
           <p>Заезд: {reserve.dataIn}</p>
@@ -31,7 +30,7 @@ function AdminReservationsList({ reserve }) {
           <Link to={reactRouter.admin.editReservationForParamas + reserve.id} key={reserve.id}>Изменить бронь</Link>
           <button onClick={() => deleteReservation(reserve.id)}>Отменить бронь</button>
         </div>
-      }
+      
     </>
   );
 }

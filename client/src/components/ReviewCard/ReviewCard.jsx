@@ -3,16 +3,19 @@ import avatar from '../../img/avatar.svg';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import './ReviewCard.css'
+import { useNavigate } from 'react-router-dom';
+import { reactRouter } from '../../utils/utils';
 
 function ReviewCard({ review }) {
 
   const dispatch = useDispatch();
   const descriptionRef = useRef();
+  const navigate = useNavigate()
 
   const handlerUpdate = (e) => {
     e.preventDefault()
     dispatch({ type: "FETCH_PUT_REVIEW", payload: { id: `${review.id}`, info: descriptionRef.current.value } });
-    dispatch({ type: "FETCH_GET_REVIEWS" });
+    navigate(reactRouter.admin.confirmReviews)
   };
 
 

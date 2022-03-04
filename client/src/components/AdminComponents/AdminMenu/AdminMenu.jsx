@@ -5,8 +5,7 @@ import { reactRouter } from '../../../utils/utils.js';
 function AdminMenu(props) {
   return (
     <>
-      {
-        localStorage.getItem('token') &&
+      
         <div>
           <div>
             <h3>Раздел бронирования</h3>
@@ -24,7 +23,7 @@ function AdminMenu(props) {
             <Link to={reactRouter.admin.confirmReviews}>Все отзывы</Link>
           </div>
         </div>
-      }
+      
     </>
   );
 }

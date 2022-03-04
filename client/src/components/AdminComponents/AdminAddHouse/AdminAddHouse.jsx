@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { router } from '../../../utils/utils.js'
+import { reactRouter, router } from '../../../utils/utils.js'
 import { addHouseAdminFetchAC } from '../../../redux/actionCreators/homesAC.js'
 import { useNavigate } from 'react-router-dom';
 
@@ -48,15 +48,13 @@ function AdminAddHouse(props) {
     const dataInput = Object.fromEntries(new FormData(formAddHouse.current))
     const data = { ...dataInput, img: imgPaths.pathArr }
     dispatch(addHouseAdminFetchAC(data))
-
-    // navigate('/admin/houses/all')
+    navigate(reactRouter.admin.allHouses)
   }
 
 
 
   return (
     <>
-      {localStorage.getItem('token') &&
         < div className='app-container' >
           <h1>Admin Add House</h1>
 
@@ -109,8 +107,9 @@ function AdminAddHouse(props) {
             <button>Добавить дом</button>
             <div></div>
           </form>
+          <button onClick={()=>navigate(reactRouter.admin.main)}>Назад</button>
         </div >
-      }
+
     </>
   );
 }

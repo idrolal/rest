@@ -39,21 +39,21 @@ async function addHouseController(req, res) {
 async function adminLogin(req, res) {
   const { email, password, checked } = req.body;
 
-  const checkedWordinDB = await Word.findOne({
-    raw: true,
-  });
   try {
+    const checkedWordinDB = await Word.findOne({
+      raw: true,
+    });
     if (checked !== checkedWordinDB.name) {
-      res.status(401).json({ message: 'Нет доступа входа' });
+      return res.status(401).json({ message: 'Нет доступа входа' });
     }
 
     const admin = await serviceAdmin.login({ email, password });
     const token = await serviceAdmin.generateJwtToken(admin);
-    res.status(200).json({
+    return res.status(200).json({
       token, admin: { email: admin.email, name: admin.name },
     });
   } catch (error) {
-    res.status(401).json({
+    return res.status(401).json({
       message: error.message,
     });
   }
@@ -102,14 +102,16 @@ async function deleteReservationController(req, res) {
 }
 
 async function updateReservationController(req, res) {
-  const { dataIn, dataOut, summa, comment } = req.body
+  const {
+    dataIn, dataOut, summa, comment,
+  } = req.body;
   let newOrder;
   try {
     newHouses = await Order.update({
       dataIn,
       dataOut,
       summa,
-      comment
+      comment,
     }, {
       where: {
         id: req.params.id,
@@ -126,5 +128,5 @@ async function updateReservationController(req, res) {
 }
 
 module.exports = {
-  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations, deleteReservationController, updateReservationController
+  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations, deleteReservationController, updateReservationController,
 };

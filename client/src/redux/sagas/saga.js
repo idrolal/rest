@@ -18,7 +18,7 @@ async function fetchData({ url, method, headers, body }) {
 }
 
 function* postLoginAdmin(action) {
-
+try{
   const admin = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.login}`,
     method: 'POST',
@@ -35,6 +35,9 @@ function* postLoginAdmin(action) {
   } catch {
     yield put(errorLoginAdminAC(admin.message))
   }
+}catch{
+  
+}
 
 }
 

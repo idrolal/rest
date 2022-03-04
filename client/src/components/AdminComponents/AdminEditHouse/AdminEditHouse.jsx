@@ -14,7 +14,6 @@ export function AdminEditHouse(props) {
 
   return (
     <>
-      {localStorage.getItem('token') &&
         <div>
           {homes?.length ? homes.map(home => {
             return <AdminEditHouseCard key={home.id} homes={home} />
@@ -22,7 +21,6 @@ export function AdminEditHouse(props) {
           }) : <div>None!</div>
           }
         </div>
-      }
     </>
   );
 }

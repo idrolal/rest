@@ -35,8 +35,6 @@ function AdminEditReservations() {
 
   return (
     <>
-      {
-        localStorage.getItem('token') &&
         <div>
           <form onSubmit={handlerUpdate}>
             <input ref={dataInInput} type="date" defaultValue={reserv.dataIn} />
@@ -54,7 +52,7 @@ function AdminEditReservations() {
 
           </form>
         </div>
-      }
+
     </>
   );
 }
