@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AdminReservationsList from '../AdminReservationsList/AdminReservationsList.jsx'
 import { FIND_RESERVATIONS_FETCH } from '../../../redux/actionType/reservationAT.js'
+import './AdminAllReservations.css'
 
 function AdminAllReservations(props) {
   const dispatch = useDispatch()
@@ -16,13 +17,15 @@ function AdminAllReservations(props) {
     <>
       {localStorage.getItem('token') &&
         <div className='app-container'>
-          <h1>Admin All Reservations</h1>
+          <h1 className="title-text">Все бронирования</h1>
+          <div className='all-reservations-container'>
           {
             reservations?.length ?
               reservations.map(reserve => <AdminReservationsList key={reserve.id} reserve={reserve} />)
               :
               <div>None!</div>
           }
+          </div>
         </div>
       } </>
   );

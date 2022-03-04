@@ -2,7 +2,7 @@
   /* position: absolute;
   right: 170px;
   top: 1100px; */
-  margin-left: 40px;
+  margin-left: 50px;
   width: 240px;
   height: 70px;
   text-align: center;
@@ -183,7 +183,8 @@ button .load img {
   transform: scale(1.5);
 }
 .title-text {
-  font-family: "Montserrat Bold";
+  margin-bottom: 40px;
+  font-family: "Montserrat Black";
 }
 
 .header-button-scale-2 {
