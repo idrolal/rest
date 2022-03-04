@@ -1,6 +1,6 @@
 import React from 'react';
 import './NotFound.css';
-import notfound from '../../img/notfound2.jpg';
+import notfound from '../../img/notfound2.svg';
 import logo from "../../img/logo.svg";
 
 function NotFound(props) {
