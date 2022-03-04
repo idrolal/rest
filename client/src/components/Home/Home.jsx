@@ -8,6 +8,7 @@ import './Home.css'
 import ImageMain from '../ImageMain/ImageMain';
 import ServicesList from '../ServicesList/ServicesList';
 import Galeria from '../Galeria/Galeria';
+import MyAccordion from '../MyAccordion/MyAccordion';
 
 
 function Home(props) {
@@ -22,7 +23,8 @@ function Home(props) {
       <ServicesList/>
       <ReviewsList/>
       <Terms/>      
-      <Questions/>
+      {/* <Questions/> */}
+      <MyAccordion/>
       <MapsApi />
 
       </div>

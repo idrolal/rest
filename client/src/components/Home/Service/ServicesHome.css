@@ -1,8 +1,8 @@
 /* ===================================== */
-html {
+/* html {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-}
+} */
 
 *, *:before, *:after {
   box-sizing: inherit;
@@ -55,6 +55,7 @@ html {
 .pricing-plan {
   border-bottom: 1px solid #e1f1ff;
   padding: 25px;
+
 }
 
 .pricing-plan:last-child {
@@ -78,6 +79,7 @@ html {
   font-size: 15px;
   line-height: 1.5;
   padding: 15px 0;
+  font-family: "Montserrat Light";
 }
 
 .pricing-features-item:last-child {
@@ -85,7 +87,7 @@ html {
 }
 
 .review-container {
-  margin-top: 100px;
+  margin-top: 110px;
   width: 100%;
 }
 

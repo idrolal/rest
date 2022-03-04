@@ -1,12 +1,12 @@
 .map-container {
   display: flex;
-  margin-top: 20%;
+  margin-top: 110px;
   align-items: center;
   /* justify-content: center; */
 }
 .map-options-container {
   margin-left: 40px;
-  padding-right: 100px;
+  /* padding-right: 100px; */
   width: "20%" !important;
   font-family: "Montserrat Regular";
 }

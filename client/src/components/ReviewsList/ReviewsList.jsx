@@ -5,6 +5,7 @@ import Item from './Item';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import Form from './Form/Form';
 import './ReviewsList.css';
+import fon_otziva from '../../img/fon_otziva.jpeg';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -25,14 +26,27 @@ function ReviewsList(props) {
   }, [dispatch]);
   return (
     <>
+          <div className='fon-otzia-container'><img className='fon-otziva-img'src={fon_otziva} alt=''/></div>
+          <div className='fon-otziva-main'>
+            <div className='fon-otziva-main-1'><span className='fon-otziva-span-left'>Зачем нам нужны отзывы</span>
+            <p className='forma-otziva'>Привет! Это команда ЭКОПАРКА. Мы отвечаем за то, чтобы место было классным. 
+              Пожалуйста, расскажите, что вы о нас думаете. 
+              Это поможет нам понять всё ли мы првильно делаем.  
+           </p></div>
+            <div className='fon-otziva-main-2'><p className='fon-otziva-right-text'>Помоги нам <br></br><span className='fon-otziva-span'>стать лучше</span></p>
+            <button onClick={() => setOpen(!open)}  className="header-button-scale-1"><span className="button-text">Оставить отзыв</span></button></div>
+          </div>
+
     <div className="reviews">
-      <button onClick={() => setOpen(!open)}  className="header-button-scale-1"><span className="button-text">Оставить отзыв</span></button>
+
+    
+      {/* <button onClick={() => setOpen(!open)}  className="header-button-scale-1"><span className="button-text">Оставить отзыв</span></button> */}
 
       {open ? <Form onSubmit={() => setOpen(false)}/> : <></>}
       </div>
 
 
-      <center><h3 className="title-text">отзывы</h3></center>
+      <center><h3 className="title-text">Отзывы</h3></center>
 
     <div>
       <Carousel breakPoints={breakPoints}>
