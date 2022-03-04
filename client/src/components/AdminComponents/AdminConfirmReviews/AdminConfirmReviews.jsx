@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ReviewCard from '../../ReviewCard/ReviewCard';
+import './AdminConfirmReviews.css';
 
 
 export const AdminConfirmReviews = () => {
@@ -15,9 +16,11 @@ export const AdminConfirmReviews = () => {
 
   return (
     <>
+    <div className="app-container">
+    <h1 className="title-text">Все отзывы</h1>
       {
         localStorage.getItem('token') &&
-        <div>
+        <div className="confirmreviews">
           {reviews?.length ? reviews.map(review => {
             if (review.status === false) {
               return <ReviewCard key={review.id} review={review} />
@@ -26,6 +29,7 @@ export const AdminConfirmReviews = () => {
           ) : <div>None!</div>}
         </div>
       }
+      </div>
     </>
   );
 };

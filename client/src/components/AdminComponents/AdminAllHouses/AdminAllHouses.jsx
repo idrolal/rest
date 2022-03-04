@@ -16,7 +16,7 @@ function AdminAllHouses() {
     <>
       {localStorage.getItem('token') &&
         <div className='app-container'>
-          <h1>Homes List</h1>
+          <h1 className='title-text'>Список домиков</h1>
           {
             homes?.length ?
               homes.map(el => <AdminHomesCard key={el.name} home={el} />)

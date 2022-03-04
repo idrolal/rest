@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils';
+import './AdminLogin.css';
 function AdminLogin(props) {
 
   const emailRef = useRef();
@@ -23,8 +24,8 @@ function AdminLogin(props) {
   }
 
   return (
-    <div >
-
+    <div className='app-container'>
+      <div className='adminlogin-container'>
       <form onSubmit={login}>
         <div>
           <label htmlFor="email"></label>
@@ -33,16 +34,17 @@ function AdminLogin(props) {
 
         <div>
           <label htmlFor="password"></label>
-          <input ref={passRef} type="password" id='password' name='password' placeholder='Password' />
+          <input ref={passRef} type="password" id='password' name='password' placeholder='Пароль' />
         </div>
 
         <div>
           <label htmlFor="checked"></label>
-          <input ref={checkedRef} type="password" id='checked' name='checked' autoComplete='false' />
+          <input ref={checkedRef} type="password" id='checked' name='checked' placeholder='Секрет' autoComplete='false' />
         </div>
 
-        <button>Войти</button>
+        <button className="adminlogin-btn">Войти</button>
       </form>
+      </div>
     </div>
   );
 }

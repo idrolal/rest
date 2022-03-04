@@ -21,9 +21,9 @@ function AdminHomesCard({ home }) {
         localStorage.getItem('token') &&
         <div className='house_card'>
           <div>
-            <h4>{home?.name}</h4>
-            <div>{home?.description}</div>
-            <div>{home?.price}</div>
+            <h4 style={{fontFamily: "Montserrat Regular"}}>{home?.name}</h4>
+            <div style={{fontFamily: "Montserrat Light"}}>{home?.description}</div>
+            <div style={{fontFamily: "Montserrat Regular", color: 'red', fontSize: '20px'}}>{home?.price} ₽</div>
             <div className='container-btns-housecard'>
               <div className='house_card__btn-box'>
                 <button className='house_card__btns_style' id='delete-btn-adminhousecard' onClick={() => deleteHome(home.id)}>Удалить домик</button>

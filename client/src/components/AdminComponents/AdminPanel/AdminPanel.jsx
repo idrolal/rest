@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminMenu from '../AdminMenu/AdminMenu';
+import './AdminPanel.css';
 
 function AdminPanel(props) {
   return (
@@ -7,7 +8,7 @@ function AdminPanel(props) {
       {
         localStorage.getItem('token') &&
         <div className='app-container'>
-          <h1>Административный режим</h1>
+          <h1 className='title-text'>Административный режим</h1>
           <AdminMenu />
         </div>
       }
