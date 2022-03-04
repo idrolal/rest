@@ -18,7 +18,7 @@ async function fetchData({ url, method, headers, body }) {
 }
 
 function* postLoginAdmin(action) {
-try{
+
   const admin = yield call(fetchData, {
     url: `${process.env.REACT_APP_URL}${router.login}`,
     method: 'POST',
@@ -32,12 +32,13 @@ try{
   try {
     yield put(loginAdminAC(admin.admin))
     localStorage.setItem('token', admin.token.accessToken);
+    localStorage.setItem('email', admin.admin.email);
+    localStorage.setItem('name', admin.admin.name);
+    
   } catch {
     yield put(errorLoginAdminAC(admin.message))
   }
-}catch{
-  
-}
+
 
 }
 
@@ -54,6 +55,8 @@ function* getInitHomes() {
 
 function* logoutAdmin() {
   yield localStorage.removeItem('token');
+  yield localStorage.removeItem('name');
+  yield localStorage.removeItem('email');
   yield put(logoutAdminAC({}))
 }
 

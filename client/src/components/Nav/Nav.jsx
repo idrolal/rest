@@ -4,9 +4,12 @@ import { WeatherApi } from '../WeatherApi/WeatherApi'
 import { reactRouter } from '../../utils/utils.js'
 import logo from "../../img/logo.svg";
 import './Nav.css';
+import { useSelector } from 'react-redux';
 
 
 function Nav(props) {
+  const { admin } = useSelector(state => state.adminReducer);
+
   return (
     <>
       <div className="nav-123">
@@ -36,7 +39,7 @@ function Nav(props) {
         <NavLink to={reactRouter.user.house} className={({isActive}) =>`${isActive ? 'nav-text-booking_none' : 'nav-text-booking'}`}>Домики</NavLink>
         <a className='nav-text' href='/#Reviews'>Услуги</a>
         <a className='nav-text' href="/#Contacts">Контакты</a>
-        {localStorage.getItem('token') && <NavLink to={reactRouter.admin.logout} className='nav-text'>Выйти</NavLink>}
+        {admin?.email ? <NavLink to={reactRouter.admin.logout} className='nav-text'>Выйти</NavLink> : <></>}
      
      
       </div>

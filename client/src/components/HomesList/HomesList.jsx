@@ -11,7 +11,7 @@ export const HomesList = () => {
 
   return (
     <div className='app-container'>
-      <h1>Все домики</h1>
+      <h1 className='title-text'>Все домики</h1>
       {homes?.length ? homes.map(el => <><HomesCard key={uuidv4()} homes={el} />
 
         <div  key={uuidv4()} className='allHomes_reservBtn'>

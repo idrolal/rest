@@ -26,7 +26,7 @@ export function MapsApi() {
   return (
     <div className="map-container" id='Contacts'>
       <YMaps>
-        <Map width={"150%"} height={"100vh"} defaultState={mapData}>
+        <Map width={"210%"} height={"100vh"} defaultState={mapData}>
           {coordinates.map((coordinate, idx) => (
             <Placemark geometry={coordinate} key={idx} properties={getPointData(idx)}
             options={getPointOptions()}/>

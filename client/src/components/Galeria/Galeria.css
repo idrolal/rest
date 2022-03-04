@@ -16,7 +16,7 @@ text-align: right;
   /* left: 31%; */
   /* top: 50%; */
   /* margin-left: 0px; */
-  margin-top: 80px;
+  margin-top: 110px;
 }
 
 .swiper-slide {
@@ -33,6 +33,8 @@ text-align: right;
 .galeria-text {
   font-family: "Montserrat Light";
   font-size: 16px;
+  margin-top: 40px;
+  margin-right: 35px;
 width: 100%;
 }
 .h3-text {

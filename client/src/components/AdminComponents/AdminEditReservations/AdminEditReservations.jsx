@@ -2,13 +2,15 @@ import React from 'react';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import NotFound from '../../NotFound/NotFound';
 
 function AdminEditReservations() {
 
   const dispatch = useDispatch()
   const { id } = useParams()
   const navigate = useNavigate()
-  const { reservations } = useSelector(state => state.reservationsReducer)
+  const { reservations } = useSelector(state => state.reservationsReducer);
+  const { admin } = useSelector(state => state.adminReducer);
   const reserv = reservations.find(el => el.id === +id)
 
   const goBack = () => {
@@ -35,6 +37,7 @@ function AdminEditReservations() {
 
   return (
     <>
+      {admin?.email ?
         <div>
           <form onSubmit={handlerUpdate}>
             <input ref={dataInInput} type="date" defaultValue={reserv.dataIn} />
@@ -51,8 +54,8 @@ function AdminEditReservations() {
             <button onClick={goBack}>Сохранить изменения</button>
 
           </form>
-        </div>
-
+        </div> : <NotFound/>
+      }
     </>
   );
 }

@@ -29,17 +29,19 @@
   font-size: 35px;
   color: rgba(86, 181, 184);
   font-family: "Montserrat Black";
+
 }
 .header-logo-text2{
   color: black;
   font-size: 25px;
   font-family: "Montserrat Black";
-  margin-left: 100px;
+  margin-left: 280px;
 }
 .header-contacts-link {
   color: white;
   font-size: 19px;
   font-family: "Montserrat Medium";
+  margin-right: 20px;
 }
 .header-contacts-logo img {
   width: 40px;

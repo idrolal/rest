@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils';
+import NotFound from '../../NotFound/NotFound';
 
 export const AdminEditHouseCard = () => {
 
@@ -10,7 +11,8 @@ export const AdminEditHouseCard = () => {
 
   const navigate = useNavigate();
   const { id } = useParams();
-  const { homes } = useSelector(state => state.homesReducer)
+  const { homes } = useSelector(state => state.homesReducer);
+  const { admin } = useSelector(state => state.adminReducer);
   const curHome = homes.find(home => home.id === +id)
 
   const nameRef = useRef()
@@ -31,7 +33,7 @@ export const AdminEditHouseCard = () => {
 
   return (
     <>
-      
+      {admin?.email ? 
         <form onSubmit={handlerUpdate} className='app-container'>
           <div>
             <input defaultValue={curHome.name} ref={nameRef} />
@@ -42,8 +44,8 @@ export const AdminEditHouseCard = () => {
             <br />
           </div>
           <button>Обновить</button>
-        </form>
-      
+        </form> : <NotFound/>
+      }
     </>
   );
 };

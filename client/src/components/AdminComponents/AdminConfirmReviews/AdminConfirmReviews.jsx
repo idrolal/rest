@@ -2,13 +2,15 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils';
+import NotFound from '../../NotFound/NotFound';
 import ReviewCard from '../../ReviewCard/ReviewCard';
 
 
 export const AdminConfirmReviews = () => {
 
   const dispatch = useDispatch()
-  const { reviews } = useSelector(state => state.reviewsReducer)
+  const { reviews } = useSelector(state => state.reviewsReducer);
+  const { admin } = useSelector(state => state.adminReducer);
   const navigate = useNavigate()
 
 
@@ -18,7 +20,7 @@ export const AdminConfirmReviews = () => {
 
   return (
     <>
-      
+      {admin?.email ?
         <div>
           {reviews?.length ? reviews.map(review => {
             if (review.status === false) {
@@ -26,9 +28,10 @@ export const AdminConfirmReviews = () => {
             }
           }
           ) : <div>Нет отзывов</div>}
-        </div>
-  
-      <button onClick={()=>navigate(reactRouter.admin.main)}>Назад</button>
+          <button onClick={() => navigate(reactRouter.admin.main)}>Назад</button>
+        </div> : <NotFound />
+      }
+
     </>
   );
 };

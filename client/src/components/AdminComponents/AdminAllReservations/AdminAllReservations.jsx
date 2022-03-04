@@ -5,10 +5,12 @@ import AdminReservationsList from '../AdminReservationsList/AdminReservationsLis
 import { FIND_RESERVATIONS_FETCH } from '../../../redux/actionType/reservationAT.js'
 import { useNavigate } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils.js';
+import NotFound from '../../NotFound/NotFound.jsx';
 
 function AdminAllReservations(props) {
   const dispatch = useDispatch()
-  const { reservations } = useSelector(state => state.reservationsReducer)
+  const { reservations } = useSelector(state => state.reservationsReducer);
+  const { admin } = useSelector(state => state.adminReducer);
 
   const navigate = useNavigate()
   useEffect(() => {
@@ -19,6 +21,7 @@ function AdminAllReservations(props) {
 
   return (
     <>
+      {admin?.email ?
         <div className='app-container'>
           <h1>Admin All Reservations</h1>
           {
@@ -28,8 +31,8 @@ function AdminAllReservations(props) {
               <div>None!</div>
           }
           <button onClick={()=>navigate(reactRouter.admin.main)}>Назад</button>
-        </div>
-       </>
+        </div> : <NotFound/>
+      } </>
   );
 }
 

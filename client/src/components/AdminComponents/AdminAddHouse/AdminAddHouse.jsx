@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { reactRouter, router } from '../../../utils/utils.js'
 import { addHouseAdminFetchAC } from '../../../redux/actionCreators/homesAC.js'
 import { useNavigate } from 'react-router-dom';
+import NotFound from '../../NotFound/NotFound.jsx';
 
 function AdminAddHouse(props) {
   const navigate = useNavigate()
 
   const [imgPaths, setImgPaths] = useState([])
   const dispatch = useDispatch()
-  const state = useSelector(state => state)
+  const { admin } = useSelector(state => state.adminReducer)
 
   const sendFiles = useCallback(async (e) => {
     const picturesData = [...e.target.files]
@@ -55,6 +56,7 @@ function AdminAddHouse(props) {
 
   return (
     <>
+      {admin?.email ?
         < div className='app-container' >
           <h1>Admin Add House</h1>
 
@@ -107,9 +109,10 @@ function AdminAddHouse(props) {
             <button>Добавить дом</button>
             <div></div>
           </form>
-          <button onClick={()=>navigate(reactRouter.admin.main)}>Назад</button>
-        </div >
+          <button onClick={() => navigate(reactRouter.admin.main)}>Назад</button>
+        </div > : <NotFound />
 
+      }
     </>
   );
 }
