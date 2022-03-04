@@ -48,7 +48,7 @@ function Form({ onSubmit }) {
           <p></p>
           <label className='label-text'>
             Имя
-            <input name='nameUser' className='name-input' type="text" autoFocus />
+            <input autoComplete='off' name='nameUser' className='name-input' type="text" autoFocus />
           </label>
           <label className='label-text'>
             Сообщение
