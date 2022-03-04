@@ -31,13 +31,13 @@ function ReviewCard({ review }) {
               {review.nameUser}
             </div>
             <div className='reviewcard-description'>
-              <input defaultValue={review.description} ref={descriptionRef} />
+              <textarea wrap='soft' defaultValue={review.description} ref={descriptionRef} />
             </div>
             <div className='reviewcard-rating'>
               Оценка: {review.rating}
             </div>
 
-            <button>Изменить</button>
+            <button className='waves-effect waves-light btn'>Сделать видимым</button>
           </form>
         </div>
         :

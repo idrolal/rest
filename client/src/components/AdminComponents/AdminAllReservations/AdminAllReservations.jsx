@@ -6,6 +6,7 @@ import { FIND_RESERVATIONS_FETCH } from '../../../redux/actionType/reservationAT
 import { useNavigate } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils.js';
 import NotFound from '../../NotFound/NotFound.jsx';
+import './AdminAllReservations.css'
 
 function AdminAllReservations(props) {
   const dispatch = useDispatch()
@@ -23,15 +24,22 @@ function AdminAllReservations(props) {
     <>
       {admin?.email ?
         <div className='app-container'>
-          <h1>Admin All Reservations</h1>
-          {
-            reservations?.length ?
-              reservations.map(reserve => <AdminReservationsList key={reserve.id} reserve={reserve} />)
-              :
-              <div>None!</div>
-          }
-          <button onClick={()=>navigate(reactRouter.admin.main)}>Назад</button>
-        </div> : <NotFound/>
+          <div className='go_back'>
+            <h1 className='arrow_back' onClick={() => navigate(reactRouter.admin.main)}>&#8678;</h1>
+            <h1 className="title-text">Все бронирования</h1>
+          </div>
+
+
+          <div className='all-reservations-container'>
+            {
+              reservations?.length ?
+                reservations.map(reserve => <AdminReservationsList key={reserve.id} reserve={reserve} />)
+                :
+                <div>None!</div>
+            }
+
+          </div>
+        </div> : <NotFound />
       } </>
   );
 }

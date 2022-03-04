@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils';
 import NotFound from '../../NotFound/NotFound';
+import './AdminLogin.css';
+
 function AdminLogin(props) {
 
   const emailRef = useRef();
@@ -11,7 +13,7 @@ function AdminLogin(props) {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const {admin} = useSelector(state => state.adminReducer)
+  const { admin } = useSelector(state => state.adminReducer)
   const login = (event) => {
     event.preventDefault()
     const user = {
@@ -25,28 +27,30 @@ function AdminLogin(props) {
   }
 
   return (
-    <div >
+
+    <div className='app-container'>
       {!localStorage.getItem('token') ?
-        <form onSubmit={login}> 
-          <div>
-            <label htmlFor="email"></label>
-            <input ref={emailRef} type="text" id='email' name='email' placeholder='Email' autoComplete='off' />
-          </div>
+        <div className='adminlogin-container'>
+          <form onSubmit={login}>
+            <div>
+              <label htmlFor="email"></label>
+              <input ref={emailRef} type="text" id='email' name='email' placeholder='Email' autoComplete='off' />
+            </div>
 
-          <div>
-            <label htmlFor="password"></label>
-            <input ref={passRef} type="password" id='password' name='password' placeholder='Password' />
-          </div>
+            <div>
+              <label htmlFor="password"></label>
+              <input ref={passRef} type="password" id='password' name='password' placeholder='Пароль' />
+            </div>
 
-          <div>
-            <label htmlFor="checked"></label>
-            <input ref={checkedRef} type="password" id='checked' name='checked' autoComplete='false' />
-          </div>
+            <div>
+              <label htmlFor="checked"></label>
+              <input ref={checkedRef} type="password" id='checked' name='checked' placeholder='Секрет' autoComplete='false' />
+            </div>
 
-          <button>Войти</button>
-        </form>
-        : <NotFound/>}
-
+            <button className="adminlogin-btn">Войти</button>
+          </form>
+        </div>
+        : <NotFound />}
     </div>
   );
 }

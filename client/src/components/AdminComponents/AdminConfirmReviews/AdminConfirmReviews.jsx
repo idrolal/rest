@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils';
 import NotFound from '../../NotFound/NotFound';
 import ReviewCard from '../../ReviewCard/ReviewCard';
+import './AdminConfirmReviews.css';
 
 
 export const AdminConfirmReviews = () => {
@@ -20,18 +21,25 @@ export const AdminConfirmReviews = () => {
 
   return (
     <>
-      {admin?.email ?
-        <div>
-          {reviews?.length ? reviews.map(review => {
-            if (review.status === false) {
-              return <ReviewCard key={review.id} review={review} />
-            }
-          }
-          ) : <div>Нет отзывов</div>}
-          <button onClick={() => navigate(reactRouter.admin.main)}>Назад</button>
-        </div> : <NotFound />
-      }
+      <div className="app-container">
+        {admin?.email ?
+          <>
+            <div className='go_back'>
+              <h1 className='arrow_back' onClick={() => navigate(reactRouter.admin.main)}>&#8678;</h1>
+              <h1 className="title-text">Все отзывы</h1>
+            </div>
+            <div className="confirmreviews">
+              {reviews?.length ? reviews.map(review => {
+                if (review.status === false) {
+                  return <ReviewCard key={review.id} review={review} />
+                }
+              }
+              ) : <div>Нет отзывов</div>}
+            </div>
+          </> : <NotFound />
+        }
 
+      </div>
     </>
   );
 };

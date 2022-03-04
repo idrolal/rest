@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { reactRouter } from '../../../utils/utils.js'
 import { useDispatch } from 'react-redux';
+import './AdminReservationsList.css';
 
 function AdminReservationsList({ reserve }) {
 
@@ -15,21 +16,23 @@ function AdminReservationsList({ reserve }) {
     <>
       {
         localStorage.getItem('token') &&
-        <div>
-          <p>Бронирование {reserve.id}</p>
-          <p>Заезд: {reserve.dataIn}</p>
-          <p>Выезд: {reserve.dataIn}</p>
-          <p>Сумма: {reserve.summa}</p>
+        <div className='adminreslist-container'>
+          <p className='adminreslist-info'><span className='adminreslist-span'>Бронирование</span> {reserve.id}</p>
+          <p className='adminreslist-info'><span className='adminreslist-span'>Заезд:</span> {reserve.dataIn}</p>
+          <p className='adminreslist-info'><span className='adminreslist-span'>Выезд:</span> {reserve.dataIn}</p>
+          <p className='adminreslist-info'><span className='adminreslist-span'>Сумма:</span> {reserve.summa}</p>
           {
             reserve?.payded ?
-              <p>Оплачено</p>
+              <p className='adminreslist-info'>Оплачено</p>
               :
-              <p>Оплата на месте</p>
+              <p className='adminreslist-info'>Оплата на месте</p>
           }
-          <p>{reserve.comment}</p>
-          <p>{reserve.house_id}</p>
-          <Link to={reactRouter.admin.editReservationForParamas + reserve.id} key={reserve.id}>Изменить бронь</Link>
-          <button onClick={() => deleteReservation(reserve.id)}>Отменить бронь</button>
+          <p className='adminreslist-info'><span className='adminreslist-span'>Комментарий:</span>{reserve.comment}</p>
+          <p className='adminreslist-info'><span className='adminreslist-span'>Домик:</span>{reserve.house_id}</p>
+          <div className='adminreslist-btn-all'>
+          <Link className="adminreslist-update" to={reactRouter.admin.editReservationForParamas + reserve.id} key={reserve.id}>Изменить</Link>
+          <button className="adminreslist-btn" onClick={() => deleteReservation(reserve.id)}>Отменить</button>
+          </div>
         </div>
       }
     </>

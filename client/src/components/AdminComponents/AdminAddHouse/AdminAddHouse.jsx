@@ -58,7 +58,10 @@ function AdminAddHouse(props) {
     <>
       {admin?.email ?
         < div className='app-container' >
-          <h1>Admin Add House</h1>
+          <div className='go_back'>
+            <h1 className='arrow_back' onClick={() => navigate(reactRouter.admin.main)}>&#8678;</h1>
+            <h1 className='title-text'>Добавление домика</h1>
+          </div>
 
           <form ref={formAddHouse} onSubmit={createHouse}>
             <div>
@@ -69,15 +72,6 @@ function AdminAddHouse(props) {
             <div>
               <label htmlFor="houseDescription">Описание дома: </label>
               <textarea type="text" id='houseDescription' name='description' />
-            </div>
-
-            <div>
-              <select name='chips' style={{ display: 'block' }}>
-                <option value='extenstions'>Дополнительные услуги при заезде: </option>
-                <option value="С животными">С животными - бесплатно </option>
-                <option value="Детская кроватка">Детская кроватка - бесплатно</option>
-                <option value="Трансфер">Трансфер - 5000 &#8381;</option>
-              </select>
             </div>
 
             <div>
@@ -106,10 +100,9 @@ function AdminAddHouse(props) {
 
             </div>
 
-            <button>Добавить дом</button>
+            <button className='waves-effect waves-light btn'>Добавить дом</button>
             <div></div>
           </form>
-          <button onClick={() => navigate(reactRouter.admin.main)}>Назад</button>
         </div > : <NotFound />
 
       }

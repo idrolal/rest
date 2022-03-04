@@ -21,14 +21,16 @@ function AdminAllHouses() {
     <>
       {admin?.email ?
         <div className='app-container'>
-          <h1>Homes List</h1>
+          <div className='go_back'>
+            <h1 className='arrow_back' onClick={() => navigate(reactRouter.admin.main)}>&#8678;</h1>
+            <h1 className='title-text'>Список домиков</h1>
+          </div>  
           {
             homes?.length ?
               homes.map(el => <AdminHomesCard key={el.name} home={el} />)
               :
               <div>There are not homes</div>
           }
-          <button onClick={() => navigate(reactRouter.admin.main)}>Назад</button>
         </div> : <NotFound />
       } </>
 
