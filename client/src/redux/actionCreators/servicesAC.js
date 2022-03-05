@@ -1,11 +1,6 @@
-import { INIT_SERVICES } from "../actionType/servicesAT";
+import { INIT_SERVICES } from '../actionType/servicesAT';
 
-export const initServicesAC = (payload) => {
-  return {
-    type: INIT_SERVICES,
-    payload
-  }
-}
-
-
-
+export const initServicesAC = (payload) => ({
+  type: INIT_SERVICES,
+  payload,
+});

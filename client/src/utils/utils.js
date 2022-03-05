@@ -2,9 +2,9 @@ export const router = {
   login: '/api/admin/login',
   home: '/api/homes',
   order: {
-    get:'/api/order/free',
-    save: '/api/order/save'
-    },
+    get: '/api/order/free',
+    save: '/api/order/save',
+  },
 
   reviews: '/api/reviews',
   services: '/api/services',
@@ -15,9 +15,8 @@ export const router = {
     editHouse: '/api/admin/editHouse',
     allReservations: '/api/admin/reservations/all',
     updateReservations: '/api/admin/reservations/all/edit',
-  }
-}
-
+  },
+};
 
 export const reactRouter = {
   user: {
@@ -46,7 +45,7 @@ export const reactRouter = {
     addHouseServerPath: '/admin/addHouse',
     confirmReviews: '/admin/confirmReviews',
     chooseEditHouse: '/admin/houses/edit/:id',
-    editHouse: '/admin/houses/edit/'
+    editHouse: '/admin/houses/edit/',
 
   },
-}
+};

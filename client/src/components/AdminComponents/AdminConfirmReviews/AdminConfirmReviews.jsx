@@ -6,42 +6,39 @@ import NotFound from '../../NotFound/NotFound';
 import ReviewCard from '../../ReviewCard/ReviewCard';
 import './AdminConfirmReviews.css';
 
-
-export const AdminConfirmReviews = () => {
-
-  const dispatch = useDispatch()
-  const { reviews } = useSelector(state => state.reviewsReducer);
-  const { admin } = useSelector(state => state.adminReducer);
-  const navigate = useNavigate()
-
+export function AdminConfirmReviews() {
+  const dispatch = useDispatch();
+  const { reviews } = useSelector((state) => state.reviewsReducer);
+  const { admin } = useSelector((state) => state.adminReducer);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch({ type: "FETCH_GET_REVIEWS" })
+    dispatch({ type: 'FETCH_GET_REVIEWS' });
   }, [dispatch]);
 
+  const navigateBack = () => {
+    navigate(reactRouter.admin.main);
+  };
+
   return (
-    <>
-      <div className="app-container">
-        {admin?.email ?
+    <div className="app-container">
+      {admin?.email
+        ? (
           <>
-            <div className='go_back'>
-              <h1 className='arrow_back' onClick={() => navigate(reactRouter.admin.main)}>&#8678;</h1>
+            <div className="go_back">
+              <h1 className="arrow_back" onClick={navigateBack} onKeyPress={navigateBack}>&#8678;</h1>
               <h1 className="title-text">Все отзывы</h1>
             </div>
             <div className="confirmreviews">
-              {reviews?.length ? reviews.map(review => {
+              {reviews?.length ? reviews.map((review) => {
                 if (review.status === false) {
-                  return <ReviewCard key={review.id} review={review} />
+                  return <ReviewCard key={review.id} review={review} />;
                 }
-              }
-              ) : <div>Нет отзывов</div>}
+              }) : <div>Нет отзывов</div>}
             </div>
-          </> : <NotFound />
-        }
+          </>
+        ) : <NotFound />}
 
-      </div>
-    </>
+    </div>
   );
-};
-
-
+}

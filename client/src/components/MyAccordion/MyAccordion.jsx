@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './MyAccordion.css';
 
-function MyAccordion(props) {
+function MyAccordion() {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -14,7 +14,7 @@ function MyAccordion(props) {
   };
 
   return (
-    <div className='accordion-container'>
+    <div className="accordion-container">
       <center><h3 className="title-text">Часто задаваемые вопросы</h3></center>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
@@ -22,22 +22,22 @@ function MyAccordion(props) {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className='accordion-title' sx={{ width: '33%', flexShrink: 0, fontFamily: 'Montserrat Medium'}}>
-          Как осуществить бронь?
+          <Typography className="accordion-title" sx={{ width: '33%', flexShrink: 0, fontFamily: 'Montserrat Medium' }}>
+            Как осуществить бронь?
           </Typography>
           {/* <Typography sx={{ color: 'text.secondary' }}>I am an accordion</Typography> */}
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{fontFamily: 'Montserrat Light'}}>
-          Бронирование домиков осуществляется только через модуль бронирования на нашем сайте по предоплате.
-              Бронирования являются невозвратными. При отмене бронирования средства
-              не возвращаются. Перенос на другие даты не возможен.
-              Если у вас возникли вопросы, позвоните по номеру телефона 8 (812) 300 0 300.
-              Для того, чтобы разместить бронирование, выберете даты проживания
-              и тип домика в модуле бронирования.
-              Детей, которым не требуется отдельное спальное место, указывать
-              в бронировании не нужно. Нажмите на кнопку «забронировать»,
-              введите свои данные: Ф.И.О., номер телефона, эл. почту.
+          <Typography sx={{ fontFamily: 'Montserrat Light' }}>
+            Бронирование домиков осуществляется только через модуль бронирования на нашем сайте по предоплате.
+            Бронирования являются невозвратными. При отмене бронирования средства
+            не возвращаются. Перенос на другие даты не возможен.
+            Если у вас возникли вопросы, позвоните по номеру телефона 8 (812) 300 0 300.
+            Для того, чтобы разместить бронирование, выберете даты проживания
+            и тип домика в модуле бронирования.
+            Детей, которым не требуется отдельное спальное место, указывать
+            в бронировании не нужно. Нажмите на кнопку «забронировать»,
+            введите свои данные: Ф.И.О., номер телефона, эл. почту.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -48,13 +48,10 @@ function MyAccordion(props) {
           id="panel2bh-header"
         >
           <Typography sx={{ width: '63%', flexShrink: 0, fontFamily: 'Montserrat Medium' }}>Какой минимальный срок бронирования?</Typography>
-          {/* <Typography sx={{ color: 'text.secondary' }}>
-            You are currently not an owner
-          </Typography> */}
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{fontFamily: 'Montserrat Light'}}>
-           Минимальный срок бронирования составляет 2 суток, потому что у нас очень классно и вам точно не хватит 1 суток. 
+          <Typography sx={{ fontFamily: 'Montserrat Light' }}>
+            Минимальный срок бронирования составляет 2 суток, потому что у нас очень классно и вам точно не хватит 1 суток.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -67,13 +64,10 @@ function MyAccordion(props) {
           <Typography sx={{ width: '33%', flexShrink: 0, fontFamily: 'Montserrat Medium' }}>
             Есть ли стоянка для автомобиля?
           </Typography>
-          {/* <Typography sx={{ color: 'text.secondary' }}>
-            Filtering has been entirely disabled for whole web server
-          </Typography> */}
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{fontFamily: 'Montserrat Light'}}>
-            Для всех гостей есть бесплатная оборудованая парковка при въезде. 
+          <Typography sx={{ fontFamily: 'Montserrat Light' }}>
+            Для всех гостей есть бесплатная оборудованая парковка при въезде.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -86,8 +80,8 @@ function MyAccordion(props) {
           <Typography sx={{ width: '33%', flexShrink: 0, fontFamily: 'Montserrat Medium' }}>Что входит в стоимость проживания?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{fontFamily: 'Montserrat Light'}}>
-          В стоимость  проживания входят все нештяки.
+          <Typography sx={{ fontFamily: 'Montserrat Light' }}>
+            В стоимость  проживания входят все нештяки.
           </Typography>
         </AccordionDetails>
       </Accordion>

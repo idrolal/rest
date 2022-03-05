@@ -1,5 +1,5 @@
-import { YMaps, Map, Placemark } from "react-yandex-maps";
-import "./MapsApi.css";
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import './MapsApi.css';
 
 export function MapsApi() {
   const mapData = {
@@ -9,27 +9,27 @@ export function MapsApi() {
 
   const coordinates = [[60.397129, 29.515466]];
 
-  const getPointOptions = () => {
-    return {
-      preset: "islands#darkGreenCircleDotIcon",
-    };
-  };
+  const getPointOptions = () => ({
+    preset: 'islands#darkGreenCircleDotIcon',
+  });
 
-  const getPointData = index => {
-    return {
-      balloonContentBody: "placemark <strong>balloon " + index + "</strong>",
-      clusterCaption: "placemark <strong>" + index + "</strong>",
-      iconCaption : 'ЭКОПАРК',
-    };
-  };
+  const getPointData = (index) => ({
+    balloonContentBody: `placemark <strong>balloon ${index}</strong>`,
+    clusterCaption: `placemark <strong>${index}</strong>`,
+    iconCaption: 'ЭКОПАРК',
+  });
 
   return (
-    <div className="map-container" id='Contacts'>
+    <div className="map-container" id="Contacts">
       <YMaps>
-        <Map width={"210%"} height={"100vh"} defaultState={mapData}>
+        <Map width="210%" height="100vh" defaultState={mapData}>
           {coordinates.map((coordinate, idx) => (
-            <Placemark geometry={coordinate} key={idx} properties={getPointData(idx)}
-            options={getPointOptions()}/>
+            <Placemark
+              geometry={coordinate}
+              key={idx}
+              properties={getPointData(idx)}
+              options={getPointOptions()}
+            />
           ))}
         </Map>
       </YMaps>
@@ -51,7 +51,8 @@ export function MapsApi() {
         </span>
 
         <h5>8-921-873-0606</h5>
-        <span>info@ecopark.ru</span><br></br>
+        <span>info@ecopark.ru</span>
+        <br />
         <span>Мыс Кюрениеми, Приморское шоссе, Ленинградская обл.</span>
       </div>
     </div>

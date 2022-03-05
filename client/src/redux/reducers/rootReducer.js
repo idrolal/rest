@@ -1,10 +1,10 @@
-import { combineReducers } from "redux";
-import { adminReducer } from './adminReducer'
-import { reviewsReducer } from "./reviewsReducer";
-import { homesReducer } from "./homesReducer";
-import { servicesReducer } from "./servicesReducer";
+import { combineReducers } from 'redux';
+import { adminReducer } from './adminReducer';
+import { reviewsReducer } from './reviewsReducer';
+import { homesReducer } from './homesReducer';
+import { servicesReducer } from './servicesReducer';
 import { orderReducer } from './orderReducer';
-import { reservationsReducer } from './reservationsReducer'
+import { reservationsReducer } from './reservationsReducer';
 
 export const rootReducer = combineReducers({
   adminReducer,
@@ -12,5 +12,5 @@ export const rootReducer = combineReducers({
   reviewsReducer,
   servicesReducer,
   orderReducer,
-  reservationsReducer
-})
+  reservationsReducer,
+});
