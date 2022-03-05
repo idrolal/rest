@@ -1,15 +1,15 @@
-import React from 'react';
-import './ServicesCard.css'
+import './ServicesCard.css';
 
-function Services({services}) {
+function Services({ services }) {
   return (
     <>
-    <div>{services?.description}</div>
-    <div>{services?.price} р.</div>
+      <div>{services?.description}</div>
+      <div>
+        {services?.price}
+        р.
+      </div>
     </>
   );
 }
-
-
 
 export default Services;

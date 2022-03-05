@@ -4,16 +4,19 @@ import NotFound from '../../NotFound/NotFound';
 import AdminMenu from '../AdminMenu/AdminMenu';
 import './AdminPanel.css';
 
-function AdminPanel(props) {
-  const { admin } = useSelector(state => state.adminReducer);
+function AdminPanel() {
+  const { admin } = useSelector((state) => state.adminReducer);
 
   return (
     <>
-      {admin?.email ? 
-        <div className='app-container'>
-          <h1 className='title-text'>Административный режим</h1>
+      {admin?.email
+        ? (
+        <div className="app-container">
+          <h1 className="title-text">Административный режим</h1>
           <AdminMenu />
-        </div> : <NotFound />}
+        </div>
+        ) : <NotFound />}
+      
     </>
   );
 }

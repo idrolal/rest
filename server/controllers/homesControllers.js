@@ -15,13 +15,15 @@ async function getAllHouses(req, res) {
   }
 }
 
-function deleteHomes(req, res) {
+async function deleteHomes(req, res) {
   const { id } = req.params;
-  ImageHouse.destroy({ where: { house_id: id } });
-
-  House.destroy({ where: { id } })
-    .then((data) => (data ? res.json(id) : res.status(404).json(data)))
-    .catch((error) => res.status(500).json(error));
+  try {
+    await ImageHouse.destroy({ where: { house_id: id } });
+    House.destroy({ where: { id } });
+    res.json(id);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 }
 
 async function getOneHome(req, res) {

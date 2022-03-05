@@ -107,7 +107,7 @@ async function updateReservationController(req, res) {
   } = req.body;
   let newOrder;
   try {
-    newHouses = await Order.update({
+    await Order.update({
       dataIn,
       dataOut,
       summa,
@@ -128,5 +128,11 @@ async function updateReservationController(req, res) {
 }
 
 module.exports = {
-  saveImgController, addHouseController, adminLogin, editHouseController, getAllReservations, deleteReservationController, updateReservationController,
+  saveImgController,
+  addHouseController,
+  adminLogin,
+  editHouseController,
+  getAllReservations,
+  deleteReservationController,
+  updateReservationController,
 };
