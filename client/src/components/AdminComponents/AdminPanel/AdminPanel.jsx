@@ -1,16 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import NotFound from '../../NotFound/NotFound';
 import AdminMenu from '../AdminMenu/AdminMenu';
+import './AdminPanel.css';
 
-function AdminPanel(props) {
+function AdminPanel() {
+  const { admin } = useSelector((state) => state.adminReducer);
+
   return (
     <>
-      {
-        localStorage.getItem('token') &&
-        <div className='app-container'>
-          <h1>Административный режим</h1>
+      {admin?.email
+        ? (
+        <div className="app-container">
+          <h1 className="title-text">Административный режим</h1>
           <AdminMenu />
         </div>
-      }
+        ) : <NotFound />}
+      
     </>
   );
 }
