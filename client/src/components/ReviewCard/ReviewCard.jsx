@@ -55,6 +55,7 @@ function ReviewCard({ review }) {
             </div>
             <div className="reviewcard-rating">
               Оценка:
+              {' '}
               {review.rating}
             </div>
           </div>

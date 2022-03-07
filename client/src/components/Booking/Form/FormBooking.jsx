@@ -103,7 +103,7 @@ function FormBooking() {
             </div>
             <p className="dopoptions">Дополнительные комментарии</p>
             <textarea style={{ backgroundColor: 'white', border: '1px solid black' }} type="text" placeholder="Если у вас есть дополнительные пожелания, пожалуйста, дайте нам знать. Мы постараемся учесть ваши пожелания при наличии такой возможности." name="comment" />
-            <button  className="button-booking-buy">Забронировать</button>
+            <button className="button-booking-buy">Забронировать</button>
           </form>
         </div>
       </div>

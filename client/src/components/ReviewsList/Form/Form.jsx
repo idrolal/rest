@@ -55,7 +55,7 @@ function Form({ onSubmit }) {
           <div className="input-field col s12" style={{ marginBottom: '50px' }}>
             <select className="SelFo" style={{ display: 'block' }} id="select-id">
               <option value="" disabled selected>Выбери дом</option>
-              {homes?.length ? homes.map((el) => <option name="sel" value={el.id} key={el.id}>{el.name}</option>) : <option>None </option>}
+              {homes?.length ? homes.map((el) => <option name="sel" value={el.id} key={el.id}>{el.name.toUpperCase()}</option>) : <option>None </option>}
             </select>
 
           </div>
