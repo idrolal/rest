@@ -26,7 +26,7 @@ export function AdminConfirmReviews() {
         ? (
           <>
             <div className="go_back">
-              <h1 className="arrow_back" onClick={navigateBack} onKeyPress={navigateBack}>&#8678;</h1>
+              <h1 className="arrow_back" onClick={navigateBack}>&#8678;</h1>
               <h1 className="title-text">Все отзывы</h1>
             </div>
             <div className="confirmreviews">

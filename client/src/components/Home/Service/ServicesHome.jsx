@@ -19,7 +19,7 @@ function ServicesHome({ services }) {
                       <li key={uuidv4()} className="pricing-features-item">{el.description}</li>
                       <li key={uuidv4()} className="pricing-features-item">
                         {el.price}
-                        ₽.
+                        ₽
                       </li>
                     </ul>
                   </div>

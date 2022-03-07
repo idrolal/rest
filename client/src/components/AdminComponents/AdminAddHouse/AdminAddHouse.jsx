@@ -58,7 +58,7 @@ function AdminAddHouse() {
         ? (
           <div className="app-container">
             <div className="go_back">
-              <h1 className="arrow_back" onKeyPress={() => navigate(reactRouter.admin.main)}>&#8678;</h1>
+              <h1 className="arrow_back" onClick={() => navigate(reactRouter.admin.main)}>&#8678;</h1>
               <h1 className="title-text">Добавление домика</h1>
             </div>
 
