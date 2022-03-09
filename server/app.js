@@ -14,7 +14,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.static(path.resolve('../client/build')));
 
 app.use(cors({
-  origin: [process.env.REACT_URL],
+  origin: [process.env.REACT_URL, process.env.HEROKU_URL],
   credentials: true,
 }));
 
