@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 4000;
 
 const indexRoute = require('./routes/indexRouter');
 
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(cors({
-  origin: ['http://localhost:3000'],
+  origin: [process.env.REACT_URL],
   credentials: true,
 }));
 
