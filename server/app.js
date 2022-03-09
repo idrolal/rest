@@ -11,6 +11,7 @@ const indexRoute = require('./routes/indexRouter');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use(express.static(path.resolve('../client/build')));
 
 app.use(cors({
   origin: [process.env.REACT_URL],
@@ -18,6 +19,9 @@ app.use(cors({
 }));
 
 app.use('/api', indexRoute);
+app.get('*', (req, res) => {
+  res.sendFile(path.relative('../client/build/index.html'));
+});
 
 app.listen(PORT, () => {
   console.log('Server started on port', PORT);
