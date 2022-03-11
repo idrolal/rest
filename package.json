@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cd client && npm install && npm run build",
-    "start": "cd server && npm install && npx sequelize init && npx sequelize-cli db:migrate --env production && npx sequelize db:seed:all && npm start",
+    "start": "cd server && npm install && npx sequelize-cli db:migrate --env production && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
