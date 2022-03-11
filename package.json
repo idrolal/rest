@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/idrolal/rest/issues"
   },
-  "homepage": "https://github.com/idrolal/rest#readme"
+  "homepage": "https://github.com/idrolal/rest#readme",
+  "dependencies": {
+    "sequelize-cli": "^6.4.1"
+  }
 }
